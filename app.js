@@ -83,18 +83,18 @@ const copy = {
     "ctaTitle": "Masz technologiczne<br>„da się to jakoś…”?",
     "ctaDesc": "Właśnie od takich pytań zaczynają się dobre rozwiązania.",
     "ctaButton": "Sprawdźmy to razem",
-    "contactLabel": "DOBRZE, ŻE JESTEŚ",
-    "contactTitle": "Twój problem.<br><em>Nasz punkt wyjścia.</em>",
-    "contactIntro": "Opisz, co Cię zatrzymuje albo jaki pomysł chodzi Ci po głowie. Nie musisz znać technicznych szczegółów.",
+    "contactLabel": "Tu zaczyna się dobry kierunek",
+    "contactTitle": "Znajdźmy<br><em>dobry kierunek.</em>",
+    "contactIntro": "Potrzebujesz konsultacji, audytu, redesignu lub planu? Opowiedz o swojej firmie i decyzji, przed którą stoisz.",
     "contactDetailTitle": "Co dalej?",
-    "contactDetail": "Przeczytam Twoją wiadomość i odpowiem na podany adres e-mail. Wspólnie ustalimy następny krok.",
+    "contactDetail": "Odpowiem, żeby lepiej poznać Twoje potrzeby. Ustalimy zakres i rezultat — konsultację, ocenę obecnej sytuacji lub projekt rozwiązania.",
     "name": "Jak masz na imię?",
     "email": "Twój e-mail",
     "audience": "Potrzebuję pomocy",
     "home": "Prywatnie",
     "business": "Dla firmy",
-    "problem": "Co chcesz rozwiązać?",
-    "problemPlaceholder": "Opowiedz, co się dzieje lub co chcesz osiągnąć…",
+    "problem": "Co chcesz omówić?",
+    "problemPlaceholder": "Twoje cele, obecne rozwiązania lub decyzja, w której mogę pomóc…",
     "urgency": "Jak pilna jest sprawa?",
     "urgencies": [
       "Bez pośpiechu",
@@ -224,18 +224,18 @@ const copy = {
     "ctaTitle": "Ever catch yourself thinking,<br>“there must be a better way”?",
     "ctaDesc": "That’s exactly where good solutions begin.",
     "ctaButton": "Let’s figure it out",
-    "contactLabel": "YOU’RE IN THE RIGHT PLACE",
-    "contactTitle": "Your challenge.<br><em>Our starting point.</em>",
-    "contactIntro": "Tell me what’s holding you back or what you have in mind. You don’t need to know the technical details.",
+    "contactLabel": "A clearer direction starts here",
+    "contactTitle": "Let’s find<br><em>the right direction.</em>",
+    "contactIntro": "Looking for advice, an audit, a redesign, or a plan? Tell me about your business and the decision you’re facing.",
     "contactDetailTitle": "What happens next?",
-    "contactDetail": "I’ll read your message and reply to the email address you provide. Together, we’ll agree on the next step.",
+    "contactDetail": "I’ll reply to understand your needs. We’ll agree on the scope and outcome — whether that’s a consultation, an assessment, or a design.",
     "name": "Your name",
     "email": "Your email",
     "audience": "I need help",
     "home": "For myself",
     "business": "For my business",
-    "problem": "What would you like to solve?",
-    "problemPlaceholder": "Tell me what’s happening or what you’d like to achieve…",
+    "problem": "What would you like to explore?",
+    "problemPlaceholder": "Your goals, current setup, or a decision you’d like help with…",
     "urgency": "How urgent is it?",
     "urgencies": [
       "No rush",
@@ -304,7 +304,7 @@ function render(){
  const previousForm=document.querySelector('form');
  const values=previousForm?new FormData(previousForm):null;
  const t=copy[language]; document.documentElement.lang=language;document.title=contactPage?`${t.navContact} — toumé`:t.title;
- document.querySelector('meta[name="description"]').content=t.intro;
+ document.querySelector('meta[name="description"]').content=contactPage?t.contactIntro:t.intro;
  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t[el.dataset.i18n]);
  document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
  main.innerHTML=contactPage?contact(t):home(t);

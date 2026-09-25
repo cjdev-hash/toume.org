@@ -24,7 +24,7 @@ const storyCopy = {
         "description": "Przekładam wyzwania techniczne i operacyjne na czytelne diagramy, decyzje i konkretne kolejne kroki."
       }
     ],
-    "title": "toumé — Znajdźmy prostszą drogę",
+    "title": "toumé — Doradztwo, audyty i projektowanie technologii",
     "skip": "Przejdź do treści",
     "talk": "Porozmawiajmy",
     "back": "Wstecz",
@@ -35,68 +35,70 @@ const storyCopy = {
     "navigation": "Nawigacja po opowieści",
     "scenes": [
       {
-        "kicker": "Twój człowiek od technologii",
+        "kicker": "Doradztwo technologiczne",
         "title": "Cześć.<br>Jestem Doradcą<br>Technologicznym",
-        "description": "Pomagam ludziom i firmom budować, naprawiać i usprawniać sprzęt, oprogramowanie oraz procesy.",
-        "aside": "Nie musisz znać rozwiązania. Wystarczy, że powiesz, co chcesz osiągnąć.",
-        "caption": "Od złożoności do jasności",
-        "detail": "Zacznijmy tutaj"
+        "description": "Pomagam firmom zrozumieć, co zmienić, dlaczego i jak — poprzez konsultacje, audyty, projektowanie i konkretne plany działania.",
+        "aside": "Nie zaczynam od technologii. Zaczynam od tego, jak działa Twój biznes.",
+        "caption": "Zrozumieć → zaprojektować → zdecydować",
+        "detail": "Jasny kierunek"
       },
       {
-        "kicker": "Zaczynam od słuchania",
+        "kicker": "Konsultacja",
         "title": "Najpierw<br>porozmawiajmy.",
-        "description": "Opowiesz, czym się zajmujesz, co Cię zatrzymuje i co chcesz zmienić. Ja zadam pytania i pomogę poukładać całość.",
-        "aside": "Dobry plan zaczyna się od zrozumienia.",
-        "caption": "Twoja perspektywa + moje pytania",
-        "detail": "Wspólny kierunek"
+        "description": "Poznaję Twoją firmę, cele, obecny sposób pracy i ograniczenia — budżet, obowiązujące umowy oraz potrzeby ludzi.",
+        "aside": "Najpierw ustalamy właściwe pytanie. Potem szukamy odpowiedzi.",
+        "caption": "Twój kontekst + moje pytania",
+        "detail": "Wspólne zrozumienie"
       },
       {
-        "kicker": "Spójrzmy na całość",
-        "title": "Co już działa?<br>A co przeszkadza?",
-        "description": "Przyglądam się sprzętowi, narzędziom, infrastrukturze i codziennej pracy. Rozpisuję, jak wszystko się łączy i gdzie pojawiają się trudności.",
-        "aside": "Najpierw poznajemy system. Dopiero potem go zmieniamy.",
-        "caption": "Ludzie, narzędzia i połączenia",
-        "detail": "Mapa sytuacji"
+        "kicker": "Audyt obecnej sytuacji",
+        "title": "Patrzę na<br>cały system.",
+        "description": "Analizuję sprzęt, oprogramowanie, infrastrukturę, koszty i zależności. Mapuję procesy, wskazuję wąskie gardła i zbędną złożoność.",
+        "aside": "Dostajesz jasny obraz tego, co działa, co nie działa i dlaczego.",
+        "caption": "Ludzie, narzędzia, koszty i zależności",
+        "detail": "Niezależna ocena"
       },
       {
-        "kicker": "Mniej zbędnych rzeczy",
-        "title": "Nie wszystko<br>trzeba wymieniać.",
-        "description": "Wybieramy zmiany, które naprawdę pomogą: lepszy sprzęt, prostszy proces, automatyzację lub AI. Czasem wystarczy usunąć zbędny krok.",
-        "aside": "Każda propozycja ma konkretny powód.",
-        "caption": "Mniej komplikacji. Więcej sensu.",
-        "detail": "Prostsza droga"
+        "kicker": "Projektowanie i redesign",
+        "title": "Zaprojektujmy<br>lepszą wersję.",
+        "description": "Przekładam wnioski na konkretny projekt: architekturę, procesy, diagramy i rekomendacje. Usprawniamy istniejące rozwiązanie lub planujemy nowe.",
+        "aside": "Czasem odpowiedzią jest automatyzacja. Czasem lepsza infrastruktura. Czasem mniej zbędnych działań.",
+        "caption": "Obecna sytuacja → proponowany projekt",
+        "detail": "Lepszy sposób pracy"
       },
       {
-        "kicker": "Od planu do działania",
-        "title": "Potem zamieniamy<br>plan w działanie.",
-        "description": "Projektuję, konfiguruję i łączę systemy. Buduję automatyzacje, dobieram narzędzia i wdrażam rozwiązania — samodzielnie lub z Twoim zespołem.",
-        "aside": "Praktyczna pomoc na każdym etapie realizacji.",
-        "caption": "Pomysł → plan → wdrożenie",
-        "detail": "Działający system"
+        "kicker": "Priorytety i planowanie",
+        "title": "Co naprawdę<br>warto zrobić?",
+        "description": "Oceniamy wartość, nakład pracy, ryzyko i zależności. Dostajesz priorytety oraz realny plan: co zrobić teraz, co później, a z czego zrezygnować.",
+        "aside": "Konsultacja, niezależna ocena lub dobrze przemyślany plan mogą być pełnym zakresem współpracy.",
+        "caption": "Możliwości → priorytety → kolejne kroki",
+        "detail": "Podstawa do decyzji",
+        "supporting": "Jeśli rekomendacja wymaga działania, nie muszę kończyć na prezentacji — mogę pomóc przejść od planu do wykonania."
       },
       {
-        "kicker": "Właściwa osoba do zadania",
-        "title": "Potrzeba specjalisty?<br>Znajdę go.",
-        "description": "Gdy temat wymaga głębszej wiedzy, pomagam znaleźć odpowiednią osobę i przekazuję jej cały kontekst.",
-        "aside": "Ty nadal masz jeden kontakt do spraw technologii. Mnie.",
-        "caption": "Wiele kompetencji. Jeden kontakt.",
-        "detail": "toumé"
+        "kicker": "Wsparcie wdrożenia — jeśli potrzebne",
+        "title": "Pomóc Ci<br>w realizacji?",
+        "description": "Mogę samodzielnie wdrożyć część rozwiązania, zaprojektować i zbudować potrzebne elementy, wesprzeć Twój zespół, skoordynować projekt lub dobrać odpowiednich specjalistów.",
+        "aside": "Możesz też przekazać plan własnemu zespołowi. Doradztwo ma samodzielną wartość.",
+        "caption": "Twój plan + właściwe kompetencje",
+        "detail": "Wsparcie na Twoich zasadach",
+        "supporting": "Zakres wdrożenia ustalamy osobno — zależnie od tego, czego naprawdę potrzeba."
       },
       {
-        "kicker": "Możesz do mnie wrócić",
-        "title": "Zmienia się sytuacja.<br>Kontakt zostaje.",
-        "description": "Nowa osoba w zespole, nowe biuro, inny program lub nagła awaria? Znam już Twoje środowisko i mogę pomagać dalej.",
-        "aside": "Wiesz, do kogo zadzwonić.",
-        "caption": "Wsparcie, które ma ciąg dalszy",
-        "detail": "Kolejny rozdział"
+        "kicker": "Czym się zajmuję",
+        "title": "Najpierw jasność.<br>Potem dobry krok.",
+        "description": "Możesz przyjść po drugą opinię, audyt, redesign lub plan. Każda z tych usług może być osobnym, konkretnym zadaniem.",
+        "aside": "Zanim zaczniemy, ustalimy pytanie, zakres i rezultat współpracy.",
+        "caption": "Najpierw doradztwo",
+        "detail": "Wdrożenie, gdy ma sens"
       },
       {
-        "kicker": "A tak przy okazji — to ja",
+        "kicker": "Człowiek za rekomendacjami",
         "title": "Cześć.<br>Jestem Krzysztof.",
-        "description": "Łączę sprzęt, oprogramowanie i ludzi. Moje doświadczenie obejmuje infrastrukturę, automatyzację, AI oraz wymagające produkcje reklamowe i VFX.",
-        "aside": "Czasem doradzam, czasem buduję lub naprawiam. Zawsze zaczynam od tego, czego naprawdę potrzebujesz.",
-        "caption": "Twój człowiek od technologii",
-        "detail": "Nie potrzebujesz briefu technicznego. Powiedz, co Cię trapi."
+        "description": "Jestem doradcą technologicznym z praktycznym doświadczeniem w infrastrukturze, automatyzacji, AI oraz systemach produkcji reklamowej i VFX.",
+        "aside": "Moją rolą jest zrozumieć Twój biznes, sprawdzić, co niepotrzebnie go komplikuje, i zaprojektować sensowną drogę do celu.",
+        "caption": "Doradztwo i projektowanie technologii",
+        "detail": "Nie potrzebujesz briefu technicznego. Powiedz, co rozważasz."
       }
     ],
     "labels": {
@@ -109,10 +111,10 @@ const storyCopy = {
       "infrastructure": "Infrastruktura",
       "outcome": "Efekt",
       "before": "Obecnie",
-      "after": "Po zmianie",
-      "idea": "Pomysł",
-      "plan": "Plan",
-      "working": "Działa",
+      "after": "Propozycja",
+      "idea": "Możliwości",
+      "plan": "Priorytety",
+      "working": "Kolejne kroki",
       "developer": "Programista",
       "network": "Sieci",
       "security": "Bezpieczeństwo",
@@ -136,7 +138,29 @@ const storyCopy = {
       "Co można uprościć, zautomatyzować lub połączyć?",
       "Jaka jest najkrótsza niezawodna droga do rezultatu?"
     ],
-    "bridgeConclusion": "Poznaję specyfikę Twojej branży, a gdy potrzeba — angażuję specjalistę. Lubię właśnie takie wyzwania: znaleźć praktyczną drogę do celu."
+    "bridgeConclusion": "Poznaję specyfikę Twojej branży, a gdy potrzeba — angażuję specjalistę. Lubię właśnie takie wyzwania: znaleźć praktyczną drogę do celu.",
+    "services": [
+      {
+        "title": "Konsultacje",
+        "description": "Niezależne doradztwo przy decyzjach technologicznych."
+      },
+      {
+        "title": "Audyty",
+        "description": "Czytelna ocena systemów, kosztów i wąskich gardeł."
+      },
+      {
+        "title": "Projektowanie i redesign",
+        "description": "Lepsze procesy, architektura i sposób pracy."
+      },
+      {
+        "title": "Planowanie",
+        "description": "Konkretne rekomendacje, priorytety i kolejne kroki."
+      },
+      {
+        "title": "Wsparcie wdrożenia",
+        "description": "Pomoc zespołowi, koordynacja realizacji lub dobór specjalistów."
+      }
+    ]
   },
   "en": {
     "experienceLabel": "More about my experience",
@@ -163,7 +187,7 @@ const storyCopy = {
         "description": "Translating technical or operational problems into diagrams, decisions, and practical next steps that are easy to understand."
       }
     ],
-    "title": "toumé — Let’s find a simpler way",
+    "title": "toumé — Technology consulting, audits & design",
     "skip": "Skip to content",
     "talk": "Let’s talk",
     "back": "Back",
@@ -174,68 +198,70 @@ const storyCopy = {
     "navigation": "Story navigation",
     "scenes": [
       {
-        "kicker": "Your person for technology",
-        "title": "Hi. I’m your<br>Tech Concierge.",
-        "description": "I help people and businesses build, fix, and improve hardware, software, and workflows.",
-        "aside": "You don’t need to know the technology. Just tell me what you’re trying to achieve.",
-        "caption": "From complexity to clarity",
-        "detail": "Start here"
+        "kicker": "Technology consulting",
+        "title": "Hi.<br>I’m a Technology<br>Consultant.",
+        "description": "I help businesses understand what to change, why, and how — through consulting, audits, design, and practical planning.",
+        "aside": "I don’t start with technology. I start with how your business works.",
+        "caption": "Understand → design → decide",
+        "detail": "A clearer direction"
       },
       {
-        "kicker": "Understanding comes first",
+        "kicker": "Consultation",
         "title": "First,<br>we talk.",
-        "description": "You tell me what you do, what’s getting in the way, and what you’d like to improve. I ask questions and help make sense of it all.",
-        "aside": "A useful plan starts with understanding.",
-        "caption": "Your perspective + my questions",
-        "detail": "A shared direction"
+        "description": "We look at your business, goals, current way of working, and constraints — including budget, existing contracts, and the people involved.",
+        "aside": "We define the right question before looking for an answer.",
+        "caption": "Your context + my questions",
+        "detail": "A shared understanding"
       },
       {
-        "kicker": "The whole picture",
-        "title": "What’s working?<br>What’s in the way?",
-        "description": "I look at your hardware, tools, infrastructure, and everyday work. I map how things connect and where the friction is.",
-        "aside": "Before changing anything, we understand what’s already there.",
-        "caption": "People, tools, and connections",
-        "detail": "A map of today"
+        "kicker": "Current-state audit",
+        "title": "Then I look<br>at the whole system.",
+        "description": "I review hardware, software, infrastructure, costs, and dependencies. I map how work gets done and identify bottlenecks and unnecessary complexity.",
+        "aside": "You get a clear picture of what works, what doesn’t, and why.",
+        "caption": "People, tools, costs, and dependencies",
+        "detail": "An independent view"
       },
       {
-        "kicker": "Less, but more useful",
-        "title": "Not everything<br>needs replacing.",
-        "description": "We choose changes that make a difference: better hardware, a simpler process, automation, or AI. Sometimes we just remove an unnecessary step.",
-        "aside": "Every recommendation has a reason.",
-        "caption": "Less complexity. More purpose.",
-        "detail": "A simpler path"
+        "kicker": "Design & redesign",
+        "title": "Let’s design<br>a better version.",
+        "description": "I turn the findings into a practical design: architecture, workflows, diagrams, and recommendations. We can improve what exists or plan something new.",
+        "aside": "Sometimes the answer is automation. Sometimes better infrastructure. Sometimes doing less.",
+        "caption": "Current state → proposed design",
+        "detail": "A better way of working"
       },
       {
-        "kicker": "From thinking to doing",
-        "title": "Then we<br>make it happen.",
-        "description": "I design, configure, and connect systems. Build automations, choose tools, and implement solutions — hands-on or alongside your team.",
-        "aside": "Practical help, all the way through.",
-        "caption": "Idea → plan → implementation",
-        "detail": "A working system"
+        "kicker": "Priorities & planning",
+        "title": "What’s actually<br>worth doing?",
+        "description": "We weigh value, effort, risk, and dependencies. You get clear priorities and a realistic plan for what to do now, later, or not at all.",
+        "aside": "A consultation, an independent assessment, or a well-designed plan can be the entire engagement.",
+        "caption": "Options → priorities → next steps",
+        "detail": "A decision you can act on",
+        "supporting": "When a recommendation calls for action, I don’t have to stop at a presentation — I can help turn the plan into reality."
       },
       {
-        "kicker": "The right person for the job",
-        "title": "Need a specialist?<br>I’ll find one.",
-        "description": "When a project needs deeper expertise, I help find the right person and make sure they understand the full picture.",
-        "aside": "You still have one technical point of contact. Me.",
-        "caption": "Many skills. One point of contact.",
-        "detail": "toumé"
+        "kicker": "Implementation support — if needed",
+        "title": "Need help<br>putting it into practice?",
+        "description": "I can implement parts of the solution myself, design and build the components you need, support your team, coordinate the project, or bring in the right specialists.",
+        "aside": "You can also take the plan to your own team. The advice stands on its own.",
+        "caption": "Your plan + the right expertise",
+        "detail": "Support on your terms",
+        "supporting": "We agree on the implementation scope separately — based on what’s actually needed."
       },
       {
-        "kicker": "Someone to come back to",
-        "title": "Things change.<br>Your contact stays.",
-        "description": "A new teammate, a new office, different software, or a sudden problem? I already understand your setup and can keep helping as it evolves.",
-        "aside": "You already know who to call.",
-        "caption": "Support with a next chapter",
-        "detail": "Keep moving"
+        "kicker": "What I actually do",
+        "title": "Clarity first.<br>Then the right next step.",
+        "description": "Come to me for a second opinion, an audit, a redesign, or a plan. Each can be a useful piece of work on its own.",
+        "aside": "We agree on the question, scope, and deliverable before we begin.",
+        "caption": "Consulting first",
+        "detail": "Implementation when useful"
       },
       {
-        "kicker": "Oh, and by the way — this is me",
+        "kicker": "The person behind the advice",
         "title": "Hi.<br>I’m Chris.",
-        "description": "I bring hardware, software, and people together. My background spans infrastructure, automation, AI, and demanding advertising and VFX productions.",
-        "aside": "Sometimes I advise. Sometimes I build or fix. I always start with what you actually need.",
-        "caption": "Your person for technology",
-        "detail": "No technical brief required. Just tell me what’s bothering you."
+        "description": "I’m a hands-on technology consultant with experience in infrastructure, automation, AI, advertising, and VFX production systems.",
+        "aside": "My role is to understand your business, question what adds complexity, and design a sensible way forward.",
+        "caption": "Technology consulting & design",
+        "detail": "No technical brief required. Tell me what you’re considering."
       }
     ],
     "labels": {
@@ -248,10 +274,10 @@ const storyCopy = {
       "infrastructure": "Infrastructure",
       "outcome": "Output",
       "before": "Current",
-      "after": "Improved",
-      "idea": "Idea",
-      "plan": "Plan",
-      "working": "Working",
+      "after": "Proposed",
+      "idea": "Options",
+      "plan": "Priorities",
+      "working": "Next steps",
       "developer": "Developer",
       "network": "Networks",
       "security": "Security",
@@ -275,7 +301,29 @@ const storyCopy = {
       "What can be simplified, automated, or connected?",
       "What is the shortest reliable path to the result?"
     ],
-    "bridgeConclusion": "I learn the specifics of your field and bring in a specialist when needed. Finding that practical path is the kind of problem I like solving."
+    "bridgeConclusion": "I learn the specifics of your field and bring in a specialist when needed. Finding that practical path is the kind of problem I like solving.",
+    "services": [
+      {
+        "title": "Consulting",
+        "description": "Independent advice for better technology decisions."
+      },
+      {
+        "title": "Audits",
+        "description": "A clear assessment of systems, costs, and bottlenecks."
+      },
+      {
+        "title": "Design & redesign",
+        "description": "Better workflows, architecture, and ways of working."
+      },
+      {
+        "title": "Planning",
+        "description": "Practical recommendations, priorities, and next steps."
+      },
+      {
+        "title": "Implementation support",
+        "description": "Guidance for your team, delivery, or specialist selection."
+      }
+    ]
   }
 };
 const svg = content => `<svg viewBox="0 0 500 390" aria-hidden="true" focusable="false">${content}</svg>`;
@@ -297,7 +345,7 @@ try{language=localStorage.getItem('toume-language')==='pl'?'pl':'en';}catch{}
 const main=document.querySelector('#story');
 let active=0;
 let observer;
-const hashes=['welcome','conversation','understand','simplify','implement','specialists','continuity','krzysztof'];
+const hashes=['welcome','conversation','understand','design','priorities','implement','services','krzysztof'];
 function updateControls(index){
   active=index;
   document.querySelector('#current').textContent=String(index+1).padStart(2,'0');
@@ -325,7 +373,7 @@ function render(preserve=false){
   document.querySelectorAll('[data-ui]').forEach(el=>el.textContent=t[el.dataset.ui]);
   document.querySelectorAll('[data-lang]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===language)));
   document.querySelector('.story-controls').setAttribute('aria-label',t.navigation);
-  main.innerHTML=t.scenes.map((scene,i)=>`<section class="scene" id="${hashes[i]}" data-scene="${i}" aria-labelledby="heading-${i}"><div class="scene-copy"><p class="scene-kicker">${scene.kicker}</p><${i===0?'h1':'h2'} id="heading-${i}" tabindex="-1">${scene.title}</${i===0?'h1':'h2'}><p class="scene-description">${scene.description}</p><p class="scene-aside">${scene.aside}</p>${i<7?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:''}${i===7?`<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a><p class="scene-aside">${scene.detail}</p><details class="experience-disclosure"><summary>${t.experienceLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content"><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p><ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul><section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section></div></details>`:''}</div>${i===7?`<figure class="portrait-panel"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><div class="portrait-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 8H35M20 8V35"/><circle cx="5" cy="8" r="2"/><circle cx="35" cy="8" r="2"/><circle cx="20" cy="35" r="2"/></svg></div><figcaption><span>${t.name}</span><span>${scene.caption}</span></figcaption></figure>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span${scene.detail==='toumé'?' class="brand-name"':''}>${scene.detail}</span></figcaption></figure>`}</section>`).join('');
+  main.innerHTML=t.scenes.map((scene,i)=>`<section class="scene" id="${hashes[i]}" data-scene="${i}" aria-labelledby="heading-${i}"><div class="scene-copy"><p class="scene-kicker">${scene.kicker}</p><${i===0?'h1':'h2'} id="heading-${i}" tabindex="-1">${scene.title}</${i===0?'h1':'h2'}><p class="scene-description">${scene.description}</p>${scene.supporting?`<p class="scene-aside">${scene.supporting}</p>`:''}<p class="scene-aside">${scene.aside}</p>${i<7?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:''}${i===7?`<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a><p class="scene-aside">${scene.detail}</p><details class="experience-disclosure"><summary>${t.experienceLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content"><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p><ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul><section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section></div></details>`:''}</div>${i===7?`<figure class="portrait-panel"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><div class="portrait-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 8H35M20 8V35"/><circle cx="5" cy="8" r="2"/><circle cx="35" cy="8" r="2"/><circle cx="20" cy="35" r="2"/></svg></div><figcaption><span>${t.name}</span><span>${scene.caption}</span></figcaption></figure>`:i===6?`<dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map(service=>`<div><dt>${service.title}</dt><dd>${service.description}</dd></div>`).join('')}</dl>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span${scene.detail==='toumé'?' class="brand-name"':''}>${scene.detail}</span></figcaption></figure>`}</section>`).join('');
   document.querySelector('.experience-disclosure').open=experienceOpen;
   document.querySelectorAll('[data-next-scene]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();goTo(Number(link.dataset.nextScene),true);}));
   observer=new IntersectionObserver(entries=>{

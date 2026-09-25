@@ -9,6 +9,11 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 
 /* The conversation continues on the contact page. */
+.consulting-services{margin:0;width:100%;max-width:540px;justify-self:center;border-top:1px solid var(--line)}
+.consulting-services>div{padding:22px 0;border-bottom:1px solid var(--line)}
+.consulting-services dt{font-size:21px;font-weight:500;letter-spacing:-.4px;color:var(--text);margin-bottom:6px}
+.consulting-services dd{font-size:14px;line-height:1.75;color:var(--muted);margin:0;max-width:440px}
+@media(max-width:700px){.consulting-services{max-width:none}.consulting-services>div{padding:16px 0}.consulting-services dt{font-size:18px}.consulting-services dd{font-size:13px}}
 .brand-name{text-transform:none}
 .experience-disclosure{margin-top:28px;max-width:490px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .experience-disclosure summary{display:flex;justify-content:space-between;align-items:center;gap:20px;list-style:none;cursor:pointer;padding:18px 0;font-size:14px;color:var(--text)}
