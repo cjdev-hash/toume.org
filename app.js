@@ -1,6 +1,7 @@
 const copy = {
   "pl": {
-    "personName": "Krzysztof", "backStory": "Wróć do opowieści",
+    "personName": "Krzysztof",
+    "backStory": "Wróć do opowieści",
     "skip": "Przejdź do treści",
     "navServices": "Jak pomagam",
     "navAbout": "O mnie",
@@ -86,9 +87,7 @@ const copy = {
     "contactTitle": "Twój problem.<br><em>Nasz punkt wyjścia.</em>",
     "contactIntro": "Opisz, co Cię zatrzymuje albo jaki pomysł chodzi Ci po głowie. Nie musisz znać technicznych szczegółów.",
     "contactDetailTitle": "Co dalej?",
-    "contactDetail": "Po uruchomieniu kontaktu zapoznam się z Twoją wiadomością i wspólnie ustalimy następny krok oraz zakres pomocy.",
-    "draftTitle": "Kontakt w przygotowaniu",
-    "draftNotice": "Formularz zapisuje plik z treścią zapytania na Twoim urządzeniu. Nic nie zostanie wysłane. Bezpośredni kontakt będzie dostępny po konfiguracji.",
+    "contactDetail": "Przeczytam Twoją wiadomość i odpowiem na podany adres e-mail. Wspólnie ustalimy następny krok.",
     "name": "Jak masz na imię?",
     "email": "Twój e-mail",
     "audience": "Potrzebuję pomocy",
@@ -103,11 +102,8 @@ const copy = {
       "Dzisiaj",
       "Pilne"
     ],
-    "submit": "Przygotuj zapytanie",
-    "privacy": "Dane pozostają w tej karcie przeglądarki. Nie wysyłamy ich na serwer. Nie wpisuj haseł ani poufnych informacji.",
-    "resultTitle": "Zapytanie przygotowane — nie zostało wysłane.",
-    "reference": "Numer szkicu",
-    "download": "Pobierz treść zapytania (.txt)",
+    "submit": "Wyślij wiadomość",
+    "privacy": "Wysyłając formularz, przekazujesz swoje dane i wiadomość do FormSubmit w celu dostarczenia ich na mój e-mail. Usługa przechowuje zgłoszenia przez 30 dni. Nie wpisuj haseł ani poufnych informacji.",
     "title": "Toumé — Twój człowiek od technologii",
     "experience": [
       {
@@ -130,10 +126,15 @@ const copy = {
         "title": "Od pomysłu do czytelnego schematu.",
         "description": "Przekładam złożone pomysły na diagramy i instrukcje wizualne, które pokazują krok po kroku, co dalej."
       }
-    ]
+    ],
+    "directTitle": "Wolisz napisać bezpośrednio?",
+    "sending": "Przekierowuję do weryfikacji…",
+    "privacyLink": "Prywatność FormSubmit",
+    "verification": "Po kliknięciu przejdziesz do weryfikacji antyspamowej, a następnie wrócisz na stronę Toumé."
   },
   "en": {
-    "personName": "Chris", "backStory": "Back to the story",
+    "personName": "Chris",
+    "backStory": "Back to the story",
     "skip": "Skip to content",
     "navServices": "How I help",
     "navAbout": "About me",
@@ -219,9 +220,7 @@ const copy = {
     "contactTitle": "Your challenge.<br><em>Our starting point.</em>",
     "contactIntro": "Tell me what’s holding you back or what you have in mind. You don’t need to know the technical details.",
     "contactDetailTitle": "What happens next?",
-    "contactDetail": "Once contact is connected, I’ll review your message and we’ll agree on the next step and the help you need.",
-    "draftTitle": "Contact is being set up",
-    "draftNotice": "This form saves an enquiry file to your device. Nothing will be sent. Direct contact will be available once configured.",
+    "contactDetail": "I’ll read your message and reply to the email address you provide. Together, we’ll agree on the next step.",
     "name": "Your name",
     "email": "Your email",
     "audience": "I need help",
@@ -236,11 +235,8 @@ const copy = {
       "Today",
       "Urgent"
     ],
-    "submit": "Prepare enquiry",
-    "privacy": "Your details stay in this browser tab and are not sent to a server. Please don’t include passwords or confidential information.",
-    "resultTitle": "Your enquiry is ready — it has not been sent.",
-    "reference": "Draft reference",
-    "download": "Download enquiry (.txt)",
+    "submit": "Send message",
+    "privacy": "Submitting this form shares your details and message with FormSubmit for delivery to my inbox. The service retains submissions for 30 days. Please don’t include passwords or confidential information.",
     "title": "Toumé — Your person for technology",
     "experience": [
       {
@@ -263,14 +259,18 @@ const copy = {
         "title": "From an idea to a clear visual plan.",
         "description": "Turning complex ideas into diagrams and step-by-step visuals that make the next move easy to understand."
       }
-    ]
+    ],
+    "directTitle": "Prefer to email me directly?",
+    "sending": "Opening verification…",
+    "privacyLink": "FormSubmit privacy",
+    "verification": "You’ll continue to spam verification, then return to Toumé."
   }
 };
 let language='pl';
 try { language=localStorage.getItem('toume-language')==='en'?'en':'pl'; } catch {}
 const main=document.querySelector('main');
 const contactPage=location.pathname.endsWith('contact.html');
-let draftUrl;
+
 const arrow='<span aria-hidden="true">↗</span>';
 function home(t){return `
 <section class="hero container"><div><p class="eyebrow"><span class="dot"></span>${t.eyebrow}</p><h1>${t.headline}</h1><p class="intro">${t.intro}</p><div class="hero-actions"><a class="button blue" href="contact.html"><span>${t.cta}</span>${arrow}</a><a class="text-link" href="#services">${t.explore}</a></div><p class="hero-note"><span class="dot"></span>${t.note}</p></div><div class="art" aria-hidden="true"><span class="art-meta">${t.artMeta}</span><div class="orbit"></div><div class="orbit two"></div><div class="sculpture"></div><div class="float-label one"><span class="label-icon">↗</span>${t.artOne}</div><div class="float-label two"><span class="label-icon">⌘</span>${t.artTwo}</div><div class="float-label three"><span class="label-icon">✳</span>${t.artThree}</div><span class="art-caption">${t.artCaption}</span><span class="art-coordinates">01 — ∞</span></div></section>
@@ -280,7 +280,7 @@ function home(t){return `
 <section class="section container" id="process"><div class="section-heading"><div><p class="eyebrow">${t.processLabel}</p><h2>${t.processTitle}</h2></div></div><div class="process">${[1,2,3].map(i=>`<article class="step"><span class="step-number">0${i} /</span><h3>${t['step'+i]}</h3><p>${t['step'+i+'Desc']}</p></article>`).join('')}</div></section>
 <section class="section work container" id="work"><div class="section-heading"><div><p class="eyebrow">${t.workLabel}</p><h2>${t.workTitle}</h2></div></div><p class="experience-intro">${t.workDesc}</p><ul class="experience-list">${t.experience.map((item,i)=>`<li class="experience-item"><span class="experience-number" aria-hidden="true">0${i+1}</span><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul></section>
 <section class="container"><div class="cta"><div><p class="eyebrow">${t.ctaLabel}</p><h2>${t.ctaTitle}</h2><p>${t.ctaDesc}</p></div><a class="button light" href="contact.html"><span>${t.ctaButton}</span>${arrow}</a></div></section>`;}
-function contact(t){return `<section class="container contact-layout"><div><p class="eyebrow"><span class="dot"></span>${t.contactLabel}</p><h1>${t.contactTitle}</h1><p class="intro">${t.contactIntro}</p><div class="contact-detail"><h3>${t.contactDetailTitle}</h3><p>${t.contactDetail}</p></div><div class="contact-detail"><p><strong>${t.draftTitle}</strong><br>${t.draftNotice}</p></div></div><form class="contact-form"><div class="form-row"><div class="field"><label for="name">${t.name}</label><input id="name" name="name" autocomplete="name" maxlength="100" required></div><div class="field"><label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div></div><fieldset><legend>${t.audience}</legend><div class="radio-options"><label><input type="radio" name="audience" value="home" checked>${t.home}</label><label><input type="radio" name="audience" value="business">${t.business}</label></div></fieldset><div class="field"><label for="problem">${t.problem}</label><textarea id="problem" name="problem" minlength="10" maxlength="5000" required placeholder="${t.problemPlaceholder}"></textarea></div><div class="field"><label for="urgency">${t.urgency}</label><select name="urgency" id="urgency">${t.urgencies.map((s,i)=>`<option value="${i}">${s}</option>`).join('')}</select></div><p class="form-note">${t.privacy}</p><button class="button blue" type="submit"><span>${t.submit}</span>${arrow}</button><div class="draft-result" role="status" tabindex="-1" hidden></div></form></section>`;}
+function contact(t){return `<section class="container contact-layout"><div><p class="eyebrow"><span class="dot"></span>${t.contactLabel}</p><h1>${t.contactTitle}</h1><p class="intro">${t.contactIntro}</p><div class="contact-detail"><h3>${t.contactDetailTitle}</h3><p>${t.contactDetail}</p></div><div class="contact-detail"><h3>${t.directTitle}</h3><a class="direct-email" href="mailto:hello@toume.org">hello@toume.org</a></div></div><form class="contact-form" action="https://formsubmit.co/hello@toume.org" method="POST"><input type="hidden" name="_subject" value="Toumé — nowe zapytanie / new enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://toume.org/contact.html"><input type="hidden" name="_next" value="https://toume.org/thanks.html?lang=${language}"><input type="hidden" name="reference" value=""><input type="hidden" name="language" value="${language}"><input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="form-row"><div class="field"><label for="name">${t.name}</label><input id="name" name="name" autocomplete="name" maxlength="100" required></div><div class="field"><label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div></div><fieldset><legend>${t.audience}</legend><div class="radio-options"><label><input type="radio" name="audience" value="home" checked>${t.home}</label><label><input type="radio" name="audience" value="business">${t.business}</label></div></fieldset><div class="field"><label for="problem">${t.problem}</label><textarea id="problem" name="problem" minlength="10" maxlength="5000" required placeholder="${t.problemPlaceholder}"></textarea></div><div class="field"><label for="urgency">${t.urgency}</label><select name="urgency" id="urgency">${t.urgencies.map((s,i)=>`<option value="${s}">${s}</option>`).join('')}</select></div><p class="form-note">${t.privacy} <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">${t.privacyLink} ↗</a></p><button class="button blue" type="submit"><span>${t.submit}</span>${arrow}</button><p class="form-note verification-note">${t.verification}</p></form></section>`;}
 function render(){
  const previousForm=document.querySelector('form');
  const values=previousForm?new FormData(previousForm):null;
@@ -289,13 +289,25 @@ function render(){
  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t[el.dataset.i18n]);
  document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
  main.innerHTML=contactPage?contact(t):home(t);
- if(draftUrl){URL.revokeObjectURL(draftUrl);draftUrl=null;}
+
  const form=document.querySelector('form');
- if(form){if(values){for(const [key,value] of values){if(key==='audience'){form.querySelector(`input[value="${value}"]`).checked=true;}else{form.elements.namedItem(key).value=value;}}}
- form.addEventListener('submit',event=>{event.preventDefault();if(!form.reportValidity())return;const data=new FormData(form);const ref='TOUME-'+new Date().toISOString().slice(0,10).replaceAll('-','')+'-'+crypto.randomUUID().slice(0,8).toUpperCase();const draft=`Toumé — ${t.resultTitle}\n${t.reference}: ${ref}\n\n${t.name}: ${data.get('name')}\n${t.email}: ${data.get('email')}\n${t.audience}: ${t[data.get('audience')]}\n${t.urgency}: ${t.urgencies[Number(data.get('urgency'))]}\n\n${t.problem}\n${data.get('problem')}\n`;
- if(draftUrl)URL.revokeObjectURL(draftUrl);draftUrl=URL.createObjectURL(new Blob([draft],{type:'text/plain;charset=utf-8'}));const result=form.querySelector('.draft-result');result.replaceChildren();const title=document.createElement('strong');title.textContent=t.resultTitle;const info=document.createElement('div');info.textContent=`${t.reference}: ${ref}`;const link=document.createElement('a');link.href=draftUrl;link.download=ref+'.txt';link.textContent=t.download;result.append(title,info,link);result.hidden=false;result.focus();});
- form.addEventListener('input',()=>{form.querySelector('.draft-result').hidden=true;});}
+ if(form){
+   if(values){for(const key of ['name','email','problem'])form.elements.namedItem(key).value=values.get(key)||'';
+     form.elements.namedItem('audience').value=values.get('audience')||'home';
+     const oldLanguage=values.get('language');
+     const urgencyIndex=copy[oldLanguage]?.urgencies.indexOf(values.get('urgency'))??0;
+     form.elements.namedItem('urgency').selectedIndex=Math.max(0,urgencyIndex);
+   }
+   form.addEventListener('submit',event=>{
+     if(!form.reportValidity()||form.elements.namedItem('_honey').value){event.preventDefault();return;}
+     form.elements.namedItem('reference').value='TOUME-'+crypto.randomUUID().slice(0,8).toUpperCase();
+     const button=form.querySelector('button[type="submit"]');
+     button.disabled=true;button.querySelector('span').textContent=t.sending;
+   });
+ }
  const art=document.querySelector('.art');if(art&&!matchMedia('(prefers-reduced-motion: reduce)').matches){art.addEventListener('pointermove',event=>{const rect=art.getBoundingClientRect();const x=(event.clientX-rect.left)/rect.width-.5;const y=(event.clientY-rect.top)/rect.height-.5;art.querySelector('.sculpture').style.translate=`${x*15}px ${y*15}px`;});art.addEventListener('pointerleave',()=>art.querySelector('.sculpture').style.translate='0 0');}
 }
 document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{language=button.dataset.lang;try{localStorage.setItem('toume-language',language);}catch{}render();}));
 document.querySelector('#year').textContent=new Date().getFullYear();render();
+
+window.addEventListener('pageshow',()=>{const button=document.querySelector('form button[type="submit"]');if(button){button.disabled=false;button.querySelector('span').textContent=copy[language].submit;}});

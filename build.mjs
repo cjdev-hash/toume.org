@@ -2,7 +2,7 @@ import { mkdir, readFile, writeFile, copyFile, readdir } from 'node:fs/promises'
 import assert from 'node:assert/strict';
 
 // Only these files are published. Briefs, tooling, and the classic design stay out.
-const assets = ['alternative.css', 'alternative.js', 'app.js', 'ja.png', 'CNAME'];
+const assets = ['alternative.css', 'alternative.js', 'app.js', 'ja.png', 'CNAME', 'thanks.html', 'thanks.js'];
 const output = new URL('./dist/', import.meta.url);
 await mkdir(output, { recursive: true });
 const expected = new Set([...assets, 'index.html', 'contact.html', 'alternative.html', '.nojekyll']);

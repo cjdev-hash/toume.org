@@ -44,8 +44,12 @@ References: [custom domain configuration](https://docs.github.com/en/pages/confi
 - `build.mjs`: static production build.
 - `server.mjs`: local preview server only; GitHub Pages needs no Node.js server.
 
-## Contact status
+## Contact delivery
 
-The contact form validates input and downloads an enquiry draft with a unique reference. **It does not send messages.** This is stated on the page. Input stays in memory, and only the selected language is stored locally.
+The prepared integration posts the contact form to FormSubmit for delivery to `hello@toume.org`. It includes native field validation, the provider's default CAPTCHA, a honeypot, a unique enquiry reference, and a translated thank-you page. The sender's email is included for replies. No mail credentials are stored in the website.
 
-To enable delivery, connect a form endpoint or email service, add server-side validation and abuse protection, and update the privacy information. Never put service credentials in browser code. Manrope is loaded from Google Fonts; no analytics are installed.
+**Activation is required before delivery works.** Submit a setup message, then open the activation email sent by FormSubmit and confirm the form. Check spam if necessary. Verify a real submission arrives after activation; a browser redirect alone does not prove inbox delivery.
+
+FormSubmit processes submissions and retains them for 30 days. This is disclosed beside the form with a link to the provider's privacy policy. User input is not persisted by the website; the selected language is stored locally. The direct email link provides another contact route.
+
+Changing the recipient to an address such as `hello@toume.org` requires an existing mailbox/forwarder and reactivation with FormSubmit. A custom domain on GitHub Pages does not create an email mailbox. Manrope is loaded from Google Fonts; no analytics are installed.
