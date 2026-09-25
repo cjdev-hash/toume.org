@@ -36,7 +36,7 @@ const storyCopy = {
     "scenes": [
       {
         "kicker": "Doradztwo technologiczne",
-        "title": "Cześć.<br>Jestem Doradcą<br>Technologicznym",
+        "title": "Cześć.<br>Jestem doradcą<br>technologicznym.",
         "description": "Pomagam firmom zrozumieć, co zmienić, dlaczego i jak — poprzez konsultacje, audyty, projektowanie i konkretne plany działania.",
         "aside": "Nie zaczynam od technologii. Zaczynam od tego, jak działa Twój biznes.",
         "caption": "Zrozumieć → zaprojektować → zdecydować",
@@ -59,7 +59,7 @@ const storyCopy = {
         "detail": "Niezależna ocena"
       },
       {
-        "kicker": "Projektowanie i redesign",
+        "kicker": "Projektowanie i usprawnianie",
         "title": "Zaprojektujmy<br>lepszą wersję.",
         "description": "Przekładam wnioski na konkretny projekt: architekturę, procesy, diagramy i rekomendacje. Usprawniamy istniejące rozwiązanie lub planujemy nowe.",
         "aside": "Czasem odpowiedzią jest automatyzacja. Czasem lepsza infrastruktura. Czasem mniej zbędnych działań.",
@@ -87,7 +87,7 @@ const storyCopy = {
       {
         "kicker": "Czym się zajmuję",
         "title": "Najpierw jasność.<br>Potem dobry krok.",
-        "description": "Możesz przyjść po drugą opinię, audyt, redesign lub plan. Każda z tych usług może być osobnym, konkretnym zadaniem.",
+        "description": "Możesz przyjść po niezależną opinię, audyt, projekt usprawnień lub plan. Każda z tych usług może być osobnym, konkretnym zadaniem.",
         "aside": "Zanim zaczniemy, ustalimy pytanie, zakres i rezultat współpracy.",
         "caption": "Najpierw doradztwo",
         "detail": "Wdrożenie, gdy ma sens"
@@ -95,7 +95,8 @@ const storyCopy = {
       {
         "kicker": "Człowiek za rekomendacjami",
         "title": "Cześć.<br>Jestem Krzysztof.",
-        "description": "Jestem doradcą technologicznym z praktycznym doświadczeniem w infrastrukturze, automatyzacji, AI oraz systemach produkcji reklamowej i VFX.",
+        "description": "Jestem doradcą technologicznym z praktycznym doświadczeniem w infrastrukturze, sprzęcie, oprogramowaniu, automatyzacji, AI i projektowaniu złożonych systemów pracy.",
+        "supporting": "Dużą część tego doświadczenia zdobyłem w wymagających środowiskach produkcyjnych, m.in. w reklamie i VFX.",
         "aside": "Moją rolą jest zrozumieć Twój biznes, sprawdzić, co niepotrzebnie go komplikuje, i zaprojektować sensowną drogę do celu.",
         "caption": "Doradztwo i projektowanie technologii",
         "detail": "Nie potrzebujesz briefu technicznego. Powiedz, co rozważasz."
@@ -128,7 +129,7 @@ const storyCopy = {
       "support": "Wsparcie",
       "portrait": "Krzysztof — założyciel toumé"
     },
-    "experienceMethod": "Każda firma ma cel, ograniczenia i swój sposób pracy. Poznaję obecną sytuację, znajduję to, co spowalnia działanie, i projektuję najprostszą niezawodną drogę do rezultatu.",
+    "experienceMethod": "Każda firma działa inaczej, ale schemat problemu często jest podobny: jest cel, obecny sposób pracy i coś, co stoi pomiędzy nimi. Moją rolą jest znaleźć najprostszy sensowny sposób, żeby tę drogę skrócić.",
     "bridgeTitle": "Branża się zmienia. Metoda pozostaje.",
     "bridgeIntro": "Studio VFX, apteka, zespół finansowy, sklep czy firma usługowa mogą korzystać z zupełnie różnych narzędzi. Każda branża ma własne ograniczenia, ale wiele problemów operacyjnych ma podobną strukturę.",
     "bridgeQuestions": [
@@ -149,7 +150,7 @@ const storyCopy = {
         "description": "Czytelna ocena systemów, kosztów i wąskich gardeł."
       },
       {
-        "title": "Projektowanie i redesign",
+        "title": "Projektowanie i usprawnianie",
         "description": "Lepsze procesy, architektura i sposób pracy."
       },
       {
@@ -258,7 +259,8 @@ const storyCopy = {
       {
         "kicker": "The person behind the advice",
         "title": "Hi.<br>I’m Chris.",
-        "description": "I’m a hands-on technology consultant with experience in infrastructure, automation, AI, advertising, and VFX production systems.",
+        "description": "I’m a hands-on technology consultant with experience across infrastructure, hardware, software, automation, AI, and complex production systems.",
+        "supporting": "Much of that experience was built in demanding advertising and VFX environments.",
         "aside": "My role is to understand your business, question what adds complexity, and design a sensible way forward.",
         "caption": "Technology consulting & design",
         "detail": "No technical brief required. Tell me what you’re considering."
@@ -291,7 +293,7 @@ const storyCopy = {
       "support": "Support",
       "portrait": "Chris — founder of toumé"
     },
-    "experienceMethod": "Every business has a goal, constraints, and a way of working. I map the current state, find what slows it down, and design the simplest reliable path to the result.",
+    "experienceMethod": "Every business works differently, but the shape of the problem is often familiar: a goal, a current way of working, and something standing between the two. My role is to find the simplest practical way to close that gap.",
     "bridgeTitle": "The industry changes. The method doesn’t.",
     "bridgeIntro": "A VFX studio, a pharmacy, a finance team, a retailer, or a service business may use very different tools. Different industries have different constraints, but many operational problems share the same structure.",
     "bridgeQuestions": [

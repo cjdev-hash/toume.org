@@ -85,7 +85,7 @@ const copy = {
     "ctaButton": "Sprawdźmy to razem",
     "contactLabel": "Tu zaczyna się dobry kierunek",
     "contactTitle": "Znajdźmy<br><em>dobry kierunek.</em>",
-    "contactIntro": "Potrzebujesz konsultacji, audytu, redesignu lub planu? Opowiedz o swojej firmie i decyzji, przed którą stoisz.",
+    "contactIntro": "Potrzebujesz konsultacji, audytu, projektu usprawnień lub planu? Opowiedz o swojej firmie i decyzji, przed którą stoisz.",
     "contactDetailTitle": "Co dalej?",
     "contactDetail": "Odpowiem, żeby lepiej poznać Twoje potrzeby. Ustalimy zakres i rezultat — konsultację, ocenę obecnej sytuacji lub projekt rozwiązania.",
     "name": "Jak masz na imię?",
