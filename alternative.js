@@ -261,7 +261,7 @@ const storyCopy = {
         "title": "Hi.<br>I’m Chris.",
         "description": "I’m a hands-on technology consultant with experience across infrastructure, hardware, software, automation, AI, and complex production systems.",
         "supporting": "Much of that experience was built in demanding advertising and VFX environments.",
-        "aside": "My role is to understand your business, question what adds complexity, and design a sensible way forward.",
+        "aside": "My role is to understand how your business works, find what gets in the way, and design a sensible way forward.",
         "caption": "Technology consulting & design",
         "detail": "No technical brief required. Tell me what you’re considering."
       }
