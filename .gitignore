@@ -1,0 +1,12 @@
+brief*.txt
+dist/
+node_modules/
+.env
+.env.*
+!.env.example
+.local-tools/
+*-preview.png
+alternative-desktop.png
+alternative-mobile.png
+.DS_Store
+Thumbs.db

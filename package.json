@@ -1,0 +1,12 @@
+{
+  "name": "toume-website",
+  "version": "0.1.0",
+  "private": true,
+  "description": "A personal, bilingual technology concierge website for Toumé",
+  "scripts": {
+    "dev": "node server.mjs",
+    "start": "node server.mjs",
+    "build": "node build.mjs",
+    "check": "node --check app.js && node --check alternative.js && node --check server.mjs && node --check build.mjs"
+  }
+}
