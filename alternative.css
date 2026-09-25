@@ -72,6 +72,13 @@ html:has(.contact-page){scroll-snap-type:none}
 .contact-form .button{display:inline-flex;align-items:center;gap:30px;background:none;border:0;border-bottom:1px solid var(--accent);color:var(--text);padding:12px 0;margin-top:8px;font-size:14px}
 .contact-form .button span:last-child{font-size:23px;color:var(--accent)}
 .contact-form .button:disabled{opacity:.6;cursor:wait}
+.contact-form[aria-busy="true"] .button{opacity:1;min-width:170px}
+.contact-form[aria-busy="true"] .submit-icon{font-size:0;width:18px;height:18px;border:2px solid var(--line);border-top-color:var(--accent);border-radius:50%;animation:send-spin .8s linear infinite}
+.send-progress{font-size:13px;color:var(--accent);padding:14px 16px;margin:18px 0 0;background:#332a23;border:1px solid var(--line);border-radius:2px}
+.contact-form.show-validation :invalid{border-color:var(--accent)}
+.contact-form .form-error{background:#332a23;padding:14px 16px}
+@keyframes send-spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.contact-form[aria-busy="true"] .submit-icon{animation:none}}
 .form-honey{display:none!important}
 .direct-email,.form-note a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
 .verification-note{margin-top:16px}

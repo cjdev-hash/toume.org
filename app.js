@@ -135,7 +135,10 @@ const copy = {
     "sentReference": "Numer zgłoszenia",
     "sendAnother": "Napisz kolejną wiadomość",
     "sendError": "Nie udało się potwierdzić wysłania. Twoja wiadomość jest nadal w formularzu. Spróbuj ponownie lub napisz na hello@toume.org.",
-    "retry": "Spróbuj ponownie"
+    "retry": "Spróbuj ponownie",
+    "sendingHint": "Wysyłam Twoją wiadomość. Pozostaw tę stronę otwartą.",
+    "validationError": "Sprawdź zaznaczone pola. Podaj imię, poprawny adres e-mail i wiadomość zawierającą co najmniej 10 znaków.",
+    "timeoutError": "Wysyłanie trwa zbyt długo — nie udało się potwierdzić przyjęcia wiadomości. Twoje dane pozostały w formularzu. Spróbuj ponownie lub napisz na hello@toume.org."
   },
   "en": {
     "personName": "Chris",
@@ -273,7 +276,10 @@ const copy = {
     "sentReference": "Enquiry reference",
     "sendAnother": "Send another message",
     "sendError": "We couldn’t confirm submission. Your message is still in the form. Try again or email hello@toume.org.",
-    "retry": "Try again"
+    "retry": "Try again",
+    "sendingHint": "Sending your message. Please keep this page open.",
+    "validationError": "Please check the highlighted fields. Add your name, a valid email address, and a message of at least 10 characters.",
+    "timeoutError": "This is taking longer than expected, so we couldn’t confirm submission. Your details are still here. You can retry or email hello@toume.org."
   }
 };
 let language='en';
@@ -293,7 +299,7 @@ function home(t){return `
 <section class="section work container" id="work"><div class="section-heading"><div><p class="eyebrow">${t.workLabel}</p><h2>${t.workTitle}</h2></div></div><p class="experience-intro">${t.workDesc}</p><ul class="experience-list">${t.experience.map((item,i)=>`<li class="experience-item"><span class="experience-number" aria-hidden="true">0${i+1}</span><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul></section>
 <section class="container"><div class="cta"><div><p class="eyebrow">${t.ctaLabel}</p><h2>${t.ctaTitle}</h2><p>${t.ctaDesc}</p></div><a class="button light" href="contact.html"><span>${t.ctaButton}</span>${arrow}</a></div></section>`;}
 function confirmation(t){return `<div class="contact-success" role="status" tabindex="-1"><span class="success-mark" aria-hidden="true">✓</span><h2>${t.sentTitle}</h2><p>${t.sentDescription}</p><p class="receipt">${t.sentReference}: <span>${sentReference}</span></p><button class="scene-link send-another" type="button"><span>${t.sendAnother}</span><span aria-hidden="true">→</span></button></div>`;}
-function contact(t){return `<section class="container contact-layout"><div><p class="eyebrow"><span class="dot"></span>${t.contactLabel}</p><h1>${t.contactTitle}</h1><p class="intro">${t.contactIntro}</p><div class="contact-detail"><h3>${t.contactDetailTitle}</h3><p>${t.contactDetail}</p></div><div class="contact-detail"><h3>${t.directTitle}</h3><a class="direct-email" href="mailto:hello@toume.org">hello@toume.org</a></div></div>${sentReference?confirmation(t):`<form class="contact-form" action="https://formsubmit.co/ajax/hello@toume.org" method="POST"><input type="hidden" name="_subject" value="Toumé — nowe zapytanie / new enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://toume.org/contact.html"><input type="hidden" name="reference" value=""><input type="hidden" name="language" value="${language}"><input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="form-row"><div class="field"><label for="name">${t.name}</label><input id="name" name="name" autocomplete="name" maxlength="100" required></div><div class="field"><label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div></div><fieldset><legend>${t.audience}</legend><div class="radio-options"><label><input type="radio" name="audience" value="home" checked>${t.home}</label><label><input type="radio" name="audience" value="business">${t.business}</label></div></fieldset><div class="field"><label for="problem">${t.problem}</label><textarea id="problem" name="problem" minlength="10" maxlength="5000" required placeholder="${t.problemPlaceholder}"></textarea></div><div class="field"><label for="urgency">${t.urgency}</label><select name="urgency" id="urgency">${t.urgencies.map((s,i)=>`<option value="${s}">${s}</option>`).join('')}</select></div><p class="form-note">${t.privacy} <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">${t.privacyLink} ↗</a></p><button class="button blue" type="submit"><span>${t.submit}</span>${arrow}</button><p class="form-error" role="alert" tabindex="-1" hidden></p></form>`}</section>`;}
+function contact(t){return `<section class="container contact-layout"><div><p class="eyebrow"><span class="dot"></span>${t.contactLabel}</p><h1>${t.contactTitle}</h1><p class="intro">${t.contactIntro}</p><div class="contact-detail"><h3>${t.contactDetailTitle}</h3><p>${t.contactDetail}</p></div><div class="contact-detail"><h3>${t.directTitle}</h3><a class="direct-email" href="mailto:hello@toume.org">hello@toume.org</a></div></div>${sentReference?confirmation(t):`<form class="contact-form" novalidate action="https://formsubmit.co/ajax/hello@toume.org" method="POST"><input type="hidden" name="_subject" value="Toumé — nowe zapytanie / new enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://toume.org/contact.html"><input type="hidden" name="reference" value=""><input type="hidden" name="language" value="${language}"><input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="form-row"><div class="field"><label for="name">${t.name}</label><input id="name" name="name" autocomplete="name" maxlength="100" required></div><div class="field"><label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div></div><fieldset><legend>${t.audience}</legend><div class="radio-options"><label><input type="radio" name="audience" value="home" checked>${t.home}</label><label><input type="radio" name="audience" value="business">${t.business}</label></div></fieldset><div class="field"><label for="problem">${t.problem}</label><textarea id="problem" name="problem" minlength="10" maxlength="5000" required placeholder="${t.problemPlaceholder}"></textarea></div><div class="field"><label for="urgency">${t.urgency}</label><select name="urgency" id="urgency">${t.urgencies.map((s,i)=>`<option value="${s}">${s}</option>`).join('')}</select></div><p class="form-note">${t.privacy} <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">${t.privacyLink} ↗</a></p><button class="button blue" type="submit"><span>${t.submit}</span><span class="submit-icon" aria-hidden="true">↗</span></button><p class="send-progress" role="status" aria-live="polite" hidden>${t.sendingHint}</p><p class="form-error" role="alert" tabindex="-1" hidden></p></form>`}</section>`;}
 function render(){
  const previousForm=document.querySelector('form');
  const values=previousForm?new FormData(previousForm):null;
@@ -313,29 +319,42 @@ function render(){
    }
    form.addEventListener('submit',async event=>{
      event.preventDefault();
-     if(sending||!form.reportValidity()||form.elements.namedItem('_honey').value)return;
-     const ref=form.elements.namedItem('reference').value||'TOUME-'+crypto.randomUUID().slice(0,8).toUpperCase();
-     form.elements.namedItem('reference').value=ref;
-     const payload=Object.fromEntries(new FormData(form));
+     if(sending)return;
      const button=form.querySelector('button[type="submit"]');
      const error=form.querySelector('.form-error');
+     const progress=form.querySelector('.send-progress');
+     const showError=message=>{error.textContent=message;error.hidden=false;error.focus();};
+     error.hidden=true;
+     if(!form.checkValidity()){
+       form.classList.add('show-validation');showError(t.validationError);form.reportValidity();return;
+     }
+     if(form.elements.namedItem('_honey').value){showError(t.sendError);return;}
      const controls=[...form.querySelectorAll('input,select,textarea,button'),...document.querySelectorAll('[data-lang]')];
-     sending=true;error.hidden=true;form.setAttribute('aria-busy','true');
-     controls.forEach(control=>control.disabled=true);button.querySelector('span').textContent=t.sending;
-     const controller=new AbortController();
-     const timeout=setTimeout(()=>controller.abort(),20000);
+     let timeout;
+     sending=true;progress.hidden=false;form.setAttribute('aria-busy','true');
+     button.querySelector('span').textContent=t.sending;
      try{
+       // References are tracking labels, not security tokens. Work on HTTP too.
+       const bytes=new Uint8Array(8);
+       const suffix=globalThis.crypto?.getRandomValues
+         ? Array.from(globalThis.crypto.getRandomValues(bytes),byte=>byte.toString(16).padStart(2,'0')).join('')
+         : Date.now().toString(36)+Math.random().toString(36).slice(2,10);
+       const ref=form.elements.namedItem('reference').value||'TOUME-'+suffix.toUpperCase();
+       form.elements.namedItem('reference').value=ref;
+       const payload=Object.fromEntries(new FormData(form));
+       controls.forEach(control=>control.disabled=true);
+       const controller=new AbortController();
+       timeout=setTimeout(()=>controller.abort(),20000);
        const response=await fetch(form.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(payload),signal:controller.signal});
        const result=await response.json();
        if(!response.ok||![true,'true'].includes(result.success)||/activat|confirm your email/i.test(result.message||''))throw Error('Submission not confirmed');
-       sentReference=ref;
-       render();
+       sentReference=ref;render();
        document.querySelector('.contact-success')?.focus();
-     }catch{
-       error.textContent=t.sendError;error.hidden=false;error.focus();
+     }catch(cause){
+       showError(cause.name==='AbortError'?t.timeoutError:t.sendError);
        button.querySelector('span').textContent=t.retry;
      }finally{
-       clearTimeout(timeout);sending=false;form.removeAttribute('aria-busy');controls.forEach(control=>control.disabled=false);
+       clearTimeout(timeout);sending=false;progress.hidden=true;form.removeAttribute('aria-busy');controls.forEach(control=>control.disabled=false);
      }
    });
  }
