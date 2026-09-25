@@ -46,7 +46,9 @@ References: [custom domain configuration](https://docs.github.com/en/pages/confi
 
 ## Contact delivery
 
-The prepared integration posts the contact form to FormSubmit for delivery to `hello@toume.org`. It includes native field validation, the provider's default CAPTCHA, a honeypot, a unique enquiry reference, and a translated thank-you page. The sender's email is included for replies. No mail credentials are stored in the website.
+The contact form sends a background JSON request to FormSubmit's AJAX endpoint for delivery to `hello@toume.org`. Visitors stay on Toumé and see an inline confirmation only after the service accepts the submission. It includes field validation, a honeypot, duplicate-submit prevention, a 20-second timeout, and a unique enquiry reference. The AJAX flow does not show the provider's hosted CAPTCHA page. The sender's email is included for replies. No mail credentials are stored in the website.
+
+On network errors, timeout, or provider rejection, the form retains the message and offers retry or direct email. The receipt and confirmation support both languages. The standalone thank-you page remains available for older submission links.
 
 **Activation is required before delivery works.** Submit a setup message, then open the activation email sent by FormSubmit and confirm the form. Check spam if necessary. Verify a real submission arrives after activation; a browser redirect alone does not prove inbox delivery.
 

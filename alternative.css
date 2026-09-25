@@ -75,6 +75,14 @@ html:has(.contact-page){scroll-snap-type:none}
 .form-honey{display:none!important}
 .direct-email,.form-note a{color:var(--accent);text-decoration:underline;text-underline-offset:4px}
 .verification-note{margin-top:16px}
+.contact-success{padding:36px;background:var(--surface);border:1px solid var(--line);border-radius:2px}
+.contact-success .success-mark{display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--accent);border-radius:50%;color:var(--accent);font-size:24px;margin-bottom:28px}
+.contact-success h2{font-size:clamp(30px,3.5vw,46px);letter-spacing:-1.5px;margin-bottom:20px}
+.contact-success p{font-size:15px;line-height:1.8;color:var(--muted)}
+.contact-success .receipt{font-size:11px;margin-top:24px;overflow-wrap:anywhere}
+.send-another{background:none;border:0;border-bottom:1px solid var(--accent);text-align:left}
+.form-error{color:var(--accent);font-size:13px;line-height:1.8;border-left:2px solid var(--accent);padding-left:14px;margin:22px 0 0}
+@media(max-width:700px){.contact-success{padding:25px}}
 .thanks-content{max-width:1100px;min-height:100svh;padding:170px 8% 100px;margin:auto;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
 @media(max-width:700px){.thanks-content{padding:125px 7% 70px}}
 .draft-result{margin-top:24px;padding:18px;border:1px solid #806b57;background:#302920;font-size:13px;overflow-wrap:anywhere}
