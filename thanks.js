@@ -4,8 +4,8 @@ const thanksCopy={
 };
 let thanksLanguage=new URLSearchParams(location.search).get('lang');
 if(!['pl','en'].includes(thanksLanguage)){try{thanksLanguage=localStorage.getItem('toume-language');}catch{}}
-const thanksText=thanksCopy[thanksLanguage]||thanksCopy.pl;
-document.documentElement.lang=thanksLanguage==='en'?'en':'pl';document.title=thanksText.title;
+const thanksText=thanksCopy[thanksLanguage]||thanksCopy.en;
+document.documentElement.lang=thanksLanguage==='pl'?'pl':'en';document.title=thanksText.title;
 document.querySelector('#thanks-label').textContent=thanksText.label;
 document.querySelector('#thanks-title').innerHTML=thanksText.heading;
 document.querySelector('#thanks-description').textContent=thanksText.description;

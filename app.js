@@ -276,8 +276,8 @@ const copy = {
     "retry": "Try again"
   }
 };
-let language='pl';
-try { language=localStorage.getItem('toume-language')==='en'?'en':'pl'; } catch {}
+let language='en';
+try { language=localStorage.getItem('toume-language')==='pl'?'pl':'en'; } catch {}
 const main=document.querySelector('main');
 const contactPage=location.pathname.endsWith('contact.html');
 let sentReference=null;
