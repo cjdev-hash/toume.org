@@ -24,7 +24,25 @@
 .experience-content li{padding-left:16px;border-left:1px solid var(--line)}
 .experience-content h3{font-size:14px;font-weight:500;line-height:1.5;color:var(--text);margin:0 0 5px}
 .experience-content li p{font-size:13px;line-height:1.8;color:var(--muted);margin:0}
+.experience-bridge{margin-top:28px;padding-top:24px;border-top:1px solid var(--line)}
+.experience-bridge h3{color:var(--accent);font-size:16px;margin-bottom:12px}
+.experience-bridge p{font-size:13px;line-height:1.8;color:var(--muted);margin:0 0 16px}
+.experience-bridge .bridge-questions{display:block;list-style:disc;padding-left:18px;margin:18px 0}
+.experience-bridge .bridge-questions li{border:0;padding:0 0 7px;font-size:13px;line-height:1.65;color:var(--text)}
+.experience-bridge p:last-child{margin-bottom:0}
 .scene:last-child:has(.experience-disclosure[open]){align-items:start}
+@media(max-width:700px){
+  .scene:last-child{grid-template-columns:minmax(0,1fr) clamp(76px,24vw,112px);gap:20px 16px;align-items:center}
+  .scene:last-child .scene-copy{display:contents}
+  .scene:last-child .scene-kicker{grid-column:1/-1;grid-row:1;margin:0}
+  .scene:last-child h2{grid-column:1;grid-row:2;font-size:clamp(30px,8vw,42px);letter-spacing:-1.4px;margin:0}
+  .scene:last-child .portrait-panel{grid-column:2;grid-row:2;width:100%;max-width:112px;align-self:center}
+  .scene:last-child .portrait-panel img{height:auto;aspect-ratio:1;object-position:50% 35%;border-radius:4px}
+  .scene:last-child .portrait-panel figcaption,.scene:last-child .portrait-mark{display:none}
+  .scene:last-child .scene-description,.scene:last-child .scene-aside,.scene:last-child .scene-link,.scene:last-child .experience-disclosure{grid-column:1/-1;margin-top:0}
+  .scene:last-child .scene-link{justify-self:start}
+  .scene:last-child .experience-disclosure{width:100%;max-width:none}
+}
 html:has(.contact-page){scroll-snap-type:none}
 .contact-page .contact-layout{max-width:1600px;margin:auto;padding:165px 8% 80px;display:grid;grid-template-columns:1fr 1fr;gap:9%;align-items:start;min-height:calc(100svh - 85px)}
 .contact-page .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin:0 0 28px;display:flex;align-items:center;gap:13px}
