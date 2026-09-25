@@ -14,4 +14,4 @@ http.createServer(async (request, response) => {
     response.writeHead(200, {'Content-Type':types[file.split('.').pop()], 'X-Content-Type-Options':'nosniff'});
     response.end(body);
   } catch { response.writeHead(500); response.end('Unable to load page'); }
-}).listen(port, '127.0.0.1', () => console.log(`Toumé is running at http://localhost:${port}`));
+}).listen(port, '127.0.0.1', () => console.log(`toumé is running at http://localhost:${port}`));

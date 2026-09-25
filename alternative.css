@@ -9,6 +9,7 @@
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
 
 /* The conversation continues on the contact page. */
+.brand-name{text-transform:none}
 .experience-disclosure{margin-top:28px;max-width:490px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .experience-disclosure summary{display:flex;justify-content:space-between;align-items:center;gap:20px;list-style:none;cursor:pointer;padding:18px 0;font-size:14px;color:var(--text)}
 .experience-disclosure summary::-webkit-details-marker{display:none}

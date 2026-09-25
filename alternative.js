@@ -24,7 +24,7 @@ const storyCopy = {
         "description": "Przekładam wyzwania techniczne i operacyjne na czytelne diagramy, decyzje i konkretne kolejne kroki."
       }
     ],
-    "title": "Toumé — Znajdźmy prostszą drogę",
+    "title": "toumé — Znajdźmy prostszą drogę",
     "skip": "Przejdź do treści",
     "talk": "Porozmawiajmy",
     "back": "Wstecz",
@@ -80,7 +80,7 @@ const storyCopy = {
         "description": "Gdy temat wymaga głębszej wiedzy, pomagam znaleźć odpowiednią osobę i przekazuję jej cały kontekst.",
         "aside": "Ty nadal masz jeden kontakt do spraw technologii. Mnie.",
         "caption": "Wiele kompetencji. Jeden kontakt.",
-        "detail": "Toumé"
+        "detail": "toumé"
       },
       {
         "kicker": "Możesz do mnie wrócić",
@@ -124,7 +124,7 @@ const storyCopy = {
       "grow": "Rozwój",
       "change": "Zmiany",
       "support": "Wsparcie",
-      "portrait": "Krzysztof — założyciel Toumé"
+      "portrait": "Krzysztof — założyciel toumé"
     },
     "experienceMethod": "Każda firma ma cel, ograniczenia i swój sposób pracy. Poznaję obecną sytuację, znajduję to, co spowalnia działanie, i projektuję najprostszą niezawodną drogę do rezultatu.",
     "bridgeTitle": "Branża się zmienia. Metoda pozostaje.",
@@ -163,7 +163,7 @@ const storyCopy = {
         "description": "Translating technical or operational problems into diagrams, decisions, and practical next steps that are easy to understand."
       }
     ],
-    "title": "Toumé — Let’s find a simpler way",
+    "title": "toumé — Let’s find a simpler way",
     "skip": "Skip to content",
     "talk": "Let’s talk",
     "back": "Back",
@@ -219,7 +219,7 @@ const storyCopy = {
         "description": "When a project needs deeper expertise, I help find the right person and make sure they understand the full picture.",
         "aside": "You still have one technical point of contact. Me.",
         "caption": "Many skills. One point of contact.",
-        "detail": "Toumé"
+        "detail": "toumé"
       },
       {
         "kicker": "Someone to come back to",
@@ -263,7 +263,7 @@ const storyCopy = {
       "grow": "Grow",
       "change": "Change",
       "support": "Support",
-      "portrait": "Chris — founder of Toumé"
+      "portrait": "Chris — founder of toumé"
     },
     "experienceMethod": "Every business has a goal, constraints, and a way of working. I map the current state, find what slows it down, and design the simplest reliable path to the result.",
     "bridgeTitle": "The industry changes. The method doesn’t.",
@@ -325,7 +325,7 @@ function render(preserve=false){
   document.querySelectorAll('[data-ui]').forEach(el=>el.textContent=t[el.dataset.ui]);
   document.querySelectorAll('[data-lang]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===language)));
   document.querySelector('.story-controls').setAttribute('aria-label',t.navigation);
-  main.innerHTML=t.scenes.map((scene,i)=>`<section class="scene" id="${hashes[i]}" data-scene="${i}" aria-labelledby="heading-${i}"><div class="scene-copy"><p class="scene-kicker">${scene.kicker}</p><${i===0?'h1':'h2'} id="heading-${i}" tabindex="-1">${scene.title}</${i===0?'h1':'h2'}><p class="scene-description">${scene.description}</p><p class="scene-aside">${scene.aside}</p>${i<7?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:''}${i===7?`<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a><p class="scene-aside">${scene.detail}</p><details class="experience-disclosure"><summary>${t.experienceLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content"><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p><ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul><section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section></div></details>`:''}</div>${i===7?`<figure class="portrait-panel"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><div class="portrait-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 8H35M20 8V35"/><circle cx="5" cy="8" r="2"/><circle cx="35" cy="8" r="2"/><circle cx="20" cy="35" r="2"/></svg></div><figcaption><span>${t.name}</span><span>${scene.caption}</span></figcaption></figure>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span>${scene.detail}</span></figcaption></figure>`}</section>`).join('');
+  main.innerHTML=t.scenes.map((scene,i)=>`<section class="scene" id="${hashes[i]}" data-scene="${i}" aria-labelledby="heading-${i}"><div class="scene-copy"><p class="scene-kicker">${scene.kicker}</p><${i===0?'h1':'h2'} id="heading-${i}" tabindex="-1">${scene.title}</${i===0?'h1':'h2'}><p class="scene-description">${scene.description}</p><p class="scene-aside">${scene.aside}</p>${i<7?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:''}${i===7?`<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a><p class="scene-aside">${scene.detail}</p><details class="experience-disclosure"><summary>${t.experienceLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content"><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p><ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul><section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section></div></details>`:''}</div>${i===7?`<figure class="portrait-panel"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><div class="portrait-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 8H35M20 8V35"/><circle cx="5" cy="8" r="2"/><circle cx="35" cy="8" r="2"/><circle cx="20" cy="35" r="2"/></svg></div><figcaption><span>${t.name}</span><span>${scene.caption}</span></figcaption></figure>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span${scene.detail==='toumé'?' class="brand-name"':''}>${scene.detail}</span></figcaption></figure>`}</section>`).join('');
   document.querySelector('.experience-disclosure').open=experienceOpen;
   document.querySelectorAll('[data-next-scene]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();goTo(Number(link.dataset.nextScene),true);}));
   observer=new IntersectionObserver(entries=>{

@@ -15,7 +15,7 @@ const copy = {
     "cta": "Opowiedz mi, czego potrzebujesz",
     "explore": "Poznaj możliwości ↗",
     "note": "Dla Ciebie i Twojej firmy",
-    "artMeta": "TOUMÉ / POŁĄCZMY MOŻLIWOŚCI",
+    "artMeta": "toumé / POŁĄCZMY MOŻLIWOŚCI",
     "artOne": "Pomysł → rozwiązanie",
     "artTwo": "Mniej klikania. Więcej życia.",
     "artThree": "Człowiek po Twojej stronie",
@@ -66,7 +66,7 @@ const copy = {
       "Procesy produkcyjne"
     ],
     "creativeLink": "Porozmawiajmy o Twoim projekcie ↗",
-    "portraitAlt": "Krzysztof — założyciel Toumé",
+    "portraitAlt": "Krzysztof — założyciel toumé",
     "portraitRole": "Doradztwo i wdrożenia technologiczne",
     "processLabel": "03 / BEZ KOMPLIKACJI",
     "processTitle": "Od „nie wiem” do „działa”.",
@@ -104,7 +104,7 @@ const copy = {
     ],
     "submit": "Wyślij wiadomość",
     "privacy": "Wysyłając formularz, przekazujesz swoje dane i wiadomość do FormSubmit w celu dostarczenia ich na mój e-mail. Usługa przechowuje zgłoszenia przez 30 dni. Nie wpisuj haseł ani poufnych informacji.",
-    "title": "Toumé — Twój człowiek od technologii",
+    "title": "toumé — Twój człowiek od technologii",
     "experience": [
       {
         "title": "Pipeline’y VFX — od podstaw po finał.",
@@ -156,7 +156,7 @@ const copy = {
     "cta": "Tell me what you need",
     "explore": "Explore the possibilities ↗",
     "note": "For you and your business",
-    "artMeta": "TOUMÉ / CONNECT THE POSSIBILITIES",
+    "artMeta": "toumé / CONNECT THE POSSIBILITIES",
     "artOne": "Idea → solution",
     "artTwo": "Less clicking. More living.",
     "artThree": "A human on your side",
@@ -207,7 +207,7 @@ const copy = {
       "Production workflows"
     ],
     "creativeLink": "Let’s talk about your project ↗",
-    "portraitAlt": "Chris — founder of Toumé",
+    "portraitAlt": "Chris — founder of toumé",
     "portraitRole": "Technology consulting & implementation",
     "processLabel": "03 / NO COMPLICATIONS",
     "processTitle": "From “not sure” to “sorted”.",
@@ -245,7 +245,7 @@ const copy = {
     ],
     "submit": "Send message",
     "privacy": "Submitting this form shares your details and message with FormSubmit for delivery to my inbox. The service retains submissions for 30 days. Please don’t include passwords or confidential information.",
-    "title": "Toumé — Your person for technology",
+    "title": "toumé — Your person for technology",
     "experience": [
       {
         "title": "VFX pipelines, from the ground up.",
@@ -299,11 +299,11 @@ function home(t){return `
 <section class="section work container" id="work"><div class="section-heading"><div><p class="eyebrow">${t.workLabel}</p><h2>${t.workTitle}</h2></div></div><p class="experience-intro">${t.workDesc}</p><ul class="experience-list">${t.experience.map((item,i)=>`<li class="experience-item"><span class="experience-number" aria-hidden="true">0${i+1}</span><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul></section>
 <section class="container"><div class="cta"><div><p class="eyebrow">${t.ctaLabel}</p><h2>${t.ctaTitle}</h2><p>${t.ctaDesc}</p></div><a class="button light" href="contact.html"><span>${t.ctaButton}</span>${arrow}</a></div></section>`;}
 function confirmation(t){return `<div class="contact-success" role="status" tabindex="-1"><span class="success-mark" aria-hidden="true">✓</span><h2>${t.sentTitle}</h2><p>${t.sentDescription}</p><button class="scene-link send-another" type="button"><span>${t.sendAnother}</span><span aria-hidden="true">→</span></button></div>`;}
-function contact(t){return `<section class="container contact-layout"><div><p class="eyebrow"><span class="dot"></span>${t.contactLabel}</p><h1>${t.contactTitle}</h1><p class="intro">${t.contactIntro}</p><div class="contact-detail"><h3>${t.contactDetailTitle}</h3><p>${t.contactDetail}</p></div><div class="contact-detail"><h3>${t.directTitle}</h3><a class="direct-email" href="mailto:hello@toume.org">hello@toume.org</a></div></div>${sentReference?confirmation(t):`<form class="contact-form" novalidate action="https://formsubmit.co/ajax/hello@toume.org" method="POST"><input type="hidden" name="_subject" value="Toumé — nowe zapytanie / new enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://toume.org/contact.html"><input type="hidden" name="reference" value=""><input type="hidden" name="language" value="${language}"><input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="form-row"><div class="field"><label for="name">${t.name}</label><input id="name" name="name" autocomplete="name" maxlength="100" required></div><div class="field"><label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div></div><fieldset><legend>${t.audience}</legend><div class="radio-options"><label><input type="radio" name="audience" value="home" checked>${t.home}</label><label><input type="radio" name="audience" value="business">${t.business}</label></div></fieldset><div class="field"><label for="problem">${t.problem}</label><textarea id="problem" name="problem" minlength="10" maxlength="5000" required placeholder="${t.problemPlaceholder}"></textarea></div><div class="field"><label for="urgency">${t.urgency}</label><select name="urgency" id="urgency">${t.urgencies.map((s,i)=>`<option value="${s}">${s}</option>`).join('')}</select></div><p class="form-note">${t.privacy} <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">${t.privacyLink} ↗</a></p><button class="button blue" type="submit"><span>${t.submit}</span><span class="submit-icon" aria-hidden="true">↗</span></button><p class="send-progress" role="status" aria-live="polite" hidden>${t.sendingHint}</p><p class="form-error" role="alert" tabindex="-1" hidden></p></form>`}</section>`;}
+function contact(t){return `<section class="container contact-layout"><div><p class="eyebrow"><span class="dot"></span>${t.contactLabel}</p><h1>${t.contactTitle}</h1><p class="intro">${t.contactIntro}</p><div class="contact-detail"><h3>${t.contactDetailTitle}</h3><p>${t.contactDetail}</p></div><div class="contact-detail"><h3>${t.directTitle}</h3><a class="direct-email" href="mailto:hello@toume.org">hello@toume.org</a></div></div>${sentReference?confirmation(t):`<form class="contact-form" novalidate action="https://formsubmit.co/ajax/hello@toume.org" method="POST"><input type="hidden" name="_subject" value="toumé — nowe zapytanie / new enquiry"><input type="hidden" name="_template" value="table"><input type="hidden" name="_url" value="https://toume.org/contact.html"><input type="hidden" name="reference" value=""><input type="hidden" name="language" value="${language}"><input type="text" name="_honey" class="form-honey" tabindex="-1" autocomplete="off" aria-hidden="true"><div class="form-row"><div class="field"><label for="name">${t.name}</label><input id="name" name="name" autocomplete="name" maxlength="100" required></div><div class="field"><label for="email">${t.email}</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></div></div><fieldset><legend>${t.audience}</legend><div class="radio-options"><label><input type="radio" name="audience" value="home" checked>${t.home}</label><label><input type="radio" name="audience" value="business">${t.business}</label></div></fieldset><div class="field"><label for="problem">${t.problem}</label><textarea id="problem" name="problem" minlength="10" maxlength="5000" required placeholder="${t.problemPlaceholder}"></textarea></div><div class="field"><label for="urgency">${t.urgency}</label><select name="urgency" id="urgency">${t.urgencies.map((s,i)=>`<option value="${s}">${s}</option>`).join('')}</select></div><p class="form-note">${t.privacy} <a href="https://formsubmit.co/privacy.pdf" target="_blank" rel="noopener noreferrer">${t.privacyLink} ↗</a></p><button class="button blue" type="submit"><span>${t.submit}</span><span class="submit-icon" aria-hidden="true">↗</span></button><p class="send-progress" role="status" aria-live="polite" hidden>${t.sendingHint}</p><p class="form-error" role="alert" tabindex="-1" hidden></p></form>`}</section>`;}
 function render(){
  const previousForm=document.querySelector('form');
  const values=previousForm?new FormData(previousForm):null;
- const t=copy[language]; document.documentElement.lang=language;document.title=contactPage?`${t.navContact} — Toumé`:t.title;
+ const t=copy[language]; document.documentElement.lang=language;document.title=contactPage?`${t.navContact} — toumé`:t.title;
  document.querySelector('meta[name="description"]').content=t.intro;
  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t[el.dataset.i18n]);
  document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
@@ -348,7 +348,7 @@ function render(){
        const suffix=globalThis.crypto?.getRandomValues
          ? Array.from(globalThis.crypto.getRandomValues(bytes),byte=>byte.toString(16).padStart(2,'0')).join('')
          : Date.now().toString(36)+Math.random().toString(36).slice(2,10);
-       const ref=form.elements.namedItem('reference').value||'TOUME-'+suffix.toUpperCase();
+       const ref=form.elements.namedItem('reference').value||'toume-'+suffix.toUpperCase();
        form.elements.namedItem('reference').value=ref;
        const payload=Object.fromEntries(new FormData(form));
        controls.forEach(control=>control.disabled=true);
