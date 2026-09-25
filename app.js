@@ -134,7 +134,7 @@ const copy = {
     "sentDescription": "Dziękuję za kontakt. Odpowiem na podany adres e-mail.",
     "sentReference": "Numer zgłoszenia",
     "sendAnother": "Napisz kolejną wiadomość",
-    "sendError": "Nie udało się potwierdzić wysłania. Twoja wiadomość jest nadal w formularzu. Spróbuj ponownie lub napisz na hello@toume.org.",
+    "sendError": "Nie udało się wysłać wiadomości. Spróbuj ponownie lub napisz bezpośrednio na hello@toume.org.",
     "retry": "Spróbuj ponownie",
     "sendingHint": "Wysyłam Twoją wiadomość. Pozostaw tę stronę otwartą.",
     "validationError": "Sprawdź zaznaczone pola. Podaj imię, poprawny adres e-mail i wiadomość zawierającą co najmniej 10 znaków.",
@@ -275,7 +275,7 @@ const copy = {
     "sentDescription": "Thanks for getting in touch. I’ll reply to the email address you provided.",
     "sentReference": "Enquiry reference",
     "sendAnother": "Send another message",
-    "sendError": "We couldn’t confirm submission. Your message is still in the form. Try again or email hello@toume.org.",
+    "sendError": "Your message couldn't be sent. Try again or email hello@toume.org directly.",
     "retry": "Try again",
     "sendingHint": "Sending your message. Please keep this page open.",
     "validationError": "Please check the highlighted fields. Add your name, a valid email address, and a message of at least 10 characters.",
@@ -323,7 +323,16 @@ function render(){
      const button=form.querySelector('button[type="submit"]');
      const error=form.querySelector('.form-error');
      const progress=form.querySelector('.send-progress');
-     const showError=message=>{error.textContent=message;error.hidden=false;error.focus();};
+     const showError=message=>{
+       error.replaceChildren();
+       const parts=message.split('hello@toume.org');
+       error.append(document.createTextNode(parts[0]));
+       if(parts.length>1){
+         const link=document.createElement('a');link.href='mailto:hello@toume.org';link.textContent='hello@toume.org';
+         error.append(link,document.createTextNode(parts.slice(1).join('hello@toume.org')));
+       }
+       error.hidden=false;error.focus();
+     };
      error.hidden=true;
      if(!form.checkValidity()){
        form.classList.add('show-validation');showError(t.validationError);form.reportValidity();return;
