@@ -94,7 +94,7 @@ const storyCopy = {
       },
       {
         "kicker": "Człowiek za rekomendacjami",
-        "title": "Cześć.<br>Jestem Krzysztof.",
+        "title": "A tak przy okazji —<br>jestem Krzysztof.",
         "description": "Jestem doradcą technologicznym z praktycznym doświadczeniem w infrastrukturze, sprzęcie, oprogramowaniu, automatyzacji, AI i projektowaniu złożonych systemów pracy.",
         "supporting": "Dużą część tego doświadczenia zdobyłem w wymagających środowiskach produkcyjnych, m.in. w reklamie i VFX.",
         "aside": "Moją rolą jest zrozumieć Twój biznes, sprawdzić, co niepotrzebnie go komplikuje, i zaprojektować sensowną drogę do celu.",
@@ -258,7 +258,7 @@ const storyCopy = {
       },
       {
         "kicker": "The person behind the advice",
-        "title": "Hi.<br>I’m Chris.",
+        "title": "By the way,<br>I’m Chris.",
         "description": "I’m a hands-on technology consultant with experience across infrastructure, hardware, software, automation, AI, and complex production systems.",
         "supporting": "Much of that experience was built in demanding advertising and VFX environments.",
         "aside": "My role is to understand how your business works, find what gets in the way, and design a sensible way forward.",
