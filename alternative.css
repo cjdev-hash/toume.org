@@ -54,6 +54,15 @@ html:has(.contact-page){scroll-snap-type:none}
 .closing-actions .experience-content{grid-column:1/-1;grid-row:2;contain:inline-size;min-width:0;overflow-wrap:anywhere;padding-top:28px;border-bottom:1px solid var(--line);margin-top:20px}
 .closing-actions .experience-disclosure:not([open]) .experience-content{display:none}
 .closing-actions .person-intro img{width:160px;height:160px;flex-shrink:0}
+.slide-actions{display:flex;flex-wrap:wrap;align-items:center;gap:0 26px;margin-top:29px}
+.slide-actions .scene-link{flex:0 0 auto;display:inline-flex;align-items:center;justify-content:space-between;gap:18px;width:auto;height:52px;padding:0;margin:0;background:none;border:0;border-bottom:1px solid var(--accent);color:var(--text);font:inherit;font-size:14px;white-space:nowrap;cursor:pointer}
+.slide-actions .toggle-symbol{display:inline-block;width:18px;text-align:center;color:var(--accent);font-size:20px;line-height:1}
+.slide-actions .info-toggle{display:none}
+.profile-content[hidden]{display:none}
+.profile-content{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);min-width:0;overflow-wrap:anywhere}
+.profile-content .person-intro img{width:160px;height:160px;flex-shrink:0}
+.scene-info{width:100%;min-width:0;max-width:580px;justify-self:center}
+@media(max-width:700px){.slide-actions{gap:0 20px;margin-top:22px}.slide-actions .scene-link{font-size:12px;gap:10px}.slide-actions .info-toggle{display:inline-flex}.scene-info:not(.is-expanded){display:none}.profile-content .person-intro img{width:80px;height:80px}.scene-info{max-width:none}}
 @media(max-width:700px){.closing-actions{gap:0 22px;margin-top:22px}.closing-actions>.scene-link,.closing-actions .experience-disclosure summary{font-size:12px;gap:12px}.closing-actions .person-intro img{width:80px;height:80px}.closing-actions .experience-content{padding-top:20px}.closing-actions .person-intro{gap:16px}}
 .person-intro h3{font-size:23px;line-height:1.3;margin:0}
 @media(max-width:700px){.engagement-panel{max-width:none}.person-intro img{width:76px;height:76px}.person-intro h3{font-size:21px}}

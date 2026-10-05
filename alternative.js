@@ -443,16 +443,17 @@ function goTo(index,focus=false){
   if(focus)section.querySelector('h1,h2').focus({preventScroll:true});
   history.replaceState(null,'',`#${hashes[index]}`);
 }
-function personDisclosure(t){return `<details class="experience-disclosure" id="krzysztof"><summary>${t.personLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content">
+function personDisclosure(t){return `<div class="experience-content profile-content" id="krzysztof" hidden>
         <div class="person-intro"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><h3>${t.person.title}</h3></div>
         <p class="experience-context">${t.person.description}</p><p class="experience-context">${t.person.supporting}</p><p class="experience-context">${t.person.aside}</p>
         <h3>${t.experienceLabel}</h3><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p>
         <ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul>
         <section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section>
-      </div></details>`;}
+      </div>`;}
 function render(preserve=false){
   const previous=active;
-  const experienceOpen=document.querySelector('.experience-disclosure')?.open || false;
+  const experienceOpen=document.querySelector('#person-toggle')?.getAttribute('aria-expanded')==='true';
+  const expandedInfo=new Set([...document.querySelectorAll('.info-toggle[aria-expanded="true"]')].map(button=>button.dataset.info));
   observer?.disconnect();
   const t=storyCopy[language];
   document.documentElement.lang=language;
@@ -470,15 +471,29 @@ function render(preserve=false){
       ${scene.badge?`<p class="remote-badge">${scene.badge}</p>`:''}
       ${scene.supporting?`<p class="scene-aside">${scene.supporting}</p>`:''}
       <p class="scene-aside">${scene.aside}</p>
-      ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<div class="closing-actions">${personDisclosure(t)}<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a></div>`}
+      <div class="slide-actions">
+        ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<button type="button" class="scene-link person-toggle" id="person-toggle" aria-expanded="false" aria-controls="krzysztof"><span>${t.personLabel}</span><span class="toggle-symbol" aria-hidden="true">+</span></button><a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a>`}
+        <button type="button" class="scene-link info-toggle" data-info="${i}" aria-expanded="false" aria-controls="info-${i}"><span>${language==='pl'?'Rozwiń informacje':'Expand info'}</span><span class="toggle-symbol" aria-hidden="true">+</span></button>
+      </div>
+      ${i===6?personDisclosure(t):''}
     </div>
-    ${i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong>: ${scene.detail}</p></div>`:i===6?`<div class="engagement-panel">
+    <div class="scene-info" id="info-${i}">${i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong>: ${scene.detail}</p></div>`:i===6?`<div class="engagement-panel">
       <dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map(service=>`<div><dt>${service.title}</dt><dd>${service.description}</dd></div>`).join('')}</dl>
 
-    </div>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span>${scene.detail}</span></figcaption></figure>`}
+    </div>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span>${scene.detail}</span></figcaption></figure>`}</div>
   </section>`).join('');
 
-  document.querySelector('.experience-disclosure').open=experienceOpen;
+  const profile=document.querySelector('#krzysztof');
+  const personButton=document.querySelector('#person-toggle');
+  function setProfile(open){profile.hidden=!open;personButton.setAttribute('aria-expanded',String(open));personButton.querySelector('.toggle-symbol').textContent=open?'−':'+';}
+  setProfile(experienceOpen);
+  personButton.addEventListener('click',()=>setProfile(profile.hidden));
+  document.querySelectorAll('.info-toggle').forEach(button=>{
+    const panel=document.querySelector('#info-'+button.dataset.info);
+    function setInfo(open){panel.classList.toggle('is-expanded',open);button.setAttribute('aria-expanded',String(open));button.querySelector('.toggle-symbol').textContent=open?'−':'+';}
+    setInfo(expandedInfo.has(button.dataset.info));
+    button.addEventListener('click',()=>setInfo(button.getAttribute('aria-expanded')!=='true'));
+  });
   window.toumeBrand?.();
   document.querySelectorAll('[data-next-scene]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();goTo(Number(link.dataset.nextScene),true);}));
   observer=new IntersectionObserver(entries=>{
