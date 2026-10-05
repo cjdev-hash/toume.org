@@ -36,11 +36,11 @@ const storyCopy = {
     "scenes": [
       {
         "kicker": "Doradztwo technologiczne",
-        "title": "Nie zaczynam<br>od technologii.<br>Zaczynam od tego,<br>jak dzia?a Tw?j biznes.",
-        "description": "Mapuj?, jak wsp??pracuj? ludzie, procesy, systemy i dane ? a potem wskazuj?, co spowalnia dzia?anie, tworzy ryzyko lub kosztuje wi?cej, ni? powinno.",
-        "aside": "Od niezale?nych audyt?w i projektowania system?w po automatyzacj?, AI i wsparcie wdro?enia.",
-        "caption": "Ludzie ? procesy ? systemy ? dane",
-        "detail": "Zrozumienie przed zmian?"
+        "title": "Nie zaczynam<br>od technologii.<br>Zaczynam od tego,<br>jak działa Twój biznes.",
+        "description": "Mapuję, jak współpracują ludzie, procesy, systemy i dane — a potem wskazuję, co spowalnia działanie, tworzy ryzyko lub kosztuje więcej, niż powinno.",
+        "aside": "Od niezależnych audytów i projektowania systemów po automatyzację, AI i wsparcie wdrożenia.",
+        "caption": "Ludzie → procesy → systemy → dane",
+        "detail": "Zrozumienie przed zmianą"
       },
       {
         "kicker": "Konsultacja",
@@ -52,48 +52,48 @@ const storyCopy = {
       },
       {
         "kicker": "Audyt obecnej sytuacji",
-        "title": "Problemy technologiczne<br>rzadko wyst?puj?<br>w izolacji.",
-        "description": "Powolny proces mo?e by? problemem z danymi. Problem z oprogramowaniem mo?e wynika? z otaczaj?cego go sposobu pracy. Automatyzacja mo?e jedynie przyspieszy? b??dy wadliwego procesu.",
-        "aside": "toum? analizuje po??czenia, zanim zmieni technologi?.",
+        "title": "Problemy technologiczne<br>rzadko występują<br>w izolacji.",
+        "description": "Powolny proces może być problemem z danymi. Problem z oprogramowaniem może wynikać z otaczającego go sposobu pracy. Automatyzacja może jedynie przyspieszyć błędy wadliwego procesu.",
+        "aside": "toumé analizuje połączenia, zanim zmieni technologię.",
         "caption": "Ludzie, narzędzia, koszty i zależności",
         "detail": "Niezależna ocena",
-        "supporting": "Niezale?ny audyt obejmuje procesy, systemy, dane, infrastruktur?, ryzyka i zale?no?ci ? na podstawie dowod?w wyja?nia, co dzia?a, co nie dzia?a i dlaczego."
+        "supporting": "Niezależny audyt obejmuje procesy, systemy, dane, infrastrukturę, ryzyka i zależności — na podstawie dowodów wyjaśnia, co działa, co nie działa i dlaczego."
       },
       {
         "kicker": "Projektowanie i usprawnianie",
         "title": "Zaprojektujmy<br>lepszą wersję.",
         "description": "Przekładam wnioski na konkretny projekt: architekturę, procesy, diagramy i rekomendacje. Usprawniamy istniejące rozwiązanie lub planujemy nowe.",
-        "aside": "AI analizuje. toum? decyduje.",
+        "aside": "AI analizuje. toumé decyduje.",
         "caption": "Obecna sytuacja → proponowany projekt",
         "detail": "Lepszy sposób pracy",
-        "supporting": "AI tam, gdzie ma sens. toum? korzysta z AI w analizie, automatyzacji i przetwarzaniu z?o?onych informacji, gdy daje to realn? przewag?. Systemy deterministyczne pozostaj? deterministyczne tam, gdzie niezawodno?? jest wa?niejsza ni? elastyczno??."
+        "supporting": "AI tam, gdzie ma sens. toumé korzysta z AI w analizie, automatyzacji i przetwarzaniu złożonych informacji, gdy daje to realną przewagę. Systemy deterministyczne pozostają deterministyczne tam, gdzie niezawodność jest ważniejsza niż elastyczność."
       },
       {
-        "kicker": "The toum? Method",
+        "kicker": "The toumé Method",
         "title": "Understand. Audit.<br>Design. Implement.<br>Review.",
-        "description": "Uporz?dkowana droga od zrozumienia, jak naprawd? dzia?a Twoja firma, do technologii, kt?ra lepiej wspiera jej dzia?anie.",
-        "aside": "Zrozumienie przed zmian?. Dowody przed za?o?eniami. Projekt przed wdro?eniem. Weryfikacja przed kolejnym krokiem.",
+        "description": "Uporządkowana droga od zrozumienia, jak naprawdę działa Twoja firma, do technologii, która lepiej wspiera jej działanie.",
+        "aside": "Zrozumienie przed zmianą. Dowody przed założeniami. Projekt przed wdrożeniem. Weryfikacja przed kolejnym krokiem.",
         "caption": "UADIR",
-        "detail": "Framework toum? dla zmian technologicznych."
+        "detail": "Framework toumé dla zmian technologicznych."
       },
       {
         "kicker": "Wsparcie wdrożenia — jeśli potrzebne",
         "title": "Pomóc Ci<br>w realizacji?",
-        "description": "Mog? zbudowa? i zintegrowa? rozwi?zanie, wesprze? Tw?j zesp??, skoordynowa? realizacj? lub dobra? specjalist?w. Zakres wdro?enia ustalamy osobno; doradztwo i projekt mog? by? samodzielnym rezultatem wsp??pracy.",
-        "aside": "Bezpiecze?stwo, obs?uga awarii, monitoring, odpowiedzialno??, odtwarzanie dzia?ania, koszty i zale?no?ci s? cz??ci? projektu. Efekt sprawdzamy wzgl?dem pierwotnych cel?w.",
+        "description": "Mogę zbudować i zintegrować rozwiązanie, wesprzeć Twój zespół, skoordynować realizację lub dobrać specjalistów. Zakres wdrożenia ustalamy osobno; doradztwo i projekt mogą być samodzielnym rezultatem współpracy.",
+        "aside": "Bezpieczeństwo, obsługa awarii, monitoring, odpowiedzialność, odtwarzanie działania, koszty i zależności są częścią projektu. Efekt sprawdzamy względem pierwotnych celów.",
         "caption": "Twój plan + właściwe kompetencje",
         "detail": "Wsparcie na Twoich zasadach",
-        "supporting": "Prototyp dowodzi, ?e co? mo?e dzia?a?. Produkcja dowodzi, ?e mo?na na tym polega?."
+        "supporting": "Prototyp dowodzi, że coś może działać. Produkcja dowodzi, że można na tym polegać."
       },
       {
         "kicker": "Czym się zajmuję",
         "title": "Najpierw jasność.<br>Potem dobry krok.",
         "description": "Możesz przyjść po niezależną opinię, audyt, projekt usprawnień lub plan. Każda z tych usług może być osobnym, konkretnym zadaniem.",
-        "aside": "Praca na miejscu mo?e by? cz??ci? wsp??pracy, gdy pomaga oceni? fizyczn? infrastruktur?, obiekt lub rzeczywisty spos?b pracy.",
+        "aside": "Praca na miejscu może być częścią współpracy, gdy pomaga ocenić fizyczną infrastrukturę, obiekt lub rzeczywisty sposób pracy.",
         "caption": "Najpierw doradztwo",
         "detail": "Wdrożenie, gdy ma sens",
-        "supporting": "Wsp??praca w pe?ni zdalna. Poznanie firmy, zbieranie dowod?w, audyt, weryfikacja, projektowanie system?w i planowanie wdro?enia mog? odbywa? si? zdalnie.",
-        "badge": "REMOTE-FIRST ? NA MIEJSCU, GDY MA TO ZNACZENIE"
+        "supporting": "Współpraca w pełni zdalna. Poznanie firmy, zbieranie dowodów, audyt, weryfikacja, projektowanie systemów i planowanie wdrożenia mogą odbywać się zdalnie.",
+        "badge": "REMOTE-FIRST · NA MIEJSCU, GDY MA TO ZNACZENIE"
       },
       {
         "kicker": "Człowiek za rekomendacjami",
@@ -153,8 +153,8 @@ const storyCopy = {
         "description": "Czytelna ocena systemów, kosztów i wąskich gardeł."
       },
       {
-        "title": "Mapowanie system?w i proces?w",
-        "description": "Zrozum, jak ludzie, procesy, oprogramowanie, infrastruktura i dane zale?? od siebie ? i co si? stanie, gdy zmieni si? jeden element."
+        "title": "Mapowanie systemów i procesów",
+        "description": "Zrozum, jak ludzie, procesy, oprogramowanie, infrastruktura i dane zależą od siebie — i co się stanie, gdy zmieni się jeden element."
       },
       {
         "title": "Projektowanie i usprawnianie",
@@ -172,23 +172,23 @@ const storyCopy = {
     "methodSteps": [
       {
         "title": "Understand",
-        "description": "Cele, kontekst, ludzie, ograniczenia i jasne okre?lenie sukcesu."
+        "description": "Cele, kontekst, ludzie, ograniczenia i jasne określenie sukcesu."
       },
       {
         "title": "Audit",
-        "description": "Ocena proces?w, system?w, danych, infrastruktury, ryzyk i zale?no?ci na podstawie dowod?w."
+        "description": "Ocena procesów, systemów, danych, infrastruktury, ryzyk i zależności na podstawie dowodów."
       },
       {
         "title": "Design",
-        "description": "Stan docelowy i droga wdro?enia dopasowane do firmy ? architektura, integracje, automatyzacja, AI, niezawodno?? i ograniczenia operacyjne."
+        "description": "Stan docelowy i droga wdrożenia dopasowane do firmy — architektura, integracje, automatyzacja, AI, niezawodność i ograniczenia operacyjne."
       },
       {
         "title": "Implement",
-        "description": "Budowa, integracja i koordynacja zmiany ? bezpo?rednio lub z odpowiednimi specjalistami."
+        "description": "Budowa, integracja i koordynacja zmiany — bezpośrednio lub z odpowiednimi specjalistami."
       },
       {
         "title": "Review",
-        "description": "Weryfikacja efekt?w wzgl?dem pierwotnych cel?w i aktualizacja obrazu systemu."
+        "description": "Weryfikacja efektów względem pierwotnych celów i aktualizacja obrazu systemu."
       }
     ]
   },
@@ -229,10 +229,10 @@ const storyCopy = {
     "scenes": [
       {
         "kicker": "Technology consultancy",
-        "title": "I don?t start<br>with technology.<br>I start with how<br>your business works.",
-        "description": "I map how your people, processes, systems and data work together ? then identify what is slowing you down, creating risk or costing more than it should.",
+        "title": "I don’t start<br>with technology.<br>I start with how<br>your business works.",
+        "description": "I map how your people, processes, systems and data work together — then identify what is slowing you down, creating risk or costing more than it should.",
         "aside": "From independent audits and system design to automation, AI and implementation support.",
-        "caption": "People ? processes ? systems ? data",
+        "caption": "People → processes → systems → data",
         "detail": "Understand before changing"
       },
       {
@@ -247,27 +247,27 @@ const storyCopy = {
         "kicker": "Current-state audit",
         "title": "Technology problems<br>rarely exist<br>in isolation.",
         "description": "A slow process may actually be a data problem. A software problem may come from the workflow around it. An automation may simply make a broken process fail faster.",
-        "aside": "toum? looks at the connections before changing the technology.",
+        "aside": "toumé looks at the connections before changing the technology.",
         "caption": "People, tools, costs, and dependencies",
         "detail": "An independent view",
-        "supporting": "An independent audit maps current processes, systems, data, infrastructure, risks and dependencies ? using evidence to explain what works, what doesn?t, and why."
+        "supporting": "An independent audit maps current processes, systems, data, infrastructure, risks and dependencies — using evidence to explain what works, what doesn’t, and why."
       },
       {
         "kicker": "Design & redesign",
         "title": "Let’s design<br>a better version.",
         "description": "I turn the findings into a practical design: architecture, workflows, diagrams, and recommendations. We can improve what exists or plan something new.",
-        "aside": "AI analyzes. toum? decides.",
+        "aside": "AI analyzes. toumé decides.",
         "caption": "Current state → proposed design",
         "detail": "A better way of working",
-        "supporting": "AI where it makes sense. toum? uses AI for analysis, automation and complex information processing where it creates a real advantage. Deterministic systems remain deterministic where reliability matters more than flexibility."
+        "supporting": "AI where it makes sense. toumé uses AI for analysis, automation and complex information processing where it creates a real advantage. Deterministic systems remain deterministic where reliability matters more than flexibility."
       },
       {
-        "kicker": "The toum? Method",
+        "kicker": "The toumé Method",
         "title": "Understand. Audit.<br>Design. Implement.<br>Review.",
         "description": "A structured path from understanding how your business actually works to making technology work better inside it.",
         "aside": "Understand before changing. Evidence before assumptions. Design before implementation. Review before moving on.",
         "caption": "UADIR",
-        "detail": "The toum? framework for technology change."
+        "detail": "The toumé framework for technology change."
       },
       {
         "kicker": "Implementation support — if needed",
@@ -286,10 +286,10 @@ const storyCopy = {
         "caption": "Consulting first",
         "detail": "Implementation when useful",
         "supporting": "Available fully remotely. Discovery, evidence collection, audit, review, system design and implementation planning can all be carried out remotely.",
-        "badge": "REMOTE-FIRST ? ON-SITE WHEN IT MATTERS"
+        "badge": "REMOTE-FIRST · ON-SITE WHEN IT MATTERS"
       },
       {
-        "kicker": "The person behind the advice",
+        "kicker": "The person behind",
         "title": "By the way,<br>I’m Chris.",
         "description": "I’m a hands-on technology consultant with experience across infrastructure, hardware, software, automation, AI, and complex production systems.",
         "supporting": "Much of that experience was built in demanding advertising and VFX environments.",
@@ -347,7 +347,7 @@ const storyCopy = {
       },
       {
         "title": "Systems & Process Mapping",
-        "description": "Understand how people, workflows, software, infrastructure and data depend on each other ? and what happens when one part changes."
+        "description": "Understand how people, workflows, software, infrastructure and data depend on each other — and what happens when one part changes."
       },
       {
         "title": "Design & redesign",
@@ -373,7 +373,7 @@ const storyCopy = {
       },
       {
         "title": "Design",
-        "description": "A target state and implementation path designed around the real business ? including architecture, integrations, automation, AI, reliability and operational constraints."
+        "description": "A target state and implementation path designed around the real business — including architecture, integrations, automation, AI, reliability and operational constraints."
       },
       {
         "title": "Implement",
@@ -414,11 +414,26 @@ function updateControls(index){
   document.querySelector('#next [data-ui]').textContent=index===7?storyCopy[language].restart:storyCopy[language].next;
   document.querySelectorAll('.scene').forEach((section,i)=>section.classList.toggle('is-active',i===index));
 }
+function frameScene(section, behavior='instant'){
+  if(matchMedia('(max-width: 700px)').matches){
+    const heading=section.querySelector('h1,h2');
+    const headerBottom=document.querySelector('.story-header').getBoundingClientRect().bottom;
+    const top=Math.max(0,window.scrollY+heading.getBoundingClientRect().top-headerBottom-16);
+    // Add only the space needed when the final title would exceed the scroll limit.
+    const padding=parseFloat(main.style.paddingBottom)||0;
+    const missing=top-(document.documentElement.scrollHeight-window.innerHeight);
+    if(missing>0)main.style.paddingBottom=`${padding+missing}px`;
+    window.scrollTo({top,behavior});
+  }else{
+    main.style.paddingBottom='';
+    section.scrollIntoView({behavior,block:'start'});
+  }
+}
 function goTo(index,focus=false){
   const section=document.querySelectorAll('.scene')[index];
   if(!section)return;
   updateControls(index);
-  section.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth',block:'start'});
+  frameScene(section,matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth');
   if(focus)section.querySelector('h1,h2').focus({preventScroll:true});
   history.replaceState(null,'',`#${hashes[index]}`);
 }
@@ -433,7 +448,7 @@ function render(preserve=false){
   document.querySelectorAll('[data-ui]').forEach(el=>el.textContent=t[el.dataset.ui]);
   document.querySelectorAll('[data-lang]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.lang===language)));
   document.querySelector('.story-controls').setAttribute('aria-label',t.navigation);
-  main.innerHTML=t.scenes.map((scene,i)=>`<section class="scene" id="${hashes[i]}" data-scene="${i}" aria-labelledby="heading-${i}"><div class="scene-copy"><p class="scene-kicker">${scene.kicker}</p><${i===0?'h1':'h2'} id="heading-${i}" tabindex="-1">${scene.title}</${i===0?'h1':'h2'}><p class="scene-description">${scene.description}</p>${scene.badge?`<p class="remote-badge">${scene.badge}</p>`:''}${scene.supporting?`<p class="scene-aside">${scene.supporting}</p>`:''}<p class="scene-aside">${scene.aside}</p>${i<7?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:''}${i===7?`<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a><p class="scene-aside">${scene.detail}</p><details class="experience-disclosure"><summary>${t.experienceLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content"><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p><ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul><section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section></div></details>`:''}</div>${i===7?`<figure class="portrait-panel"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><div class="portrait-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 8H35M20 8V35"/><circle cx="5" cy="8" r="2"/><circle cx="35" cy="8" r="2"/><circle cx="20" cy="35" r="2"/></svg></div><figcaption><span>${t.name}</span><span>${scene.caption}</span></figcaption></figure>`:i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong> ? ${scene.detail}</p></div>`:i===6?`<dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map(service=>`<div><dt>${service.title}</dt><dd>${service.description}</dd></div>`).join('')}</dl>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span${scene.detail==='toumé'?' class="brand-name"':''}>${scene.detail}</span></figcaption></figure>`}</section>`).join('');
+  main.innerHTML=t.scenes.map((scene,i)=>`<section class="scene" id="${hashes[i]}" data-scene="${i}" aria-labelledby="heading-${i}"><div class="scene-copy"><p class="scene-kicker">${scene.kicker}</p><${i===0?'h1':'h2'} id="heading-${i}" tabindex="-1">${scene.title}</${i===0?'h1':'h2'}><p class="scene-description">${scene.description}</p>${scene.badge?`<p class="remote-badge">${scene.badge}</p>`:''}${scene.supporting?`<p class="scene-aside">${scene.supporting}</p>`:''}<p class="scene-aside">${scene.aside}</p>${i<7?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:''}${i===7?`<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a><p class="scene-aside">${scene.detail}</p><details class="experience-disclosure"><summary>${t.experienceLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content"><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p><ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul><section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section></div></details>`:''}</div>${i===7?`<figure class="portrait-panel"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><div class="portrait-mark" aria-hidden="true"><svg viewBox="0 0 40 40"><path d="M5 8H35M20 8V35"/><circle cx="5" cy="8" r="2"/><circle cx="35" cy="8" r="2"/><circle cx="20" cy="35" r="2"/></svg></div><figcaption><span>${t.name}</span><span>${scene.caption}</span></figcaption></figure>`:i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong> — ${scene.detail}</p></div>`:i===6?`<dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map(service=>`<div><dt>${service.title}</dt><dd>${service.description}</dd></div>`).join('')}</dl>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span${scene.detail==='toumé'?' class="brand-name"':''}>${scene.detail}</span></figcaption></figure>`}</section>`).join('');
   document.querySelector('.experience-disclosure').open=experienceOpen;
   document.querySelectorAll('[data-next-scene]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();goTo(Number(link.dataset.nextScene),true);}));
   observer=new IntersectionObserver(entries=>{
@@ -442,7 +457,11 @@ function render(preserve=false){
   document.querySelectorAll('.scene').forEach(section=>observer.observe(section));
   const target=preserve?previous:Math.max(0,hashes.indexOf(location.hash.slice(1)==='priorities'?'method':location.hash.slice(1)));
   updateControls(target);
-  if(preserve||target>0)requestAnimationFrame(()=>document.querySelectorAll('.scene')[target].scrollIntoView({behavior:'instant',block:'start'}));
+  if(preserve||target>0)requestAnimationFrame(()=>{
+    const section=document.querySelectorAll('.scene')[target];
+    frameScene(section);
+    document.fonts?.ready.then(()=>frameScene(section));
+  });
 }
 document.querySelector('#next').addEventListener('click',()=>goTo(active===7?0:active+1,true));
 document.querySelector('#back').addEventListener('click',()=>goTo(Math.max(0,active-1),true));

@@ -50,6 +50,11 @@
   .scene:last-child .experience-disclosure{width:100%;max-width:none}
 }
 html:has(.contact-page){scroll-snap-type:none}
+/* Expandable data information sits next to the contact form's submit button. */
+.data-notice{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:18px 0}
+.data-notice summary{cursor:pointer;padding:14px 0;font-size:13px;color:var(--text)}
+.data-notice summary:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
+.data-notice p{font-size:12px;line-height:1.8;color:var(--muted);margin:0 0 16px;overflow-wrap:anywhere}
 .contact-page .contact-layout{max-width:1600px;margin:auto;padding:165px 8% 80px;display:grid;grid-template-columns:1fr 1fr;gap:9%;align-items:start;min-height:calc(100svh - 85px)}
 .contact-page .eyebrow{font-size:13px;text-transform:uppercase;letter-spacing:2px;color:var(--accent);margin:0 0 28px;display:flex;align-items:center;gap:13px}
 .contact-page .dot{display:inline-block;width:22px;height:1px;background:var(--accent)}

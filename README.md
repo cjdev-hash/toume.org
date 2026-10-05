@@ -54,4 +54,10 @@ On network errors, timeout, or provider rejection, the form retains the message 
 
 FormSubmit processes submissions and retains them for 30 days. This is disclosed beside the form with a link to the provider's privacy policy. User input is not persisted by the website; the selected language is stored locally. The direct email link provides another contact route.
 
+The bilingual form disclosure identifies Krzysztof Dębski as controller, `hello@toume.org` as the data-protection contact, FormSubmit as the form delivery provider, and SEOHOST as the email provider. Enquiries without a subsequent engagement are to be deleted 12 months after the last contact. This is an operational mailbox policy: the static website cannot delete mailbox messages or backups. Apply and verify the deletion process in the email service.
+
+Before treating the contact flow as fully verified for GDPR, confirm the data-processing arrangements with SEOHOST and FormSubmit (`formsubmit.co`, not a similarly named service), including any transfers outside the EEA and their safeguards. FormSubmit's published privacy PDF alone does not establish these arrangements. Do not claim verified EU-only processing. Direct email bypasses FormSubmit.
+
+Language defaults to English unless the visitor has explicitly selected and saved Polish. No device location or IP-country service is used. Mobile story navigation measures the target heading and fixed header, placing the heading 16px below it; desktop navigation continues to align the scene.
+
 Changing the recipient to an address such as `hello@toume.org` requires an existing mailbox/forwarder and reactivation with FormSubmit. A custom domain on GitHub Pages does not create an email mailbox. Manrope is loaded from Google Fonts; no analytics are installed.
