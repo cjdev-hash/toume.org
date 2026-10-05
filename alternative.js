@@ -473,7 +473,7 @@ function render(preserve=false){
       <p class="scene-aside">${scene.aside}</p>
       <div class="slide-actions">
         ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<button type="button" class="scene-link person-toggle" id="person-toggle" aria-expanded="false" aria-controls="krzysztof"><span>${t.personLabel}</span><span class="toggle-symbol" aria-hidden="true">+</span></button><a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a>`}
-        <button type="button" class="scene-link info-toggle" data-info="${i}" aria-expanded="false" aria-controls="info-${i}"><span>${language==='pl'?'Rozwiń informacje':'Expand info'}</span><span class="toggle-symbol" aria-hidden="true">+</span></button>
+        <button type="button" class="scene-link info-toggle" data-info="${i}" aria-expanded="false" aria-controls="info-${i}"><span>${language==='pl'?'Rozwiń':'Expand'}</span><span class="toggle-symbol" aria-hidden="true">+</span></button>
       </div>
       ${i===6?personDisclosure(t):''}
     </div>
@@ -492,7 +492,20 @@ function render(preserve=false){
     const panel=document.querySelector('#info-'+button.dataset.info);
     function setInfo(open){panel.classList.toggle('is-expanded',open);button.setAttribute('aria-expanded',String(open));button.querySelector('.toggle-symbol').textContent=open?'−':'+';}
     setInfo(expandedInfo.has(button.dataset.info));
-    button.addEventListener('click',()=>setInfo(button.getAttribute('aria-expanded')!=='true'));
+    button.addEventListener('click',()=>{
+      const open=button.getAttribute('aria-expanded')!=='true';
+      setInfo(open);
+      if(open&&matchMedia('(max-width: 700px)').matches){
+        requestAnimationFrame(()=>{
+          const actions=button.closest('.slide-actions');
+          const headerBottom=document.querySelector('.story-header').getBoundingClientRect().bottom;
+          const top=Math.max(0,window.scrollY+actions.getBoundingClientRect().top-headerBottom-16);
+          const missing=top-(document.documentElement.scrollHeight-window.innerHeight);
+          if(missing>0)main.style.paddingBottom=`${(parseFloat(main.style.paddingBottom)||0)+missing}px`;
+          window.scrollTo({top,behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'instant':'smooth'});
+        });
+      }
+    });
   });
   window.toumeBrand?.();
   document.querySelectorAll('[data-next-scene]').forEach(link=>link.addEventListener('click',event=>{event.preventDefault();goTo(Number(link.dataset.nextScene),true);}));
