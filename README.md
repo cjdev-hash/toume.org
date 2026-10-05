@@ -1,6 +1,6 @@
 # toumé · toume.org
 
-A bilingual technology consulting website with a guided, eight-screen introduction, a warm charcoal/terracotta palette, and a separate contact page. Polish introduces Krzysztof; English introduces Chris.
+A bilingual technology consulting website with a guided, seven-screen introduction, a warm charcoal/terracotta palette, and a separate contact page. Polish introduces Krzysztof; English introduces Chris.
 
 ## Local development
 
