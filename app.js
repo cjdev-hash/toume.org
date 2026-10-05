@@ -11,7 +11,7 @@ const copy = {
     "backTop": "Do góry ↑",
     "eyebrow": "TWÓJ CZŁOWIEK OD TECHNOLOGII",
     "headline": "Mniej problemów.<br>Więcej <em>możliwości.</em>",
-    "intro": "Znam technologię. Pomagam ludziom. Od codziennych usterek po złożone systemy — powiedz, czego potrzebujesz.",
+    "intro": "Znam technologię. Pomagam ludziom. Od codziennych usterek po złożone systemy. Powiedz, czego potrzebujesz.",
     "cta": "Opowiedz mi, czego potrzebujesz",
     "explore": "Poznaj możliwości ↗",
     "note": "Dla Ciebie i Twojej firmy",
@@ -66,7 +66,7 @@ const copy = {
       "Procesy produkcyjne"
     ],
     "creativeLink": "Porozmawiajmy o Twoim projekcie ↗",
-    "portraitAlt": "Krzysztof — założyciel toumé",
+    "portraitAlt": "Krzysztof, założyciel toumé",
     "portraitRole": "Doradztwo i wdrożenia technologiczne",
     "processLabel": "03 / BEZ KOMPLIKACJI",
     "processTitle": "Od „nie wiem” do „działa”.",
@@ -87,7 +87,7 @@ const copy = {
     "contactTitle": "Znajdźmy<br><em>dobry kierunek.</em>",
     "contactIntro": "Potrzebujesz konsultacji, audytu, projektu usprawnień lub planu? Opowiedz o swojej firmie i decyzji, przed którą stoisz.",
     "contactDetailTitle": "Co dalej?",
-    "contactDetail": "Odpowiem, żeby lepiej poznać Twoje potrzeby. Ustalimy zakres i rezultat — konsultację, ocenę obecnej sytuacji lub projekt rozwiązania.",
+    "contactDetail": "Odpowiem, żeby lepiej poznać Twoje potrzeby. Ustalimy zakres i rezultat: konsultację, ocenę obecnej sytuacji lub projekt rozwiązania.",
     "name": "Jak masz na imię?",
     "email": "Twój e-mail",
     "audience": "Potrzebuję pomocy",
@@ -133,7 +133,7 @@ const copy = {
     "dataNoticeTitle": "Jak przetwarzam Twoje dane",
     "dataNotice": [
       "Administratorem danych jest Krzysztof Dębski, prowadzący toumé. Kontakt w sprawach danych: hello@toume.org.",
-      "Imię, adres e-mail, treść wiadomości oraz wybrane opcje formularza służą obsłudze zapytania i korespondencji. Podstawą jest prawnie uzasadniony interes polegający na odpowiadaniu na zapytania (art. 6 ust. 1 lit. f RODO), a dla działań podejmowanych na Twoje żądanie przed zawarciem umowy — art. 6 ust. 1 lit. b RODO.",
+      "Imię, adres e-mail, treść wiadomości oraz wybrane opcje formularza służą obsłudze zapytania i korespondencji. Podstawą jest prawnie uzasadniony interes polegający na odpowiadaniu na zapytania (art. 6 ust. 1 lit. f RODO), a dla działań podejmowanych na Twoje żądanie przed zawarciem umowy, art. 6 ust. 1 lit. b RODO.",
       "Podanie danych jest dobrowolne. E-mail i treść zapytania są potrzebne do odpowiedzi; formularz wymaga również imienia. Możesz zamiast formularza napisać bezpośrednio na hello@toume.org.",
       "Dane z formularza otrzymuje FormSubmit (formsubmit.co), który przekazuje wiadomość na pocztę obsługiwaną przez SEOHOST Sp. z o.o. Polityka FormSubmit jest dostępna w linku powyżej. Bezpośredni e-mail pomija FormSubmit.",
       "Zapytania, które nie prowadzą do współpracy, usuwam po 12 miesiącach od ostatniego kontaktu. FormSubmit deklaruje przechowywanie zgłoszeń przez 30 dni. Jeśli dojdzie do współpracy, dalsze okresy przechowywania wynikają z jej zakresu, obowiązków prawnych i terminów przedawnienia roszczeń.",
@@ -148,7 +148,7 @@ const copy = {
     "retry": "Spróbuj ponownie",
     "sendingHint": "Wysyłam Twoją wiadomość. Pozostaw tę stronę otwartą.",
     "validationError": "Sprawdź zaznaczone pola. Podaj imię, poprawny adres e-mail i wiadomość zawierającą co najmniej 10 znaków.",
-    "timeoutError": "Wysyłanie trwa zbyt długo — nie udało się potwierdzić przyjęcia wiadomości. Twoje dane pozostały w formularzu. Spróbuj ponownie lub napisz na hello@toume.org."
+    "timeoutError": "Wysyłanie trwa zbyt długo. Nie udało się potwierdzić przyjęcia wiadomości. Twoje dane pozostały w formularzu. Spróbuj ponownie lub napisz na hello@toume.org."
   },
   "en": {
     "personName": "Chris",
@@ -162,7 +162,7 @@ const copy = {
     "backTop": "Back to top ↑",
     "eyebrow": "YOUR PERSON FOR TECHNOLOGY",
     "headline": "Less friction.<br>More <em>possibility.</em>",
-    "intro": "Technology is what I do. Helping you is why. From everyday fixes to complex systems — tell me what you need.",
+    "intro": "Technology is what I do. Helping you is why. From everyday fixes to complex systems. Tell me what you need.",
     "cta": "Tell me what you need",
     "explore": "Explore the possibilities ↗",
     "note": "For you and your business",
@@ -194,7 +194,7 @@ const copy = {
       "Integrations"
     ],
     "build": "Let’s build it.",
-    "buildDesc": "Turn your idea into a practical plan — and a working solution.",
+    "buildDesc": "Turn your idea into a practical plan and a working solution.",
     "buildTags": [
       "Websites",
       "Infrastructure",
@@ -217,7 +217,7 @@ const copy = {
       "Production workflows"
     ],
     "creativeLink": "Let’s talk about your project ↗",
-    "portraitAlt": "Chris — founder of toumé",
+    "portraitAlt": "Chris, founder of toumé",
     "portraitRole": "Technology consulting & implementation",
     "processLabel": "03 / NO COMPLICATIONS",
     "processTitle": "From “not sure” to “sorted”.",
@@ -238,7 +238,7 @@ const copy = {
     "contactTitle": "Let’s find<br><em>the right direction.</em>",
     "contactIntro": "Looking for advice, an audit, a redesign, or a plan? Tell me about your business and the decision you’re facing.",
     "contactDetailTitle": "What happens next?",
-    "contactDetail": "I’ll reply to understand your needs. We’ll agree on the scope and outcome — whether that’s a consultation, an assessment, or a design.",
+    "contactDetail": "I’ll reply to understand your needs. We’ll agree on the scope and outcome, whether that’s a consultation, an assessment, or a design.",
     "name": "Your name",
     "email": "Your email",
     "audience": "I need help",
@@ -259,7 +259,7 @@ const copy = {
     "experience": [
       {
         "title": "VFX pipelines, from the ground up.",
-        "description": "Designing and developing complete studio pipelines — connecting tools, teams, and every stage of production."
+        "description": "Designing and developing complete studio pipelines, connecting tools, teams, and every stage of production."
       },
       {
         "title": "Less busywork. Smarter workflows.",
@@ -311,7 +311,7 @@ let sending=false;
 
 const arrow='<span aria-hidden="true">↗</span>';
 function home(t){return `
-<section class="hero container"><div><p class="eyebrow"><span class="dot"></span>${t.eyebrow}</p><h1>${t.headline}</h1><p class="intro">${t.intro}</p><div class="hero-actions"><a class="button blue" href="contact.html"><span>${t.cta}</span>${arrow}</a><a class="text-link" href="#services">${t.explore}</a></div><p class="hero-note"><span class="dot"></span>${t.note}</p></div><div class="art" aria-hidden="true"><span class="art-meta">${t.artMeta}</span><div class="orbit"></div><div class="orbit two"></div><div class="sculpture"></div><div class="float-label one"><span class="label-icon">↗</span>${t.artOne}</div><div class="float-label two"><span class="label-icon">⌘</span>${t.artTwo}</div><div class="float-label three"><span class="label-icon">✳</span>${t.artThree}</div><span class="art-caption">${t.artCaption}</span><span class="art-coordinates">01 — ∞</span></div></section>
+<section class="hero container"><div><p class="eyebrow"><span class="dot"></span>${t.eyebrow}</p><h1>${t.headline}</h1><p class="intro">${t.intro}</p><div class="hero-actions"><a class="button blue" href="contact.html"><span>${t.cta}</span>${arrow}</a><a class="text-link" href="#services">${t.explore}</a></div><p class="hero-note"><span class="dot"></span>${t.note}</p></div><div class="art" aria-hidden="true"><span class="art-meta">${t.artMeta}</span><div class="orbit"></div><div class="orbit two"></div><div class="sculpture"></div><div class="float-label one"><span class="label-icon">↗</span>${t.artOne}</div><div class="float-label two"><span class="label-icon">⌘</span>${t.artTwo}</div><div class="float-label three"><span class="label-icon">✳</span>${t.artThree}</div><span class="art-caption">${t.artCaption}</span><span class="art-coordinates">01 → ∞</span></div></section>
 <div class="ribbon container"><p>${t.ribbonIntro}</p><span>${t.ribbon1}</span><span class="asterisk" aria-hidden="true">✳</span><span>${t.ribbon2}</span><span class="asterisk" aria-hidden="true">✳</span><span>${t.ribbon3}</span><span class="asterisk" aria-hidden="true">✳</span><span>${t.ribbon4}</span></div>
 <section class="section container" id="services"><div class="section-heading"><div><p class="eyebrow">${t.servicesLabel}</p><h2>${t.servicesTitle}</h2></div><p>${t.servicesIntro}</p></div><div class="cards">${['fix','improve','build'].map((key,i)=>`<article class="service-card"><div class="card-top"><span class="service-icon" aria-hidden="true">${['↗','⌘','✳'][i]}</span><span class="card-number">0${i+1}</span></div><h3>${t[key]}</h3><p>${t[key+'Desc']}</p><div class="tags">${t[key+'Tags'].map(tag=>`<span>${tag}</span>`).join('')}</div></article>`).join('')}</div><div class="specialist"><span aria-hidden="true">↳</span><span><b>${t.specialist}</b> ${t.specialistDesc}</span></div><article class="creative-service"><div class="creative-heading"><p class="eyebrow">${t.creativeLabel}</p><h3>${t.creativeTitle}</h3><div class="tags">${t.creativeTags.map(tag=>`<span>${tag}</span>`).join('')}</div></div><div><p>${t.creativeDesc}</p><a class="text-link" href="contact.html">${t.creativeLink}</a></div></article></section>
 <section class="container" id="about"><div class="about"><div class="portrait"><img class="portrait-photo" src="ja.png" alt="${t.portraitAlt}" width="1254" height="1254" loading="lazy" decoding="async"><div class="portrait-name">${t.personName} <span>${t.portraitRole}</span></div></div><div class="about-copy"><p class="eyebrow">${t.aboutLabel}</p><h2>${t.aboutTitle}</h2><p>${t.aboutP1}</p><p>${t.aboutP2}</p><blockquote class="about-principle">${t.aboutPrinciple}</blockquote><a class="text-link" href="contact.html">${t.aboutLink}</a></div></div></section>

@@ -1,11 +1,11 @@
 const storyCopy = {
   "pl": {
     "experienceLabel": "Więcej o moim doświadczeniu",
-    "experienceIntro": "VFX, reklama, grafika komputerowa i technologia produkcji — to tu zdobyłem znaczną część doświadczenia, łącząc ludzi, narzędzia, infrastrukturę i procesy.",
+    "experienceIntro": "VFX, reklama, grafika komputerowa i technologia produkcji. To tu zdobyłem znaczną część doświadczenia, łącząc ludzi, narzędzia, infrastrukturę i procesy.",
     "experience": [
       {
         "title": "Budowanie procesów od podstaw.",
-        "description": "Projektuję kompletne systemy produkcyjne i operacyjne — łączę narzędzia, ludzi, dane i infrastrukturę w sprawnie działającą całość."
+        "description": "Projektuję kompletne systemy produkcyjne i operacyjne, łączę narzędzia, ludzi, dane i infrastrukturę w sprawnie działającą całość."
       },
       {
         "title": "Mniej rutyny. Inteligentniejsze procesy.",
@@ -17,7 +17,7 @@ const storyCopy = {
       },
       {
         "title": "Łączę kropki. Znajduję prostszą drogę.",
-        "description": "Odkrywam przydatne połączenia między narzędziami, zespołami i procesami — i usuwam zbędne kroki."
+        "description": "Odkrywam przydatne połączenia między narzędziami, zespołami i procesami, i usuwam zbędne kroki."
       },
       {
         "title": "Od złożonego problemu do jasnego planu.",
@@ -46,8 +46,8 @@ const storyCopy = {
       {
         "kicker": "Konsultacja",
         "title": "Najpierw<br>porozmawiajmy.",
-        "description": "Poznaję Twoją firmę, cele, obecny sposób pracy i ograniczenia — budżet, obowiązujące umowy oraz potrzeby ludzi.",
-        "aside": "Najpierw określamy rzeczywisty problem. Dopiero potem decydujemy, co — jeśli w ogóle — trzeba zmienić.",
+        "description": "Poznaję Twoją firmę, cele, obecny sposób pracy i ograniczenia: budżet, obowiązujące umowy oraz potrzeby ludzi.",
+        "aside": "Najpierw określamy rzeczywisty problem. Dopiero potem decydujemy, co, jeśli w ogóle, trzeba zmienić.",
         "caption": "Twój kontekst + moje pytania",
         "detail": "Wspólne zrozumienie"
       },
@@ -58,7 +58,7 @@ const storyCopy = {
         "aside": "toumé analizuje połączenia, zanim zarekomenduje, co warto zmienić.",
         "caption": "Ludzie, narzędzia, koszty i zależności",
         "detail": "Niezależna ocena",
-        "supporting": "Niezależny audyt obejmuje procesy, systemy, dane, infrastrukturę, ryzyka i zależności — na podstawie dowodów wyjaśnia, co działa, co nie działa i dlaczego."
+        "supporting": "Niezależny audyt obejmuje procesy, systemy, dane, infrastrukturę, ryzyka i zależności, na podstawie dowodów wyjaśnia, co działa, co nie działa i dlaczego."
       },
       {
         "kicker": "Projektowanie i usprawnianie",
@@ -123,7 +123,7 @@ const storyCopy = {
       "grow": "Rozwój",
       "change": "Zmiany",
       "support": "Wsparcie",
-      "portrait": "Krzysztof — założyciel toumé"
+      "portrait": "Krzysztof, założyciel toumé"
     },
     "experienceMethod": "Każda firma działa inaczej, ale schemat problemu często jest podobny: jest cel, obecny sposób pracy i coś, co stoi pomiędzy nimi. Moją rolą jest znaleźć najprostszy sensowny sposób, żeby tę drogę skrócić.",
     "bridgeTitle": "Branża się zmienia. Metoda pozostaje.",
@@ -135,7 +135,7 @@ const storyCopy = {
       "Co można uprościć, zautomatyzować lub połączyć?",
       "Jaka jest najkrótsza niezawodna droga do rezultatu?"
     ],
-    "bridgeConclusion": "Poznaję specyfikę Twojej branży, a gdy potrzeba — angażuję specjalistę. Lubię właśnie takie wyzwania: znaleźć praktyczną drogę do celu.",
+    "bridgeConclusion": "Poznaję specyfikę Twojej branży, a gdy potrzeba, angażuję specjalistę. Lubię właśnie takie wyzwania: znaleźć praktyczną drogę do celu.",
     "services": [
       {
         "title": "Konsultacje",
@@ -147,7 +147,7 @@ const storyCopy = {
       },
       {
         "title": "Mapowanie systemów i procesów",
-        "description": "Mapowanie połączeń między ludźmi, procesami, systemami, danymi i zależnościami w firmie — aby projektować zmiany z uwzględnieniem ich szerszego wpływu."
+        "description": "Mapowanie połączeń między ludźmi, procesami, systemami, danymi i zależnościami w firmie, aby projektować zmiany z uwzględnieniem ich szerszego wpływu."
       },
       {
         "title": "Projektowanie i usprawnianie",
@@ -173,11 +173,11 @@ const storyCopy = {
       },
       {
         "title": "Design",
-        "description": "Stan docelowy i droga wdrożenia dopasowane do firmy — architektura, integracje, automatyzacja, AI, niezawodność i ograniczenia operacyjne."
+        "description": "Stan docelowy i droga wdrożenia dopasowane do firmy: architektura, integracje, automatyzacja, AI, niezawodność i ograniczenia operacyjne."
       },
       {
         "title": "Implement",
-        "description": "Budowa, integracja i koordynacja zmiany — bezpośrednio lub z odpowiednimi specjalistami."
+        "description": "Budowa, integracja i koordynacja zmiany, bezpośrednio lub z odpowiednimi specjalistami."
       },
       {
         "title": "Review",
@@ -197,11 +197,11 @@ const storyCopy = {
   },
   "en": {
     "experienceLabel": "More about my experience",
-    "experienceIntro": "VFX, advertising, computer graphics, and production technology are where I developed much of my experience — connecting people, tools, infrastructure, and processes.",
+    "experienceIntro": "VFX, advertising, computer graphics, and production technology are where I developed much of my experience, connecting people, tools, infrastructure, and processes.",
     "experience": [
       {
         "title": "Building workflows from the ground up.",
-        "description": "Designing complete production and operational systems — connecting tools, people, data, and infrastructure into a workflow that works."
+        "description": "Designing complete production and operational systems, connecting tools, people, data, and infrastructure into a workflow that works."
       },
       {
         "title": "Less busywork. Smarter workflows.",
@@ -213,7 +213,7 @@ const storyCopy = {
       },
       {
         "title": "Connecting the dots. Finding the simpler route.",
-        "description": "Spotting useful connections between tools, teams, and processes — and removing unnecessary steps."
+        "description": "Spotting useful connections between tools, teams, and processes and removing unnecessary steps."
       },
       {
         "title": "Turning complexity into a clear plan.",
@@ -242,8 +242,8 @@ const storyCopy = {
       {
         "kicker": "Consultation",
         "title": "First,<br>we talk.",
-        "description": "We look at your business, goals, current way of working, and constraints — including budget, existing contracts, and the people involved.",
-        "aside": "We define the real problem before deciding what — if anything — needs to change.",
+        "description": "We look at your business, goals, current way of working, and constraints, including budget, existing contracts, and the people involved.",
+        "aside": "We define the real problem before deciding what, if anything, needs to change.",
         "caption": "Your context + my questions",
         "detail": "A shared understanding"
       },
@@ -254,7 +254,7 @@ const storyCopy = {
         "aside": "toumé looks at the connections before recommending what should change.",
         "caption": "People, tools, costs, and dependencies",
         "detail": "An independent view",
-        "supporting": "An independent audit maps current processes, systems, data, infrastructure, risks and dependencies — using evidence to explain what works, what doesn’t, and why."
+        "supporting": "An independent audit maps current processes, systems, data, infrastructure, risks and dependencies, using evidence to explain what works, what doesn’t, and why."
       },
       {
         "kicker": "Design & redesign",
@@ -319,7 +319,7 @@ const storyCopy = {
       "grow": "Grow",
       "change": "Change",
       "support": "Support",
-      "portrait": "Chris — founder of toumé"
+      "portrait": "Chris, founder of toumé"
     },
     "experienceMethod": "Every business works differently, but the shape of the problem is often familiar: a goal, a current way of working, and something standing between the two. My role is to find the simplest practical way to close that gap.",
     "bridgeTitle": "The industry changes. The method doesn’t.",
@@ -343,7 +343,7 @@ const storyCopy = {
       },
       {
         "title": "Systems & Process Mapping",
-        "description": "Mapping how people, workflows, systems, data and dependencies connect across the business — so changes can be designed with their wider impact in mind."
+        "description": "Mapping how people, workflows, systems, data and dependencies connect across the business, so changes can be designed with their wider impact in mind."
       },
       {
         "title": "Design & redesign",
@@ -369,7 +369,7 @@ const storyCopy = {
       },
       {
         "title": "Design",
-        "description": "A target state and implementation path designed around the real business — including architecture, integrations, automation, AI, reliability and operational constraints."
+        "description": "A target state and implementation path designed around the real business, including architecture, integrations, automation, AI, reliability and operational constraints."
       },
       {
         "title": "Implement",
@@ -470,9 +470,9 @@ function render(preserve=false){
       ${scene.badge?`<p class="remote-badge">${scene.badge}</p>`:''}
       ${scene.supporting?`<p class="scene-aside">${scene.supporting}</p>`:''}
       <p class="scene-aside">${scene.aside}</p>
-      ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<div class="closing-actions"><a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a>${personDisclosure(t)}</div>`}
+      ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<div class="closing-actions">${personDisclosure(t)}<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a></div>`}
     </div>
-    ${i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong> — ${scene.detail}</p></div>`:i===6?`<div class="engagement-panel">
+    ${i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong>: ${scene.detail}</p></div>`:i===6?`<div class="engagement-panel">
       <dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map(service=>`<div><dt>${service.title}</dt><dd>${service.description}</dd></div>`).join('')}</dl>
 
     </div>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span>${scene.detail}</span></figcaption></figure>`}

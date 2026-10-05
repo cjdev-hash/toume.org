@@ -18,7 +18,7 @@ for (const [source, target] of [['alternative.html', 'index.html'], ['contact.ht
   let html = await readFile(new URL(source, import.meta.url), 'utf8');
   html = html.replaceAll('href="alternative.html', 'href="index.html');
   html = html.replace('</head>', `  <link rel="canonical" href="https://toume.org/${target === 'index.html' ? '' : target}">\n</head>`);
-  if (target === 'index.html') html = html.replace(/<noscript>[\s\S]*?<\/noscript>/, '<noscript><p class="no-script">toumé — Doradztwo technologiczne / Technology consulting.<br>Włącz JavaScript, aby poznać ofertę i przygotować zapytanie.<br>Enable JavaScript to explore the website and prepare an enquiry.</p></noscript>');
+  if (target === 'index.html') html = html.replace(/<noscript>[\s\S]*?<\/noscript>/, '<noscript><p class="no-script">toumé: Doradztwo technologiczne / Technology consulting.<br>Włącz JavaScript, aby poznać ofertę i przygotować zapytanie.<br>Enable JavaScript to explore the website and prepare an enquiry.</p></noscript>');
   await writeFile(new URL(target, output), html);
 }
 // Preserve old preview bookmarks without publishing a second homepage.
