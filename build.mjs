@@ -2,14 +2,18 @@ import { mkdir, readFile, writeFile, copyFile, readdir } from 'node:fs/promises'
 import assert from 'node:assert/strict';
 
 // Only these files are published. Briefs, tooling, and the classic design stay out.
-const assets = ['alternative.css', 'alternative.js', 'app.js', 'ja.png', 'CNAME', 'thanks.html', 'thanks.js'];
+const assets = ['alternative.css', 'alternative.js', 'app.js', 'brand.css', 'brand.js', 'ja.png', 'CNAME', 'thanks.html', 'thanks.js'];
 const output = new URL('./dist/', import.meta.url);
 await mkdir(output, { recursive: true });
-const expected = new Set([...assets, 'index.html', 'contact.html', 'alternative.html', '.nojekyll']);
+const expected = new Set([...assets, 'logo', 'index.html', 'contact.html', 'alternative.html', '.nojekyll']);
 for (const file of await readdir(output)) {
   assert.ok(expected.has(file), `Unexpected file in dist: ${file}. Review it before deploying.`);
 }
 for (const file of assets) await copyFile(new URL(file, import.meta.url), new URL(file, output));
+await mkdir(new URL('logo/', output), { recursive: true });
+for (const file of ['logo_transp_small.png', 'logo_transp_big.png']) {
+  await copyFile(new URL(`logo/${file}`, import.meta.url), new URL(`logo/${file}`, output));
+}
 for (const [source, target] of [['alternative.html', 'index.html'], ['contact.html', 'contact.html']]) {
   let html = await readFile(new URL(source, import.meta.url), 'utf8');
   html = html.replaceAll('href="alternative.html', 'href="index.html');

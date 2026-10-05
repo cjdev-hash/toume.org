@@ -1,0 +1,4 @@
+toume -> RGB [221,215,204]
+accent on "e" -> RGB [184, 134, 108]
+
+background -> RGB [32, 30, 27]

@@ -1,0 +1,13 @@
+:root{--brand-letters:#ddd7cc;--brand-accent:#b8866c}
+.brand-name{color:var(--brand-letters);text-transform:none;white-space:nowrap;font-family:Manrope,Arial,sans-serif}
+/* The matching e covers the letter body, leaving only the acute accent coloured. */
+.brand-name .brand-e{position:relative;display:inline-block;color:var(--brand-accent);font:inherit;letter-spacing:inherit;vertical-align:baseline}
+.brand-name .brand-e::after{content:'e';position:absolute;left:0;top:0;color:var(--brand-letters);font:inherit;letter-spacing:inherit;pointer-events:none}
+.logo,.wordmark{display:inline-flex;align-items:center;letter-spacing:normal;line-height:1}
+.logo img,.wordmark img{display:block;width:130px;height:auto}
+footer .wordmark img{width:104px}
+.portrait-mark{width:130px;height:auto;padding:12px}
+.portrait-mark img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+.portrait-mark{width:130px;height:auto;padding:12px}
+.portrait-mark img{display:block;width:100%;height:auto;aspect-ratio:auto;object-fit:contain}
+@media(max-width:700px){.logo img,.wordmark img{width:112px}}

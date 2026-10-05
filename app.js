@@ -328,6 +328,7 @@ function render(){
  document.querySelectorAll('[data-i18n]').forEach(el=>el.textContent=t[el.dataset.i18n]);
  document.querySelectorAll('[data-lang]').forEach(el=>el.setAttribute('aria-pressed',String(el.dataset.lang===language)));
  main.innerHTML=contactPage?contact(t):home(t);
+ window.toumeBrand?.();
 
  const form=document.querySelector('form');
  if(form){

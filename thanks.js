@@ -10,3 +10,4 @@ document.querySelector('#thanks-label').textContent=thanksText.label;
 document.querySelector('#thanks-title').innerHTML=thanksText.heading;
 document.querySelector('#thanks-description').textContent=thanksText.description;
 document.querySelector('#thanks-back').textContent=thanksText.back;
+window.toumeBrand?.();
