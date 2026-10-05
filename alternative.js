@@ -285,7 +285,7 @@ const storyCopy = {
       {
         "kicker": "What I actually do",
         "title": "Clarity first.<br>Then the right next step.",
-        "description": "Come to me when something is not working, when you are considering a change, or when you need an independent view before making a technology decision.",
+        "description": "Reach out to me when something is not working, when you are considering a change, or when you need an independent view before making a technology decision.",
         "aside": "On-site work is available when physical infrastructure, facilities or direct operational observation make it useful.",
         "caption": "Consulting first",
         "detail": "Implementation when useful",
