@@ -401,7 +401,7 @@ function diagram(index,l){
     case 2:return svg(`<path class="accent-wire" d="M125 100H375V205H125V310H375"/><path class="wire" d="M125 100V205M375 205V310"/>${rect(65,70,120,60,l.people)}${rect(315,70,120,60,l.tools)}${rect(65,175,120,60,l.data)}${rect(300,175,150,60,l.infrastructure)}${rect(315,280,120,60,l.outcome,true)}<circle class="node" cx="125" cy="310" r="5"/>`);
     case 3:return svg(`<text class="small" x="100" y="45">${l.before}</text><text class="small" x="370" y="45">${l.after}</text>${[[40,80],[135,115],[50,180],[130,220],[35,290],[130,325],[140,55]].map(([x,y])=>`<rect class="faint" x="${x}" y="${y}" width="52" height="30" rx="2"/>`).join('')}<path class="wire dash" d="M66 110L161 130L76 195L156 235L61 305L156 340"/><path class="accent-wire" d="M310 105H425V275H310Z"/>${[[290,85],[405,85],[290,255],[405,255]].map(([x,y])=>`<rect class="active-box" x="${x}" y="${y}" width="40" height="40" rx="2"/>`).join('')}<path class="wire" d="M215 190H260L252 182M260 190L252 198"/>`);
     case 4:return svg(`<path class="faint" d="M40 80H460M40 155H460M40 230H460M40 305H460M100 35V350M200 35V350M300 35V350M400 35V350"/><rect class="wire dash" x="60" y="100" width="100" height="160" rx="2"/><path class="wire dash" d="M80 130H140M80 155H130M80 180H140M80 205H120"/><path class="accent-wire" d="M160 180H235V115H350M235 180V265H350M235 180H350"/>${rect(330,90,110,50,'01',true)}${rect(330,155,110,50,'02',true)}${rect(330,240,110,50,'03',true)}<circle class="node" cx="235" cy="180" r="5"/><text class="small" x="110" y="310">${l.idea}</text><text class="small" x="235" y="340">${l.plan}</text><text class="small" x="385" y="310">${l.working}</text>`);
-    case 5:{const nodes=[[100,70,l.developer],[400,70,l.network],[80,195,l.security],[420,195,l.design],[100,320,l.installation],[400,320,l.dataExpert]];return svg(`${nodes.map(([x,y])=>`<path class="accent-wire" d="M250 195L${x} ${y}"/>`).join('')}<circle class="active-box" cx="250" cy="195" r="53"/><image href="logo/logo_transp_small.png" x="190" y="180" width="120" height="29"/>${nodes.map(([x,y,label])=>`${rect(x-62,y-22,124,44,label)}`).join('')}`);}
+    case 5:{const nodes=[[100,70,l.developer],[400,70,l.network],[80,195,l.security],[420,195,l.design],[100,320,l.installation],[400,320,l.dataExpert]];return svg(`${nodes.map(([x,y])=>`<path class="accent-wire" d="M250 195L${x} ${y}"/>`).join('')}<circle class="active-box" cx="250" cy="195" r="53"/><image href="logo/logo_transp_small.png" x="208" y="185" width="84" height="20"/>${nodes.map(([x,y,label])=>`${rect(x-62,y-22,124,44,label)}`).join('')}`);}
     case 6:return svg(`<path class="faint" d="M25 290H475"/><path class="accent-wire" d="M45 260H145V215H245V170H345V125H455"/>${[l.today,l.improve,l.grow,l.change,l.support].map((label,i)=>`<circle class="ring" cx="${45+i*100}" cy="${260-i*45}" r="7"/><circle class="node" cx="${45+i*100}" cy="${260-i*45}" r="2"/><text class="small" x="${45+i*100}" y="325">${label}</text>`).join('')}<path class="wire" d="M445 115L455 125L445 135"/>`);
     default:return '';
   }
@@ -443,6 +443,13 @@ function goTo(index,focus=false){
   if(focus)section.querySelector('h1,h2').focus({preventScroll:true});
   history.replaceState(null,'',`#${hashes[index]}`);
 }
+function personDisclosure(t){return `<details class="experience-disclosure" id="krzysztof"><summary>${t.personLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content">
+        <div class="person-intro"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><h3>${t.person.title}</h3></div>
+        <p class="experience-context">${t.person.description}</p><p class="experience-context">${t.person.supporting}</p><p class="experience-context">${t.person.aside}</p>
+        <h3>${t.experienceLabel}</h3><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p>
+        <ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul>
+        <section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section>
+      </div></details>`;}
 function render(preserve=false){
   const previous=active;
   const experienceOpen=document.querySelector('.experience-disclosure')?.open || false;
@@ -463,17 +470,11 @@ function render(preserve=false){
       ${scene.badge?`<p class="remote-badge">${scene.badge}</p>`:''}
       ${scene.supporting?`<p class="scene-aside">${scene.supporting}</p>`:''}
       <p class="scene-aside">${scene.aside}</p>
-      ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a>`}
+      ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<div class="closing-actions"><a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a>${personDisclosure(t)}</div>`}
     </div>
     ${i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong> — ${scene.detail}</p></div>`:i===6?`<div class="engagement-panel">
       <dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map(service=>`<div><dt>${service.title}</dt><dd>${service.description}</dd></div>`).join('')}</dl>
-      <details class="experience-disclosure" id="krzysztof"><summary>${t.personLabel}<span class="disclosure-icon" aria-hidden="true"></span></summary><div class="experience-content">
-        <div class="person-intro"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><h3>${t.person.title}</h3></div>
-        <p class="experience-context">${t.person.description}</p><p class="experience-context">${t.person.supporting}</p><p class="experience-context">${t.person.aside}</p>
-        <h3>${t.experienceLabel}</h3><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p>
-        <ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul>
-        <section class="experience-bridge" aria-labelledby="bridge-title"><h3 id="bridge-title">${t.bridgeTitle}</h3><p>${t.bridgeIntro}</p><ul class="bridge-questions">${t.bridgeQuestions.map(question=>`<li>${question}</li>`).join('')}</ul><p>${t.bridgeConclusion}</p></section>
-      </div></details>
+
     </div>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span>${scene.detail}</span></figcaption></figure>`}
   </section>`).join('');
 

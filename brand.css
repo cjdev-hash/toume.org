@@ -1,5 +1,7 @@
 :root{--brand-letters:#ddd7cc;--brand-accent:#b8866c}
 .brand-name{color:var(--brand-letters);text-transform:none;white-space:nowrap;font-family:Manrope,Arial,sans-serif}
+.scene[data-scene="4"] .scene-kicker .brand-name{font-size:34px;font-weight:800;letter-spacing:-1.7px;line-height:1.15}
+@media(max-width:700px){.scene[data-scene="4"] .scene-kicker .brand-name{font-size:29px;letter-spacing:-1.4px}}
 /* The matching e covers the letter body, leaving only the acute accent coloured. */
 .brand-name .brand-e{position:relative;display:inline-block;color:var(--brand-accent);font:inherit;letter-spacing:inherit;vertical-align:baseline}
 .brand-name .brand-e::after{content:'e';position:absolute;left:0;top:0;color:var(--brand-letters);font:inherit;letter-spacing:inherit;pointer-events:none}
