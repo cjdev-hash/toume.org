@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toumé — Systems & Process Mapping / Dependency X-Ray</title>
+<style>
+:root{
+  --bg:rgb(32,30,27);
+  --ink:rgb(221,215,204);
+  --accent:rgb(184,134,108);
+  --muted:rgba(221,215,204,.56);
+  --line:rgba(221,215,204,.14);
+  --panel:rgba(42,39,35,.96);
+  --soft:rgba(184,134,108,.10);
+}
+*{box-sizing:border-box}
+html,body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+body{padding:28px;min-height:100vh}
+.page{max-width:1380px;margin:auto}
+.top{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:46px
+}
+.brand{font-size:28px;font-weight:800;letter-spacing:-.04em}
+.brand .e{color:var(--accent)}
+.controls{display:flex;gap:8px;flex-wrap:wrap}
+button{
+  appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.025);
+  color:var(--ink);padding:9px 13px;border-radius:999px;font-size:12px;cursor:pointer
+}
+button:hover,button.active{
+  border-color:var(--accent);background:rgba(184,134,108,.08)
+}
+.hero{
+  display:grid;grid-template-columns:minmax(0,.70fr) minmax(700px,1.3fr);
+  gap:58px;align-items:start
+}
+.eyebrow{
+  font-size:11px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:24px
+}
+h1{
+  font-size:clamp(48px,5.8vw,84px);line-height:.98;
+  letter-spacing:-.055em;font-weight:500;margin:0 0 24px
+}
+.copy p{
+  font-size:18px;line-height:1.62;color:rgba(221,215,204,.72);
+  max-width:580px
+}
+.copy .principle{
+  margin-top:32px;border-left:2px solid var(--accent);
+  padding:14px 0 14px 16px;font-size:14px;line-height:1.55;
+  color:rgba(221,215,204,.78)
+}
+.viewer{
+  position:relative;height:735px;border:1px solid var(--line);
+  border-radius:28px;overflow:hidden;
+  background:
+    radial-gradient(circle at 55% 35%,rgba(184,134,108,.06),transparent 30%),
+    linear-gradient(rgba(221,215,204,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(221,215,204,.028) 1px,transparent 1px);
+  background-size:auto,54px 54px,54px 54px;
+  touch-action:none;
+}
+.scene{
+  position:absolute;inset:0;
+}
+.surface,.deep{
+  position:absolute;inset:0;
+}
+.surface{
+  filter:saturate(.8);
+}
+.deep{
+  clip-path:circle(118px at var(--x,50%) var(--y,50%));
+  transition:clip-path .08s linear;
+}
+.deep:after{
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(circle 118px at var(--x,50%) var(--y,50%),
+    rgba(184,134,108,.08) 0 90px,
+    rgba(184,134,108,.18) 116px,
+    transparent 118px);
+  pointer-events:none;
+}
+.lensRing{
+  position:absolute;width:236px;height:236px;border-radius:50%;
+  border:1px solid rgba(184,134,108,.72);
+  box-shadow:
+    0 0 0 1px rgba(184,134,108,.12),
+    inset 0 0 44px rgba(184,134,108,.07);
+  pointer-events:none;transform:translate(-50%,-50%);
+  left:50%;top:50%;z-index:12;
+}
+.lensRing:before,.lensRing:after{
+  content:"";position:absolute;background:rgba(184,134,108,.35)
+}
+.lensRing:before{left:50%;top:-12px;width:1px;height:18px}
+.lensRing:after{top:50%;left:-12px;width:18px;height:1px}
+.lensTag{
+  position:absolute;z-index:13;pointer-events:none;
+  left:calc(50% + 126px);top:calc(50% - 116px);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--accent);white-space:nowrap
+}
+
+.card{
+  position:absolute;width:150px;min-height:88px;border:1px solid var(--line);
+  border-radius:17px;padding:13px;background:rgba(255,255,255,.035);
+  transition:border-color .18s ease,background .18s ease,transform .18s ease
+}
+.card strong{font-size:14px;line-height:1.12;display:block}
+.card small{font-size:10px;color:var(--muted);display:block;margin-top:6px;line-height:1.35}
+.card .kind{
+  font-size:9px;letter-spacing:.13em;text-transform:uppercase;color:var(--muted);
+  margin-bottom:8px
+}
+.deep .card{
+  border-color:rgba(184,134,108,.48);
+  background:rgb(42,39,35);
+  box-shadow:0 10px 26px rgba(0,0,0,.22)
+}
+.deep .card .kind{color:var(--accent)}
+
+.c1{left:6%;top:13%}
+.c2{left:31%;top:10%}
+.c3{left:59%;top:13%}
+.c4{left:15%;top:39%}
+.c5{left:45%;top:37%}
+.c6{left:70%;top:42%}
+.c7{left:29%;top:64%}
+.c8{left:61%;top:65%}
+
+svg{
+  position:absolute;inset:0;width:100%;height:100%;overflow:visible
+}
+.surface .wire{
+  stroke:rgba(221,215,204,.12);stroke-width:1.2;fill:none
+}
+.deep .wire{
+  stroke:rgba(184,134,108,.64);stroke-width:1.8;fill:none
+}
+.deep .wire.data{
+  stroke-dasharray:7 6
+}
+.deep .wire.risk{
+  stroke:rgba(221,215,204,.54);stroke-width:1.2;stroke-dasharray:2 7
+}
+.deep .pulse{
+  fill:var(--accent);
+  filter:drop-shadow(0 0 5px rgba(184,134,108,.6))
+}
+.surface .label{
+  font-size:10px;fill:rgba(221,215,204,.28)
+}
+.deep .label{
+  font-size:10px;
+  fill:rgba(221,215,204,.78);
+  paint-order:stroke;
+  stroke:rgb(32,30,27);
+  stroke-width:5px;
+  stroke-linejoin:round;
+}
+.deep .label.accent{
+  fill:rgb(184,134,108);
+  stroke:rgb(32,30,27);
+}
+
+.info{
+  position:absolute;left:18px;right:18px;bottom:18px;
+  min-height:126px;border:1px solid var(--line);border-radius:19px;
+  background:rgba(42,39,35,.96);padding:16px 18px;
+  display:grid;grid-template-columns:1fr 1fr;gap:20px;z-index:20
+}
+.info h3{margin:0 0 7px;font-size:18px;letter-spacing:-.025em}
+.info p{
+  margin:0;font-size:12px;line-height:1.52;color:rgba(221,215,204,.72)
+}
+.signals{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end;align-content:flex-start}
+.chip{
+  padding:6px 8px;border-radius:999px;border:1px solid var(--line);
+  font-size:10px;color:var(--muted)
+}
+.chip.on{
+  color:var(--ink);border-color:rgba(184,134,108,.5);
+  background:rgba(184,134,108,.075)
+}
+
+.mode{
+  position:absolute;top:18px;left:18px;z-index:20;display:flex;gap:8px
+}
+.mode button{background:rgba(32,30,27,.76)}
+.mode button.active{background:rgba(184,134,108,.12)}
+
+@media(max-width:1080px){
+  .hero{grid-template-columns:1fr}
+}
+@media(max-width:700px){
+  body{padding:14px}
+  .viewer{height:720px;border-radius:20px}
+  .card{width:124px;min-height:80px;padding:10px}
+  .info{grid-template-columns:1fr}
+  .signals{justify-content:flex-start}
+}
+@media(prefers-reduced-motion:reduce){
+  .deep{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="brand">toum<span class="e">é</span></div>
+    <div class="controls">
+      <button id="centerBtn">Center lens</button>
+      <button id="lockBtn">Lock lens</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="copy">
+      <div class="eyebrow">Systems & Process Mapping</div>
+      <h1>To, co widać,<br>to nie cały system.</h1>
+      <p>
+        Przesuń „soczewkę” po organizacji. Na powierzchni widać tylko zespoły
+        i narzędzia. Pod spodem pojawiają się przepływy danych, zależności,
+        ryzyka i miejsca, w których jeden element wpływa na kilka innych.
+      </p>
+      <div class="principle">
+        System mapping nie polega na narysowaniu pudełek.
+        Chodzi o odkrycie zależności, które wpływają na decyzje.
+      </div>
+    </div>
+
+    <div class="viewer" id="viewer">
+      <div class="mode">
+        <button class="active" data-mode="all">All dependencies</button>
+        <button data-mode="data">Data</button>
+        <button data-mode="risk">Risk</button>
+      </div>
+
+      <div class="scene">
+        <div class="surface">
+          <svg viewBox="0 0 1000 735" preserveAspectRatio="none">
+            <path class="wire" d="M140 125 C250 120 280 110 360 110"/>
+            <path class="wire" d="M410 115 C540 105 590 115 670 135"/>
+            <path class="wire" d="M155 315 C295 285 365 290 470 300"/>
+            <path class="wire" d="M520 305 C640 320 690 330 775 350"/>
+            <path class="wire" d="M365 500 C430 440 470 400 500 350"/>
+            <path class="wire" d="M690 500 C650 455 620 420 560 350"/>
+          </svg>
+
+          <div class="card c1"><div class="kind">Team</div><strong>Sales</strong><small>customer request</small></div>
+          <div class="card c2"><div class="kind">System</div><strong>CRM</strong><small>accounts · pipeline</small></div>
+          <div class="card c3"><div class="kind">Team</div><strong>Operations</strong><small>delivery ownership</small></div>
+          <div class="card c4"><div class="kind">Process</div><strong>Order Flow</strong><small>request → delivery</small></div>
+          <div class="card c5"><div class="kind">System</div><strong>ERP</strong><small>orders · finance</small></div>
+          <div class="card c6"><div class="kind">Team</div><strong>Finance</strong><small>billing · control</small></div>
+          <div class="card c7"><div class="kind">Data</div><strong>Customer Data</strong><small>shared records</small></div>
+          <div class="card c8"><div class="kind">System</div><strong>Reporting</strong><small>metrics · decisions</small></div>
+        </div>
+
+        <div class="deep" id="deep">
+          <svg viewBox="0 0 1000 735" preserveAspectRatio="none">
+            <path class="wire data" data-kind="data" d="M140 125 C250 120 280 110 360 110"/>
+            <path class="wire" d="M410 115 C540 105 590 115 670 135"/>
+            <path class="wire" d="M155 315 C295 285 365 290 470 300"/>
+            <path class="wire data" data-kind="data" d="M520 305 C640 320 690 330 775 350"/>
+            <path class="wire data" data-kind="data" d="M365 500 C430 440 470 400 500 350"/>
+            <path class="wire data" data-kind="data" d="M690 500 C650 455 620 420 560 350"/>
+            <path class="wire risk" data-kind="risk" d="M360 110 C430 180 465 230 500 300"/>
+            <path class="wire risk" data-kind="risk" d="M500 300 C620 255 705 230 760 175"/>
+            <path class="wire risk" data-kind="risk" d="M500 300 C500 410 500 465 365 500"/>
+
+            <text class="label accent" x="230" y="82">shared customer record</text>
+            <text class="label" x="575" y="274">order status</text>
+            <text class="label accent" x="386" y="474">source of truth?</text>
+            <text class="label" x="670" y="478">reporting dependency</text>
+          </svg>
+
+          <div class="card c1"><div class="kind">Team + dependency</div><strong>Sales</strong><small>creates initial customer context</small></div>
+          <div class="card c2"><div class="kind">System + data owner?</div><strong>CRM</strong><small>one of two customer records</small></div>
+          <div class="card c3"><div class="kind">Team + handoff</div><strong>Operations</strong><small>depends on correct order status</small></div>
+          <div class="card c4"><div class="kind">Process + bottleneck</div><strong>Order Flow</strong><small>manual exception handling</small></div>
+          <div class="card c5"><div class="kind">System + hub</div><strong>ERP</strong><small>central operational dependency</small></div>
+          <div class="card c6"><div class="kind">Team + downstream</div><strong>Finance</strong><small>billing depends on order state</small></div>
+          <div class="card c7"><div class="kind">Data + duplication</div><strong>Customer Data</strong><small>exists in more than one place</small></div>
+          <div class="card c8"><div class="kind">System + dependent</div><strong>Reporting</strong><small>quality depends on upstream consistency</small></div>
+        </div>
+
+        <div class="lensRing" id="ring"></div>
+        <div class="lensTag" id="tag">Dependency lens</div>
+      </div>
+
+      <div class="info">
+        <div>
+          <h3 id="infoTitle">Przesuń soczewkę</h3>
+          <p id="infoText">
+            Najedź na obszar, żeby zobaczyć ukryte zależności.
+            Kliknięcie blokuje soczewkę, dzięki czemu możesz spokojnie przeczytać wynik.
+          </p>
+        </div>
+        <div class="signals" id="signals">
+          <span class="chip on">process</span>
+          <span class="chip on">systems</span>
+          <span class="chip on">data</span>
+          <span class="chip on">risk</span>
+          <span class="chip on">dependencies</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const viewer=document.getElementById("viewer");
+const deep=document.getElementById("deep");
+const ring=document.getElementById("ring");
+const tag=document.getElementById("tag");
+const infoTitle=document.getElementById("infoTitle");
+const infoText=document.getElementById("infoText");
+const lockBtn=document.getElementById("lockBtn");
+let locked=false;
+let current={x:.5,y:.5};
+let mode="all";
+
+const hotspots=[
+  {
+    x:.33,y:.20,r:.17,
+    title:"CRM ↔ ERP",
+    text:"Na powierzchni to dwa osobne systemy. Głębiej widać pytanie o ownership danych i zależność operacji od synchronizacji między nimi."
+  },
+  {
+    x:.48,y:.45,r:.18,
+    title:"Order Flow ↔ ERP",
+    text:"Proces nie jest tylko sekwencją kroków. ERP staje się centralnym hubem, a ręczne wyjątki tworzą zależność od wiedzy operacyjnej."
+  },
+  {
+    x:.34,y:.69,r:.18,
+    title:"Customer Data",
+    text:"Ten sam typ informacji istnieje w więcej niż jednym miejscu. To może powodować konflikty danych i utrudniać ustalenie source of truth."
+  },
+  {
+    x:.70,y:.69,r:.18,
+    title:"Reporting",
+    text:"Raportowanie wygląda jak osobny system, ale jego jakość zależy od spójności danych i poprawności procesów upstream."
+  },
+  {
+    x:.75,y:.28,r:.16,
+    title:"Operations ↔ Finance",
+    text:"Zmiana statusu operacyjnego ma konsekwencje finansowe. To relacja procesowa, systemowa i danych jednocześnie."
+  }
+];
+
+function setLens(px,py){
+  const r=viewer.getBoundingClientRect();
+  const x=Math.max(118,Math.min(r.width-118,px-r.left));
+  const y=Math.max(118,Math.min(r.height-160,py-r.top));
+
+  current={x:x/r.width,y:y/r.height};
+
+  deep.style.setProperty("--x",x+"px");
+  deep.style.setProperty("--y",y+"px");
+  ring.style.left=x+"px";
+  ring.style.top=y+"px";
+  const maxTagX=Math.max(12,r.width-150);
+  tag.style.left=Math.min(x+126,maxTagX)+"px";
+  tag.style.top=Math.max(14,y-116)+"px";
+
+  let nearest=null,nd=Infinity;
+  hotspots.forEach(h=>{
+    const d=Math.hypot(current.x-h.x,current.y-h.y);
+    if(d<h.r && d<nd){nearest=h;nd=d}
+  });
+
+  if(nearest){
+    infoTitle.textContent=nearest.title;
+    infoText.textContent=nearest.text;
+  }else{
+    infoTitle.textContent="Ukryte zależności";
+    infoText.textContent="Nie każdy element jest ważny sam w sobie. Znaczenie pojawia się dopiero wtedy, gdy zobaczysz, od czego zależy i na co wpływa.";
+  }
+}
+
+function center(){
+  const r=viewer.getBoundingClientRect();
+  setLens(r.left+r.width*.5,r.top+r.height*.43);
+}
+
+viewer.addEventListener("pointermove",e=>{
+  if(!locked)setLens(e.clientX,e.clientY);
+});
+viewer.addEventListener("pointerdown",e=>{
+  if(e.target.closest("button"))return;
+  locked=!locked;
+  lockBtn.classList.toggle("active",locked);
+  lockBtn.textContent=locked?"Unlock lens":"Lock lens";
+  setLens(e.clientX,e.clientY);
+});
+
+document.getElementById("centerBtn").addEventListener("click",()=>{
+  locked=false;
+  lockBtn.classList.remove("active");
+  lockBtn.textContent="Lock lens";
+  center();
+});
+
+lockBtn.addEventListener("click",()=>{
+  locked=!locked;
+  lockBtn.classList.toggle("active",locked);
+  lockBtn.textContent=locked?"Unlock lens":"Lock lens";
+});
+
+document.querySelectorAll(".mode button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".mode button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    mode=btn.dataset.mode;
+
+    document.querySelectorAll(".deep .wire").forEach(w=>{
+      const kind=w.dataset.kind||"base";
+      if(mode==="all"){
+        w.style.opacity="1";
+      }else if(mode==="data"){
+        w.style.opacity=(kind==="data"||kind==="base")?"1":".10";
+      }else if(mode==="risk"){
+        w.style.opacity=(kind==="risk"||kind==="base")?"1":".10";
+      }
+    });
+
+    document.querySelectorAll(".chip").forEach(c=>{
+      const t=c.textContent.trim();
+      c.classList.toggle("on",
+        mode==="all" ||
+        (mode==="data"&&(t==="data"||t==="systems"||t==="dependencies")) ||
+        (mode==="risk"&&(t==="risk"||t==="dependencies"))
+      );
+    });
+  });
+});
+
+window.addEventListener("resize",center);
+center();
+</script>
+</body>
+</html>

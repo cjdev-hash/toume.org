@@ -304,8 +304,10 @@ const copy = {
 };
 let language='en';
 try { language=localStorage.getItem('toume-language')==='pl'?'pl':'en'; } catch {}
+const urlLanguage=location.pathname.split('/')[1];
+if(['en','pl'].includes(urlLanguage))language=urlLanguage;
 const main=document.querySelector('main');
-const contactPage=location.pathname.endsWith('contact.html');
+const contactPage=location.pathname.endsWith('contact.html')||/\/(en|pl)\/contact\/?$/.test(location.pathname);
 let sentReference=null;
 let sending=false;
 
@@ -391,7 +393,7 @@ function render(){
  document.querySelector('.send-another')?.addEventListener('click',()=>{sentReference=null;render();document.querySelector('#name')?.focus();});
  const art=document.querySelector('.art');if(art&&!matchMedia('(prefers-reduced-motion: reduce)').matches){art.addEventListener('pointermove',event=>{const rect=art.getBoundingClientRect();const x=(event.clientX-rect.left)/rect.width-.5;const y=(event.clientY-rect.top)/rect.height-.5;art.querySelector('.sculpture').style.translate=`${x*15}px ${y*15}px`;});art.addEventListener('pointerleave',()=>art.querySelector('.sculpture').style.translate='0 0');}
 }
-document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{language=button.dataset.lang;try{localStorage.setItem('toume-language',language);}catch{}render();}));
+document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{language=button.dataset.lang;try{localStorage.setItem('toume-language',language);}catch{}if(['en','pl'].includes(urlLanguage)){location.href=`/${language}/contact/`;}else{render();}}));
 document.querySelector('#year').textContent=new Date().getFullYear();render();
 
 window.addEventListener('pageshow',()=>{const button=document.querySelector('form button[type="submit"]');if(button){button.disabled=false;button.querySelector('span').textContent=copy[language].submit;}});

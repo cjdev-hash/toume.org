@@ -1,11 +1,12 @@
 import { mkdir, readFile, writeFile, copyFile, readdir } from 'node:fs/promises';
 import assert from 'node:assert/strict';
+import { buildSeo } from './seo-build.mjs';
 
 // Only these files are published. Briefs, tooling, and the classic design stay out.
-const assets = ['alternative.css', 'alternative.js', 'app.js', 'brand.css', 'brand.js', 'ja.png', 'CNAME', 'thanks.html', 'thanks.js', 'google4ac4dc9bc8f1ae26.html'];
+const assets = ['alternative.css', 'alternative.js', 'app.js', 'brand.css', 'brand.js', 'seo.css', 'seo.js', 'navigation.js', 'viewers.css', 'viewers.js', 'viewer-core.js', 'ja.png', 'CNAME', 'thanks.html', 'thanks.js', 'google4ac4dc9bc8f1ae26.html'];
 const output = new URL('./dist/', import.meta.url);
 await mkdir(output, { recursive: true });
-const expected = new Set([...assets, 'logo', 'index.html', 'contact.html', 'alternative.html', '.nojekyll']);
+const expected = new Set([...assets, 'logo', 'en', 'pl', 'robots.txt', 'sitemap.xml', 'index.html', 'contact.html', 'alternative.html', '.nojekyll']);
 for (const file of await readdir(output)) {
   assert.ok(expected.has(file), `Unexpected file in dist: ${file}. Review it before deploying.`);
 }
@@ -24,6 +25,7 @@ for (const [source, target] of [['alternative.html', 'index.html'], ['contact.ht
 // Preserve old preview bookmarks without publishing a second homepage.
 await writeFile(new URL('alternative.html', output), '<!doctype html><html lang="en"><meta charset="utf-8"><meta name="robots" content="noindex"><title>toumé</title><script>location.replace("./"+location.search+location.hash)</script><a href="./">toumé</a></html>');
 await writeFile(new URL('.nojekyll', output), '');
+await buildSeo(output);
 const homepage = await readFile(new URL('index.html', output), 'utf8');
 assert.ok(homepage.includes('id="story"'), 'The guided design must be the homepage.');
 assert.equal((await readFile(new URL('CNAME', output), 'utf8')).trim(), 'toume.org');

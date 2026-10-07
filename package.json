@@ -1,12 +1,13 @@
-{
-  "name": "toume-website",
-  "version": "0.1.0",
-  "private": true,
-  "description": "A personal, bilingual technology concierge website for toumé",
-  "scripts": {
-    "dev": "node server.mjs",
-    "start": "node server.mjs",
-    "build": "node build.mjs",
-    "check": "node --check app.js && node --check alternative.js && node --check thanks.js && node --check brand.js && node --check server.mjs && node --check build.mjs"
-  }
+﻿{
+    "name":  "toume-website",
+    "version":  "0.1.0",
+    "private":  true,
+    "description":  "A personal, bilingual technology concierge website for toumÃ©",
+    "scripts":  {
+                    "dev":  "node build.mjs \u0026\u0026 node server.mjs",
+                    "start":  "node build.mjs \u0026\u0026 node server.mjs",
+                    "build":  "node build.mjs",
+                    "check":  "node --check app.js \u0026\u0026 node --check alternative.js \u0026\u0026 node --check thanks.js \u0026\u0026 node --check brand.js \u0026\u0026 node --check server.mjs \u0026\u0026 node --check build.mjs \u0026\u0026 node --check seo-build.mjs \u0026\u0026 node --check seo-content.mjs \u0026\u0026 node --check seo.js \u0026\u0026 node --check navigation.js \u0026\u0026 node --check viewers.js \u0026\u0026 node --check viewer-core.js \u0026\u0026 node --check viewer-models.mjs \u0026\u0026 node --check viewer-build.mjs",
+                    "test:seo":  "node build.mjs \u0026\u0026 node seo-check.mjs"
+                }
 }

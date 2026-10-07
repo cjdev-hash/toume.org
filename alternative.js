@@ -24,7 +24,7 @@ const storyCopy = {
         "description": "Przekładam wyzwania techniczne i operacyjne na czytelne diagramy, decyzje i konkretne kolejne kroki."
       }
     ],
-    "title": "toumé — Doradztwo, audyty i projektowanie technologii",
+    "title": "Doradca technologiczny: systemy, automatyzacja i AI | toumé",
     "skip": "Przejdź do treści",
     "talk": "Porozmawiajmy",
     "back": "Wstecz",
@@ -36,12 +36,12 @@ const storyCopy = {
     "scenes": [
       {
         "kicker": "Doradztwo technologiczne",
-        "title": "Cześć, jestem<br>doradcą technologicznym.",
+        "title": "Cześć, jestem<br>konsultantem technologicznym.",
         "description": "Pomagam firmom wyjść z impasu, unowocześnić sposób pracy i przygotować się na kolejne zmiany.",
         "aside": "Od niezależnych audytów i projektowania systemów po automatyzację, AI i wsparcie wdrożenia.",
         "caption": "Ludzie → procesy → systemy → dane",
         "detail": "Właściwy kierunek",
-        "supporting": "Sprawdzam, jak współpracują ludzie, procesy, systemy i dane. Wskazuję, co spowalnia działanie lub utrudnia zmianę, i pomagam znaleźć właściwą drogę do celu."
+        "supporting": "Zaczynam od zrozumienia, jak naprawdę działa Twój biznes i jak współpracują ludzie, procesy, systemy i dane. Potem wskazuję, co spowalnia działanie, zwiększa ryzyko albo utrudnia zmianę, i pomagam znaleźć właściwy kierunek."
       },
       {
         "kicker": "Konsultacja",
@@ -220,7 +220,7 @@ const storyCopy = {
         "description": "Translating technical or operational problems into diagrams, decisions, and practical next steps that are easy to understand."
       }
     ],
-    "title": "toumé — Technology consulting, audits & design",
+    "title": "Technology Consultant for Business Systems, Automation & AI | toumé",
     "skip": "Skip to content",
     "talk": "Let’s talk",
     "back": "Back",
@@ -237,7 +237,7 @@ const storyCopy = {
         "aside": "From independent audits and system design to automation, AI and implementation support.",
         "caption": "People → processes → systems → data",
         "detail": "The right path forward",
-        "supporting": "I look at how your people, processes, systems and data fit together, identify what is slowing you down or getting in the way of change, and help you find the right path forward."
+        "supporting": "I start by understanding how your business really works and how your people, processes, systems and data fit together. Then I identify what is slowing you down, increasing risk or getting in the way of change, and help you find the right direction."
       },
       {
         "kicker": "Consultation",
@@ -401,13 +401,16 @@ function diagram(index,l){
     case 2:return svg(`<path class="accent-wire" d="M125 100H375V205H125V310H375"/><path class="wire" d="M125 100V205M375 205V310"/>${rect(65,70,120,60,l.people)}${rect(315,70,120,60,l.tools)}${rect(65,175,120,60,l.data)}${rect(300,175,150,60,l.infrastructure)}${rect(315,280,120,60,l.outcome,true)}<circle class="node" cx="125" cy="310" r="5"/>`);
     case 3:return svg(`<text class="small" x="100" y="45">${l.before}</text><text class="small" x="370" y="45">${l.after}</text>${[[40,80],[135,115],[50,180],[130,220],[35,290],[130,325],[140,55]].map(([x,y])=>`<rect class="faint" x="${x}" y="${y}" width="52" height="30" rx="2"/>`).join('')}<path class="wire dash" d="M66 110L161 130L76 195L156 235L61 305L156 340"/><path class="accent-wire" d="M310 105H425V275H310Z"/>${[[290,85],[405,85],[290,255],[405,255]].map(([x,y])=>`<rect class="active-box" x="${x}" y="${y}" width="40" height="40" rx="2"/>`).join('')}<path class="wire" d="M215 190H260L252 182M260 190L252 198"/>`);
     case 4:return svg(`<path class="faint" d="M40 80H460M40 155H460M40 230H460M40 305H460M100 35V350M200 35V350M300 35V350M400 35V350"/><rect class="wire dash" x="60" y="100" width="100" height="160" rx="2"/><path class="wire dash" d="M80 130H140M80 155H130M80 180H140M80 205H120"/><path class="accent-wire" d="M160 180H235V115H350M235 180V265H350M235 180H350"/>${rect(330,90,110,50,'01',true)}${rect(330,155,110,50,'02',true)}${rect(330,240,110,50,'03',true)}<circle class="node" cx="235" cy="180" r="5"/><text class="small" x="110" y="310">${l.idea}</text><text class="small" x="235" y="340">${l.plan}</text><text class="small" x="385" y="310">${l.working}</text>`);
-    case 5:{const nodes=[[100,70,l.developer],[400,70,l.network],[80,195,l.security],[420,195,l.design],[100,320,l.installation],[400,320,l.dataExpert]];return svg(`${nodes.map(([x,y])=>`<path class="accent-wire" d="M250 195L${x} ${y}"/>`).join('')}<circle class="active-box" cx="250" cy="195" r="53"/><image href="logo/logo_transp_small.png" x="208" y="185" width="84" height="20"/>${nodes.map(([x,y,label])=>`${rect(x-62,y-22,124,44,label)}`).join('')}`);}
+    case 5:{const nodes=[[100,70,l.developer],[400,70,l.network],[80,195,l.security],[420,195,l.design],[100,320,l.installation],[400,320,l.dataExpert]];return svg(`${nodes.map(([x,y])=>`<path class="accent-wire" d="M250 195L${x} ${y}"/>`).join('')}<circle class="active-box" cx="250" cy="195" r="53"/><image href="/logo/logo_transp_small.png" x="208" y="185" width="84" height="20"/>${nodes.map(([x,y,label])=>`${rect(x-62,y-22,124,44,label)}`).join('')}`);}
     case 6:return svg(`<path class="faint" d="M25 290H475"/><path class="accent-wire" d="M45 260H145V215H245V170H345V125H455"/>${[l.today,l.improve,l.grow,l.change,l.support].map((label,i)=>`<circle class="ring" cx="${45+i*100}" cy="${260-i*45}" r="7"/><circle class="node" cx="${45+i*100}" cy="${260-i*45}" r="2"/><text class="small" x="${45+i*100}" y="325">${label}</text>`).join('')}<path class="wire" d="M445 115L455 125L445 135"/>`);
     default:return '';
   }
 }
 let language='en';
 try{language=localStorage.getItem('toume-language')==='pl'?'pl':'en';}catch{}
+const urlLanguage=location.pathname.split('/')[1];
+if(['en','pl'].includes(urlLanguage))language=urlLanguage;
+if(['','index.html','alternative.html'].includes(urlLanguage))language='en';
 const main=document.querySelector('#story');
 let active=0;
 let observer;
@@ -444,7 +447,7 @@ function goTo(index,focus=false){
   history.replaceState(null,'',`#${hashes[index]}`);
 }
 function personDisclosure(t){return `<div class="experience-content profile-content" id="krzysztof" hidden>
-        <div class="person-intro"><img src="ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><h3>${t.person.title}</h3></div>
+        <div class="person-intro"><img src="/ja.png" width="1254" height="1254" loading="lazy" decoding="async" alt="${t.labels.portrait}"><h3>${t.person.title}</h3></div>
         <p class="experience-context">${t.person.description}</p><p class="experience-context">${t.person.supporting}</p><p class="experience-context">${t.person.aside}</p>
         <h3>${t.experienceLabel}</h3><p class="experience-context">${t.experienceIntro}</p><p class="experience-context">${t.experienceMethod}</p>
         <ul>${t.experience.map(item=>`<li><h3>${item.title}</h3><p>${item.description}</p></li>`).join('')}</ul>
@@ -472,15 +475,15 @@ function render(preserve=false){
       ${scene.supporting?`<p class="scene-aside">${scene.supporting}</p>`:''}
       <p class="scene-aside">${scene.aside}</p>
       <div class="slide-actions">
-        ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<button type="button" class="scene-link person-toggle" id="person-toggle" aria-expanded="false" aria-controls="krzysztof"><span>${t.personLabel}</span><span class="toggle-symbol" aria-hidden="true">+</span></button><a class="scene-link" href="contact.html"><span>${t.talk}</span><span aria-hidden="true">↗</span></a>`}
+        ${i<6?`<a class="scene-link" href="#${hashes[i+1]}" data-next-scene="${i+1}"><span>${i===0?t.start:t.next}</span><span aria-hidden="true">→</span></a>`:`<button type="button" class="scene-link person-toggle" id="person-toggle" aria-expanded="false" aria-controls="krzysztof"><span>${t.personLabel}</span><span class="toggle-symbol" aria-hidden="true">+</span></button><a class="scene-link" href="/${language}/contact/"><span>${t.talk}</span><span aria-hidden="true">↗</span></a>`}
         <button type="button" class="scene-link info-toggle" data-info="${i}" aria-expanded="false" aria-controls="info-${i}"><span>${language==='pl'?'Rozwiń':'Expand'}</span><span class="toggle-symbol" aria-hidden="true">+</span></button>
       </div>
       ${i===6?personDisclosure(t):''}
     </div>
     <div class="scene-info" id="info-${i}">${i===4?`<div class="method-panel"><ol class="method-steps">${t.methodSteps.map((step,index)=>`<li><span class="method-number">0${index+1} /</span><div><h3>${step.title}</h3><p>${step.description}</p></div></li>`).join('')}</ol><p class="method-framework"><strong>UADIR</strong>: ${scene.detail}</p></div>`:i===6?`<div class="engagement-panel">
-      <dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map(service=>`<div><dt>${service.title}</dt><dd>${service.description}</dd></div>`).join('')}</dl>
+      <dl class="consulting-services" aria-label="${scene.kicker}">${t.services.map((service,index)=>`<div><dt><a href="/${language}/${['technology-consulting','technology-audit','systems-process-mapping','technology-consulting','technology-consulting','implementation-support'][index]}/">${service.title}</a></dt><dd>${service.description}</dd></div>`).join('')}</dl>
 
-    </div>`:`<figure class="diagram">${diagram(i,t.labels)}<figcaption><span>${scene.caption}</span><span>${scene.detail}</span></figcaption></figure>`}</div>
+    </div>`:`<figure class="diagram">${diagram(i,t.labels)}</figure>`}</div>
   </section>`).join('');
 
   const profile=document.querySelector('#krzysztof');
@@ -523,6 +526,6 @@ function render(preserve=false){
 }
 document.querySelector('#next').addEventListener('click',()=>goTo(active===6?0:active+1,true));
 document.querySelector('#back').addEventListener('click',()=>goTo(Math.max(0,active-1),true));
-document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{language=button.dataset.lang;try{localStorage.setItem('toume-language',language);}catch{}render(true);}));
+document.querySelectorAll('[data-lang]').forEach(button=>button.addEventListener('click',()=>{language=button.dataset.lang;try{localStorage.setItem('toume-language',language);}catch{}location.href=`/${language}/${location.hash}`;}));
 window.addEventListener('hashchange',()=>{const index=hashes.indexOf(location.hash.slice(1));if(index>=0)goTo(index);});
 render();

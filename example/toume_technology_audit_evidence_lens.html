@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toumé — Technology Audit Evidence Lens</title>
+<style>
+:root{
+  --bg:rgb(32,30,27);
+  --ink:rgb(221,215,204);
+  --accent:rgb(184,134,108);
+  --muted:rgba(221,215,204,.56);
+  --line:rgba(221,215,204,.14);
+  --surface:rgba(255,255,255,.035);
+  --surface2:rgba(184,134,108,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{padding:28px;min-height:100vh}
+.page{max-width:1360px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:46px}
+.brand{font-size:28px;font-weight:800;letter-spacing:-.04em}
+.brand .e{color:var(--accent)}
+.reset{
+  appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink);
+  padding:9px 14px;border-radius:999px;font-size:12px;cursor:pointer
+}
+.hero{display:grid;grid-template-columns:minmax(0,.72fr) minmax(660px,1.28fr);gap:56px;align-items:start}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+h1{font-size:clamp(48px,5.7vw,82px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0 0 24px}
+.copy p{font-size:18px;line-height:1.62;color:rgba(221,215,204,.72);max-width:570px}
+.audit{
+  border:1px solid var(--line);border-radius:28px;padding:22px;overflow:hidden;
+  background:
+    radial-gradient(circle at 35% 22%,rgba(184,134,108,.075),transparent 26%),
+    linear-gradient(rgba(221,215,204,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(221,215,204,.025) 1px,transparent 1px);
+  background-size:auto,54px 54px,54px 54px;
+}
+.auditHead{display:flex;justify-content:space-between;align-items:end;margin-bottom:22px}
+.auditHead strong{font-size:17px;font-weight:560}
+.auditHead span{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.pipeline{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;align-items:stretch}
+.stage{
+  min-height:180px;border:1px solid var(--line);background:rgba(255,255,255,.025);
+  border-radius:18px;padding:16px;cursor:pointer;position:relative;overflow:hidden;
+  transition:flex .3s ease,transform .26s ease,background .26s ease,border-color .26s ease;
+}
+.stage:hover,.stage.active{
+  transform:translateY(-4px);border-color:rgba(184,134,108,.62);background:rgba(184,134,108,.085)
+}
+.stage .num{font-size:10px;color:var(--accent);letter-spacing:.14em;margin-bottom:28px}
+.stage h3{font-size:18px;line-height:1.05;margin:0 0 10px;font-weight:560;letter-spacing:-.02em}
+.stage p{font-size:11px;line-height:1.48;color:var(--muted);margin:0}
+.meter{position:absolute;left:16px;right:16px;bottom:14px;height:4px;background:rgba(221,215,204,.07);border-radius:9px;overflow:hidden}
+.meter i{display:block;height:100%;width:var(--v);background:var(--accent);border-radius:9px;transition:width .35s ease}
+.lens{
+  margin-top:16px;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(320px,.95fr);gap:16px
+}
+.inspect,.synthesis{
+  border:1px solid var(--line);border-radius:20px;background:rgba(255,255,255,.025);min-height:300px
+}
+.inspect{padding:20px}
+.kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.inspect h2,.synthesis h2{font-size:28px;line-height:1.05;margin:0 0 10px;letter-spacing:-.035em}
+.inspect p{font-size:13px;line-height:1.58;color:rgba(221,215,204,.75);margin:0 0 16px}
+.evidenceList{display:grid;gap:8px}
+.evidence{
+  display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line);padding-top:9px
+}
+.evidence b{font-size:10px;color:var(--accent);font-weight:600;min-width:72px}
+.evidence span{font-size:12px;line-height:1.42;color:rgba(221,215,204,.78)}
+.collect{
+  margin-top:16px;appearance:none;border:1px solid rgba(184,134,108,.44);
+  background:rgba(184,134,108,.11);color:var(--ink);border-radius:999px;
+  padding:10px 14px;font-size:12px;cursor:pointer
+}
+.collect:disabled{opacity:.35;cursor:default}
+.synthesis{padding:20px;position:relative;overflow:hidden}
+.synthesis:before{
+  content:"";position:absolute;inset:auto -60px -90px auto;width:240px;height:240px;border-radius:50%;
+  border:1px solid rgba(184,134,108,.16)
+}
+.synthesis .summary{
+  font-size:15px;line-height:1.64;color:rgba(221,215,204,.82);min-height:138px
+}
+.tokens{display:flex;flex-wrap:wrap;gap:7px;margin-top:18px}
+.token{
+  font-size:10px;padding:6px 8px;border-radius:999px;border:1px solid var(--line);
+  color:var(--muted);background:rgba(255,255,255,.02)
+}
+.token.on{color:var(--ink);border-color:rgba(184,134,108,.42);background:rgba(184,134,108,.075)}
+.footerNote{margin-top:14px;font-size:10px;color:var(--muted)}
+@media(max-width:1080px){
+  .hero{grid-template-columns:1fr}.pipeline{grid-template-columns:repeat(5,minmax(130px,1fr));overflow-x:auto;padding-bottom:4px}.lens{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  body{padding:14px}.audit{padding:14px;border-radius:20px}.pipeline{grid-template-columns:repeat(5,150px)}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="brand">toum<span class="e">é</span></div>
+    <button class="reset" id="reset">Reset audit</button>
+  </div>
+
+  <section class="hero">
+    <div class="copy">
+      <div class="eyebrow">Technology Audit</div>
+      <h1>Patrzymy głębiej,<br>nie szerzej.</h1>
+      <p>
+        Każdy obszar audytu można „powiększyć”, zebrać z niego fakty i zależności,
+        a potem dołożyć je do wspólnego obrazu. Wynik nie powstaje z jednej opinii —
+        tylko z połączonych śladów.
+      </p>
+    </div>
+
+    <div class="audit">
+      <div class="auditHead">
+        <strong>Current-state evidence pipeline</strong>
+        <span>click a section to inspect</span>
+      </div>
+
+      <div class="pipeline" id="pipeline">
+        <div class="stage active" data-key="workflow">
+          <div class="num">01</div><h3>People & Workflow</h3>
+          <p>handoffs · ownership · manual work</p>
+          <div class="meter"><i style="--v:68%"></i></div>
+        </div>
+        <div class="stage" data-key="infra">
+          <div class="num">02</div><h3>Infrastructure</h3>
+          <p>capacity · failure · dependencies</p>
+          <div class="meter"><i style="--v:83%"></i></div>
+        </div>
+        <div class="stage" data-key="software">
+          <div class="num">03</div><h3>Software & Systems</h3>
+          <p>applications · integrations · fit</p>
+          <div class="meter"><i style="--v:59%"></i></div>
+        </div>
+        <div class="stage" data-key="data">
+          <div class="num">04</div><h3>Data</h3>
+          <p>sources · movement · duplication</p>
+          <div class="meter"><i style="--v:74%"></i></div>
+        </div>
+        <div class="stage" data-key="risk">
+          <div class="num">05</div><h3>Risk & Constraints</h3>
+          <p>exposure · unknowns · limitations</p>
+          <div class="meter"><i style="--v:47%"></i></div>
+        </div>
+      </div>
+
+      <div class="lens">
+        <section class="inspect">
+          <div class="kicker" id="lensK">Section 01</div>
+          <h2 id="lensTitle">People & Workflow</h2>
+          <p id="lensText"></p>
+          <div class="evidenceList" id="evidenceList"></div>
+          <button class="collect" id="collect">Dodaj do wspólnego obrazu</button>
+        </section>
+
+        <section class="synthesis">
+          <div class="kicker">Audit synthesis</div>
+          <h2>Wspólny obraz</h2>
+          <div class="summary" id="summary">
+            Wybierz sekcję audytu i dodaj jej ustalenia. Wspólny obraz zacznie łączyć fakty z różnych obszarów.
+          </div>
+          <div class="tokens" id="tokens"></div>
+          <div class="footerNote">To jest demonstracja sposobu pracy — nie wynik realnego audytu.</div>
+        </section>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const sections={
+  workflow:{
+    k:"Section 01",
+    title:"People & Workflow",
+    text:"Powiększamy sposób, w jaki praca faktycznie przechodzi przez organizację — nie tylko oficjalny proces.",
+    evidence:[
+      ["FACT","Dwa ręczne handoffy wymagają ponownego wprowadzenia tych samych danych."],
+      ["FACT","Jedna osoba posiada nieformalną wiedzę potrzebną do odblokowania wyjątków."],
+      ["UNKNOWN","Nie ma spójnego pomiaru czasu oczekiwania między etapami."]
+    ],
+    contribution:"Proces ma co najmniej dwa ręczne handoffy i zależność od wiedzy jednej osoby."
+  },
+  infra:{
+    k:"Section 02",
+    title:"Infrastructure",
+    text:"Sprawdzamy, od czego naprawdę zależy ciągłość pracy: storage, compute, sieć, recovery i punkty awarii.",
+    evidence:[
+      ["FACT","Centralny storage obsługuje kilka kluczowych obciążeń."],
+      ["FACT","Brak pełnej redundancji dla jednego elementu krytycznego."],
+      ["ASSUMPTION","Wysokie wykorzystanie zasobów może potęgować opóźnienia w godzinach szczytu."]
+    ],
+    contribution:"Kluczowe obciążenia współdzielą centralny zasób i istnieje istotny punkt koncentracji ryzyka."
+  },
+  software:{
+    k:"Section 03",
+    title:"Software & Systems",
+    text:"Patrzymy na aplikacje jako część procesu: co naprawdę wspierają, gdzie się dublują i gdzie wymuszają obejścia.",
+    evidence:[
+      ["FACT","Dwa systemy przechowują częściowo te same informacje."],
+      ["FACT","Jeden etap wymaga ręcznego przeniesienia danych między aplikacjami."],
+      ["UNKNOWN","Nie ma jednoznacznie wskazanego właściciela integracji."]
+    ],
+    contribution:"Systemy częściowo dublują dane, a brak właściciela integracji utrudnia odpowiedzialność."
+  },
+  data:{
+    k:"Section 04",
+    title:"Data",
+    text:"Sprawdzamy źródła prawdy, przepływ, jakość i miejsca, w których informacja traci spójność.",
+    evidence:[
+      ["FACT","Ten sam atrybut jest utrzymywany w więcej niż jednym miejscu."],
+      ["FACT","Aktualizacja jednego systemu nie zawsze aktualizuje pozostałe."],
+      ["UNKNOWN","Brakuje formalnej reguły rozstrzygającej konflikty danych."]
+    ],
+    contribution:"Duplikacja danych i brak jasnego source of truth zwiększają ryzyko niespójności."
+  },
+  risk:{
+    k:"Section 05",
+    title:"Risk & Constraints",
+    text:"Nie zakładamy, że każdy problem jest techniczny. Weryfikujemy ograniczenia operacyjne, kontraktowe i organizacyjne.",
+    evidence:[
+      ["FACT","Część obszarów nie została jeszcze zweryfikowana dokumentami."],
+      ["FACT","Niektóre ryzyka zależą od brakującego evidence, a nie od potwierdzonego problemu."],
+      ["UNKNOWN","Nie wszystkie obowiązki i ograniczenia kontraktowe są znane."]
+    ],
+    contribution:"Część ryzyk pozostaje nieoceniona i wymaga dodatkowego evidence przed rekomendacją zmiany."
+  }
+};
+
+const order=["workflow","infra","software","data","risk"];
+let active="workflow";
+let collected=new Set();
+
+const stages=[...document.querySelectorAll(".stage")];
+const lensK=document.getElementById("lensK");
+const lensTitle=document.getElementById("lensTitle");
+const lensText=document.getElementById("lensText");
+const evidenceList=document.getElementById("evidenceList");
+const collect=document.getElementById("collect");
+const summary=document.getElementById("summary");
+const tokens=document.getElementById("tokens");
+
+function renderActive(){
+  const s=sections[active];
+  stages.forEach(el=>el.classList.toggle("active",el.dataset.key===active));
+  lensK.textContent=s.k;
+  lensTitle.textContent=s.title;
+  lensText.textContent=s.text;
+  evidenceList.innerHTML="";
+  s.evidence.forEach(([kind,text])=>{
+    const row=document.createElement("div");
+    row.className="evidence";
+    const b=document.createElement("b"); b.textContent=kind;
+    const sp=document.createElement("span"); sp.textContent=text;
+    row.append(b,sp);
+    evidenceList.appendChild(row);
+  });
+  collect.disabled=collected.has(active);
+  collect.textContent=collected.has(active)?"Dodano do wspólnego obrazu":"Dodaj do wspólnego obrazu";
+}
+
+function renderSynthesis(){
+  tokens.innerHTML="";
+  order.forEach(key=>{
+    const t=document.createElement("span");
+    t.className="token"+(collected.has(key)?" on":"");
+    t.textContent=sections[key].title;
+    tokens.appendChild(t);
+  });
+
+  if(collected.size===0){
+    summary.textContent="Wybierz sekcję audytu i dodaj jej ustalenia. Wspólny obraz zacznie łączyć fakty z różnych obszarów.";
+    return;
+  }
+
+  const parts=order.filter(k=>collected.has(k)).map(k=>sections[k].contribution);
+  let lead="Zebrane evidence wskazuje, że ";
+  let body=parts.join(" ");
+  if(collected.size>=3){
+    lead="Po połączeniu kilku obszarów widać, że problem nie jest izolowany: ";
+  }
+  if(collected.size===5){
+    lead="Pełniejszy obraz pokazuje zależność między procesem, systemami, danymi i ryzykiem: ";
+  }
+  summary.textContent=lead+body;
+}
+
+stages.forEach(el=>{
+  el.addEventListener("click",()=>{
+    active=el.dataset.key;
+    renderActive();
+  });
+});
+
+collect.addEventListener("click",()=>{
+  collected.add(active);
+  renderActive();
+  renderSynthesis();
+});
+
+document.getElementById("reset").addEventListener("click",()=>{
+  collected=new Set();
+  active="workflow";
+  renderActive();
+  renderSynthesis();
+});
+
+renderActive();
+renderSynthesis();
+</script>
+</body>
+</html>

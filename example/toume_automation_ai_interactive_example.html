@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Toumé — Automation & AI Interactive Viewer</title>
+<style>
+:root{
+  --bg: rgb(32,30,27);
+  --ink: rgb(221,215,204);
+  --accent: rgb(184,134,108);
+  --muted: rgba(221,215,204,.58);
+  --line: rgba(221,215,204,.14);
+  --panel: rgba(44,40,36,.93);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{min-height:100vh}
+.shell{min-height:100vh;padding:24px}
+.topbar{display:flex;align-items:center;justify-content:space-between;max-width:1400px;margin:0 auto 28px}
+.brand{font-size:28px;font-weight:800;letter-spacing:-.04em}
+.brand .e{color:var(--accent)}
+.topbar button{
+  appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.025);
+  color:var(--ink);padding:9px 14px;border-radius:999px;cursor:pointer;font-size:12px
+}
+.topbar button:hover{border-color:rgba(184,134,108,.5)}
+.wrap{max-width:1400px;margin:0 auto}
+.hero{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(580px,1fr);gap:54px;align-items:center;min-height:760px}
+.copy{padding:30px 0}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
+h1{font-size:clamp(48px,6vw,90px);line-height:.98;letter-spacing:-.055em;margin:0 0 28px;font-weight:500}
+.lead{max-width:690px;font-size:20px;line-height:1.55;color:rgba(221,215,204,.76)}
+.viewer{
+  position:relative;height:690px;border:1px solid var(--line);border-radius:28px;overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 42%,rgba(184,134,108,.08),transparent 34%),
+    linear-gradient(rgba(221,215,204,.035) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(221,215,204,.035) 1px,transparent 1px);
+  background-size:auto,56px 56px,56px 56px;
+}
+.stage-label{position:absolute;top:20px;left:22px;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.flow{position:absolute;inset:0}
+.node{
+  position:absolute;display:flex;align-items:center;justify-content:center;text-align:center;
+  border-radius:999px;border:1px solid rgba(184,134,108,.44);
+  background:rgba(184,134,108,.075);color:var(--ink);cursor:pointer;
+  transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+  user-select:none
+}
+.node:hover,.node.active{
+  transform:scale(1.05);border-color:var(--accent);background:rgba(184,134,108,.14);
+  box-shadow:0 0 0 1px rgba(184,134,108,.12),0 20px 60px rgba(0,0,0,.28)
+}
+.node strong{font-size:14px;font-weight:650;line-height:1.15;padding:0 12px}
+.node small{display:block;font-size:10px;color:var(--muted);margin-top:5px;font-weight:500}
+.n-input{left:7%;top:39%;width:112px;height:112px}
+.n-understand{left:26%;top:31%;width:150px;height:150px}
+.n-decision{left:51%;top:25%;width:178px;height:178px;border-width:1.5px}
+.n-output{right:6%;top:39%;width:118px;height:118px}
+.n-monitor{left:54%;bottom:9%;width:138px;height:138px;border-style:dashed}
+.n-human{left:27%;bottom:8%;width:128px;height:128px;border-color:rgba(221,215,204,.38);background:rgba(221,215,204,.035)}
+.lines{position:absolute;inset:0;pointer-events:none}
+.lines svg{width:100%;height:100%}
+.lines path{fill:none;stroke:rgba(184,134,108,.38);stroke-width:1.3}
+.lines path.muted{stroke:rgba(221,215,204,.16)}
+.pulse{stroke-dasharray:3 12;animation:dash 7s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-180}}
+.orb{
+  position:absolute;width:10px;height:10px;border-radius:50%;background:var(--accent);
+  box-shadow:0 0 20px rgba(184,134,108,.55);pointer-events:none;opacity:.85
+}
+.orb.one{animation:orb1 7s ease-in-out infinite}
+.orb.two{animation:orb2 8s ease-in-out infinite 1.1s}
+.orb.three{animation:orb3 7.6s ease-in-out infinite 2.2s}
+@keyframes orb1{
+  0%{left:14%;top:47%;opacity:0} 10%{opacity:1} 28%{left:37%;top:40%}
+  55%{left:63%;top:39%} 78%{left:87%;top:47%} 100%{left:87%;top:47%;opacity:0}
+}
+@keyframes orb2{
+  0%{left:37%;top:41%;opacity:0} 15%{opacity:.9} 48%{left:63%;top:39%}
+  72%{left:61%;top:71%} 100%{left:61%;top:71%;opacity:0}
+}
+@keyframes orb3{
+  0%{left:37%;top:41%;opacity:0} 12%{opacity:.8} 48%{left:35%;top:73%}
+  74%{left:61%;top:71%} 100%{left:61%;top:71%;opacity:0}
+}
+.side{
+  position:absolute;right:18px;top:18px;width:310px;max-height:654px;overflow:auto;
+  background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:20px;
+  box-shadow:0 24px 70px rgba(0,0,0,.34);transform:translateX(calc(100% + 28px));
+  transition:transform .26s ease;z-index:6
+}
+.side.open{transform:translateX(0)}
+.side .kicker{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
+.side h2{font-size:28px;line-height:1.05;letter-spacing:-.035em;margin:0 34px 14px 0}
+.side p{font-size:13px;line-height:1.6;color:rgba(221,215,204,.78)}
+.side h3{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin:22px 0 8px}
+.side ul{margin:0;padding-left:18px}
+.side li{font-size:12px;line-height:1.5;margin:5px 0;color:rgba(221,215,204,.78)}
+.close{position:absolute;right:12px;top:12px;border:1px solid var(--line);background:transparent;color:var(--ink);width:32px;height:32px;border-radius:50%;cursor:pointer}
+.modebar{position:absolute;left:22px;bottom:20px;display:flex;gap:8px;z-index:4}
+.modebar button{
+  border:1px solid var(--line);background:rgba(32,30,27,.68);color:var(--muted);
+  padding:8px 11px;border-radius:999px;font-size:11px;cursor:pointer
+}
+.modebar button.active{border-color:var(--accent);color:var(--ink);background:rgba(184,134,108,.10)}
+.explain{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.card{border-top:1px solid var(--line);padding:18px 0 8px}
+.card .num{font-size:10px;color:var(--accent);letter-spacing:.15em;margin-bottom:10px}
+.card h3{font-size:19px;margin:0 0 8px;font-weight:550}
+.card p{font-size:13px;line-height:1.55;color:var(--muted);margin:0}
+@media(max-width:1050px){
+  .hero{grid-template-columns:1fr;min-height:auto}.viewer{height:620px}.copy{padding-bottom:0}
+}
+@media(max-width:650px){
+  .shell{padding:14px}.viewer{height:590px;border-radius:22px}.side{left:14px;right:14px;width:auto}
+  .node{transform:scale(.88)} .node:hover,.node.active{transform:scale(.92)}
+  .explain{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+<div class="shell">
+  <div class="topbar">
+    <div class="brand">toum<span class="e">é</span></div>
+    <button id="reset">Reset view</button>
+  </div>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="copy">
+        <div class="eyebrow">Automatyzacja i AI</div>
+        <h1>Najpierw proces.<br>Potem technologia.</h1>
+        <p class="lead">
+          Kliknij element procesu. Viewer pokazuje, gdzie używamy automatyzacji,
+          gdzie AI, a gdzie decyzja powinna pozostać po stronie człowieka.
+        </p>
+
+        <div class="explain">
+          <div class="card">
+            <div class="num">01</div>
+            <h3>Rozumiemy</h3>
+            <p>Najpierw sprawdzamy proces, dane, wyjątki i odpowiedzialność.</p>
+          </div>
+          <div class="card">
+            <div class="num">02</div>
+            <h3>Dobieramy mechanizm</h3>
+            <p>Nie każdy problem wymaga AI. Często lepsza jest prostsza, deterministyczna logika.</p>
+          </div>
+          <div class="card">
+            <div class="num">03</div>
+            <h3>Projektujemy pod produkcję</h3>
+            <p>Monitoring, błędy, recovery i ownership są częścią rozwiązania od początku.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="viewer" id="viewer">
+        <div class="stage-label">Interactive process lens</div>
+
+        <div class="lines">
+          <svg viewBox="0 0 1000 700" preserveAspectRatio="none">
+            <path class="pulse" d="M135 335 C250 310 270 305 355 300" />
+            <path class="pulse" d="M425 300 C530 270 565 245 620 240" />
+            <path class="pulse" d="M700 240 C795 270 825 315 885 335" />
+            <path class="muted" d="M620 315 C610 430 610 470 610 530" />
+            <path class="muted" d="M360 370 C350 455 350 500 345 545" />
+            <path class="muted" d="M405 550 C485 565 535 565 585 550" />
+          </svg>
+        </div>
+
+        <div class="orb one"></div>
+        <div class="orb two"></div>
+        <div class="orb three"></div>
+
+        <div class="flow">
+          <div class="node n-input" data-key="input">
+            <strong>Dane wejściowe<small>facts · events · files</small></strong>
+          </div>
+          <div class="node n-understand" data-key="understand">
+            <strong>Zrozumienie procesu<small>steps · exceptions · ownership</small></strong>
+          </div>
+          <div class="node n-decision active" data-key="decision">
+            <strong>Wybór mechanizmu<small>logic · AI · human</small></strong>
+          </div>
+          <div class="node n-output" data-key="output">
+            <strong>Wynik<small>action · decision · handoff</small></strong>
+          </div>
+          <div class="node n-human" data-key="human">
+            <strong>Human review<small>judgment · approval</small></strong>
+          </div>
+          <div class="node n-monitor" data-key="monitor">
+            <strong>Monitoring<small>failure · recovery · ownership</small></strong>
+          </div>
+        </div>
+
+        <div class="modebar">
+          <button class="active" data-mode="overview">Overview</button>
+          <button data-mode="deterministic">Deterministic</button>
+          <button data-mode="ai">AI-assisted</button>
+          <button data-mode="human">Human control</button>
+        </div>
+
+        <aside class="side open" id="side">
+          <button class="close" id="close">×</button>
+          <div class="kicker" id="sideKicker">Decision point</div>
+          <h2 id="sideTitle">Wybór mechanizmu</h2>
+          <p id="sideText">Najpierw ustalamy, czego naprawdę wymaga problem. Jasne reguły zostają deterministyczne. AI wchodzi tam, gdzie trzeba pracować z niejednoznacznością, językiem lub dużą ilością informacji.</p>
+          <h3>Kiedy to ma sens</h3>
+          <ul id="sideList">
+            <li>powtarzalne reguły → automatyzacja deterministyczna</li>
+            <li>nieustrukturyzowane informacje → AI-assisted</li>
+            <li>ryzyko lub ważna decyzja → human review</li>
+          </ul>
+        </aside>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script>
+const content={
+ input:{
+  kicker:"Input",
+  title:"Dane wejściowe",
+  text:"Automatyzacja zaczyna się od jakości informacji, które uruchamiają proces. Sprawdzamy, skąd dane pochodzą, czy są kompletne i co dzieje się, gdy są błędne.",
+  list:["formularze i rekordy systemowe","pliki, wiadomości i dokumenty","sygnały z innych systemów","walidacja przed dalszym przetwarzaniem"]
+ },
+ understand:{
+  kicker:"Understand first",
+  title:"Zrozumienie procesu",
+  text:"Nie automatyzujemy procesu, którego nie rozumiemy. Najpierw mapujemy kroki, wyjątki, handoffy i odpowiedzialność.",
+  list:["które kroki naprawdę tworzą wartość","gdzie pojawiają się wyjątki","gdzie człowiek poprawia system ręcznie","co jest symptomem, a co źródłem problemu"]
+ },
+ decision:{
+  kicker:"Decision point",
+  title:"Wybór mechanizmu",
+  text:"Najpierw ustalamy, czego naprawdę wymaga problem. Jasne reguły zostają deterministyczne. AI wchodzi tam, gdzie trzeba pracować z niejednoznacznością, językiem lub dużą ilością informacji.",
+  list:["powtarzalne reguły → automatyzacja deterministyczna","nieustrukturyzowane informacje → AI-assisted","ryzyko lub ważna decyzja → human review"]
+ },
+ output:{
+  kicker:"Output",
+  title:"Wynik i handoff",
+  text:"Automatyzacja kończy się dopiero wtedy, gdy wynik trafia we właściwe miejsce i może zostać użyty przez kolejny system albo człowieka.",
+  list:["zapis do systemu","uruchomienie kolejnego kroku","przekazanie do właściciela procesu","jawna obsługa błędnego wyniku"]
+ },
+ human:{
+  kicker:"Human control",
+  title:"Decyzja człowieka",
+  text:"Nie każda decyzja powinna być delegowana maszynie. Human review zostaje tam, gdzie liczy się odpowiedzialność, kontekst albo konsekwencje błędu.",
+  list:["zatwierdzanie wyjątków","decyzje o wysokim wpływie","weryfikacja niepewnego wyniku AI","ostateczna odpowiedzialność"]
+ },
+ monitor:{
+  kicker:"Production reality",
+  title:"Monitoring i recovery",
+  text:"Demo pokazuje, że coś może działać. Produkcja wymaga wiedzy, co dzieje się, gdy przestaje działać.",
+  list:["monitoring i alerting","retry / timeout / fallback","odzyskiwanie procesu po błędzie","jasny owner i eskalacja"]
+ }
+};
+
+const nodes=[...document.querySelectorAll(".node")];
+const side=document.getElementById("side");
+const sideKicker=document.getElementById("sideKicker");
+const sideTitle=document.getElementById("sideTitle");
+const sideText=document.getElementById("sideText");
+const sideList=document.getElementById("sideList");
+
+function openNode(key){
+  nodes.forEach(n=>n.classList.toggle("active",n.dataset.key===key));
+  const c=content[key];
+  sideKicker.textContent=c.kicker;
+  sideTitle.textContent=c.title;
+  sideText.textContent=c.text;
+  sideList.innerHTML="";
+  c.list.forEach(v=>{
+    const li=document.createElement("li");
+    li.textContent=v;
+    sideList.appendChild(li);
+  });
+  side.classList.add("open");
+}
+
+nodes.forEach(n=>n.addEventListener("click",()=>openNode(n.dataset.key)));
+document.getElementById("close").onclick=()=>side.classList.remove("open");
+document.getElementById("reset").onclick=()=>openNode("decision");
+
+document.querySelectorAll(".modebar button").forEach(btn=>{
+  btn.addEventListener("click",()=>{
+    document.querySelectorAll(".modebar button").forEach(b=>b.classList.remove("active"));
+    btn.classList.add("active");
+    const mode=btn.dataset.mode;
+    const map={
+      overview:"decision",
+      deterministic:"understand",
+      ai:"decision",
+      human:"human"
+    };
+    openNode(map[mode]);
+  });
+});
+</script>
+</body>
+</html>

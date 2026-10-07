@@ -12,7 +12,11 @@ npm run check
 npm run build
 ```
 
-Open http://localhost:3000/alternative.html for the guided site. The earlier design remains available locally at `/index.html` for reference; it is not included in the deployed site.
+Open http://localhost:3000/en/ or http://localhost:3000/pl/ for the localized guided site. Development now builds and serves `dist/`, matching deployment. `/` serves the English homepage with canonical `/en/`.
+
+The build generates 18 localized pages: home, six service pages, about and contact in each language. Their HTML includes the page content before JavaScript runs. Service content is maintained in `seo-content.mjs`; `seo-build.mjs` generates the localized pages, canonical and hreflang links, JSON-LD, sitemap.xml and robots.txt. Browser enhancement retains the seven-slide navigation and mobile expand controls. Language links lead to separate URLs.
+
+Run `npm run test:seo` to build and validate H1 counts, canonical and alternate language links, internal links, JSON-LD syntax and preservation of Google's verification file. CI runs this validation after building. `SEO-90-DAYS.md` records the editorial and measurement plan; unpublished Insights articles are not included in the sitemap.
 
 `npm run build` creates `dist/` from an explicit asset list. The guided design becomes `/index.html`, and contact-page return links point to it. The build excludes local briefs, development scripts, and the earlier design's HTML/CSS. The shared `app.js` still contains the earlier copy alongside the contact form logic.
 

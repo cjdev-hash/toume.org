@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toumé — Workflows & Pipelines Network</title>
+<style>
+:root{
+  --bg:rgb(32,30,27);
+  --ink:rgb(221,215,204);
+  --accent:rgb(184,134,108);
+  --muted:rgba(221,215,204,.56);
+  --line:rgba(221,215,204,.14);
+  --soft:rgba(184,134,108,.10);
+  --danger:rgb(164,103,89);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{padding:28px;min-height:100vh}
+.page{max-width:1380px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+.brand{font-size:28px;font-weight:800;letter-spacing:-.04em}
+.brand .e{color:var(--accent)}
+.actions{display:flex;gap:8px}
+button{
+  appearance:none;border:1px solid var(--line);background:rgba(255,255,255,.025);
+  color:var(--ink);padding:9px 13px;border-radius:999px;font-size:12px;cursor:pointer
+}
+button:hover,button.active{border-color:var(--accent);background:rgba(184,134,108,.08)}
+.hero{display:grid;grid-template-columns:minmax(0,.72fr) minmax(680px,1.28fr);gap:58px;align-items:start}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+h1{font-size:clamp(48px,5.8vw,84px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0 0 24px}
+.copy p{font-size:18px;line-height:1.62;color:rgba(221,215,204,.72);max-width:580px}
+.metrics{margin-top:34px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.metric{border-top:1px solid var(--line);padding-top:14px}
+.metric strong{font-size:28px;font-weight:560;letter-spacing:-.04em}
+.metric span{display:block;font-size:10px;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:.1em}
+.viewer{
+  position:relative;height:720px;border:1px solid var(--line);border-radius:28px;overflow:hidden;
+  background:
+    radial-gradient(circle at 55% 35%,rgba(184,134,108,.07),transparent 32%),
+    linear-gradient(rgba(221,215,204,.028) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(221,215,204,.028) 1px,transparent 1px);
+  background-size:auto,52px 52px,52px 52px;
+}
+svg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.link{stroke:rgba(221,215,204,.18);stroke-width:1.4;fill:none}
+.link.active{stroke:rgba(184,134,108,.68);stroke-width:2}
+.link.bottleneck{stroke:rgba(164,103,89,.78);stroke-width:2.3;stroke-dasharray:5 6}
+.node{
+  position:absolute;width:132px;min-height:78px;border:1px solid var(--line);border-radius:18px;
+  background:rgba(255,255,255,.035);padding:12px;cursor:grab;user-select:none;touch-action:none;
+  transition:border-color .16s ease,background .16s ease,transform .16s ease;
+}
+.node:hover,.node.selected{border-color:var(--accent);background:rgba(184,134,108,.095)}
+.node.source{box-shadow:0 0 0 1px rgba(184,134,108,.45) inset}
+.node.bottleneck{border-color:rgba(164,103,89,.7)}
+.node .type{font-size:9px;color:var(--accent);letter-spacing:.13em;text-transform:uppercase;margin-bottom:7px}
+.node strong{font-size:14px;line-height:1.1;display:block}
+.node small{font-size:10px;color:var(--muted);line-height:1.35;display:block;margin-top:6px}
+.flowdot{fill:var(--accent);filter:drop-shadow(0 0 5px rgba(184,134,108,.6))}
+.panel{
+  position:absolute;left:18px;right:18px;bottom:18px;min-height:104px;
+  border:1px solid var(--line);border-radius:18px;background:rgba(41,38,34,.95);
+  padding:16px 18px;display:grid;grid-template-columns:1.2fr .8fr;gap:20px
+}
+.panel h3{margin:0 0 6px;font-size:18px;letter-spacing:-.025em}
+.panel p{margin:0;font-size:12px;line-height:1.5;color:rgba(221,215,204,.7)}
+.hint{font-size:11px;color:var(--muted)}
+.route{display:flex;align-items:center;justify-content:flex-end;gap:8px;flex-wrap:wrap}
+.route span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.1em}
+.badge{padding:6px 8px;border:1px solid var(--line);border-radius:999px;font-size:10px;color:var(--ink)}
+@media(max-width:1040px){.hero{grid-template-columns:1fr}.viewer{height:680px}}
+@media(max-width:680px){
+  body{padding:14px}.viewer{height:700px;border-radius:20px}.metrics{grid-template-columns:1fr}
+  .panel{grid-template-columns:1fr}.node{width:118px}
+}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="brand">toum<span class="e">é</span></div>
+    <div class="actions">
+      <button id="editBtn" class="active">Edit connections</button>
+      <button id="resetBtn">Reset</button>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="copy">
+      <div class="eyebrow">Workflows & Pipelines</div>
+      <h1>Przepływ pracy<br>można przeprojektować.</h1>
+      <p>
+        Nie każdy pipeline jest liniowy. Przeciągaj etapy, zmieniaj połączenia i zobacz,
+        jak decyzje w jednym miejscu wpływają na resztę przepływu.
+      </p>
+
+      <div class="metrics">
+        <div class="metric"><strong id="mSteps">7</strong><span>etapów</span></div>
+        <div class="metric"><strong id="mLinks">7</strong><span>połączeń</span></div>
+        <div class="metric"><strong id="mScore">72%</strong><span>flow score</span></div>
+      </div>
+    </div>
+
+    <div class="viewer" id="viewer">
+      <svg id="wires"></svg>
+
+      <div class="node" data-id="intake" style="left:6%;top:16%">
+        <div class="type">Input</div><strong>Intake</strong><small>brief · request · trigger</small>
+      </div>
+      <div class="node" data-id="validate" style="left:27%;top:10%">
+        <div class="type">Check</div><strong>Validation</strong><small>completeness · format</small>
+      </div>
+      <div class="node" data-id="prep" style="left:27%;top:35%">
+        <div class="type">Manual</div><strong>Preparation</strong><small>cleanup · handoff</small>
+      </div>
+      <div class="node" data-id="process" style="left:50%;top:22%">
+        <div class="type">Core</div><strong>Processing</strong><small>main production step</small>
+      </div>
+      <div class="node bottleneck" data-id="review" style="left:50%;top:48%">
+        <div class="type">Bottleneck</div><strong>Review</strong><small>approval · exception handling</small>
+      </div>
+      <div class="node" data-id="publish" style="left:73%;top:20%">
+        <div class="type">Output</div><strong>Publish</strong><small>delivery · sync</small>
+      </div>
+      <div class="node" data-id="archive" style="left:73%;top:48%">
+        <div class="type">Record</div><strong>Archive</strong><small>history · traceability</small>
+      </div>
+
+      <div class="panel">
+        <div>
+          <h3 id="panelTitle">Zmień pipeline</h3>
+          <p id="panelText">Kliknij jeden etap, potem drugi, aby dodać lub usunąć połączenie. Etapy możesz też przeciągać.</p>
+        </div>
+        <div class="route">
+          <span>Status</span>
+          <div class="badge" id="modeBadge">EDIT MODE</div>
+          <div class="badge" id="selectionBadge">No selection</div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const viewer=document.getElementById("viewer");
+const svg=document.getElementById("wires");
+const nodes=[...viewer.querySelectorAll(".node")];
+const nodeMap=Object.fromEntries(nodes.map(n=>[n.dataset.id,n]));
+let links=[
+  ["intake","validate"],
+  ["validate","process"],
+  ["validate","prep"],
+  ["prep","process"],
+  ["process","review"],
+  ["review","publish"],
+  ["review","archive"]
+];
+let source=null;
+let editMode=true;
+let drag=null;
+let offset={x:0,y:0};
+
+const panelTitle=document.getElementById("panelTitle");
+const panelText=document.getElementById("panelText");
+const selectionBadge=document.getElementById("selectionBadge");
+const modeBadge=document.getElementById("modeBadge");
+const mLinks=document.getElementById("mLinks");
+const mScore=document.getElementById("mScore");
+
+function center(el){
+  const r=el.getBoundingClientRect();
+  const v=viewer.getBoundingClientRect();
+  return {x:r.left-v.left+r.width/2,y:r.top-v.top+r.height/2};
+}
+function exists(a,b){
+  return links.some(x=>(x[0]===a&&x[1]===b)||(x[0]===b&&x[1]===a));
+}
+function render(){
+  svg.innerHTML="";
+  links.forEach(([a,b],i)=>{
+    const A=center(nodeMap[a]), B=center(nodeMap[b]);
+    const path=document.createElementNS("http://www.w3.org/2000/svg","path");
+    const mx=(A.x+B.x)/2;
+    path.setAttribute("d",`M ${A.x} ${A.y} C ${mx} ${A.y}, ${mx} ${B.y}, ${B.x} ${B.y}`);
+    path.setAttribute("class","link"+((a==="process"&&b==="review")||(a==="review"&&b==="process")?" bottleneck":""));
+    svg.appendChild(path);
+
+    const dot=document.createElementNS("http://www.w3.org/2000/svg","circle");
+    dot.setAttribute("r","4");
+    dot.setAttribute("class","flowdot");
+    const anim=document.createElementNS("http://www.w3.org/2000/svg","animateMotion");
+    anim.setAttribute("dur",(4.4+i*.35)+"s");
+    anim.setAttribute("repeatCount","indefinite");
+    anim.setAttribute("path",path.getAttribute("d"));
+    dot.appendChild(anim);
+    svg.appendChild(dot);
+  });
+  mLinks.textContent=links.length;
+  const score=Math.max(42,Math.min(96,58+links.length*4-(links.length>8?8:0)));
+  mScore.textContent=score+"%";
+}
+function clearSelection(){
+  source=null;
+  nodes.forEach(n=>n.classList.remove("source","selected"));
+  selectionBadge.textContent="No selection";
+}
+function selectNode(id){
+  if(!editMode)return;
+  if(!source){
+    source=id;
+    nodeMap[id].classList.add("source");
+    selectionBadge.textContent="From: "+id;
+    panelTitle.textContent="Wybierz drugi etap";
+    panelText.textContent="Kliknij etap docelowy. Jeśli połączenie istnieje, zostanie usunięte. Jeśli nie istnieje, zostanie dodane.";
+  }else{
+    if(source===id){clearSelection();return}
+    if(exists(source,id)){
+      links=links.filter(x=>!((x[0]===source&&x[1]===id)||(x[0]===id&&x[1]===source)));
+      panelTitle.textContent="Połączenie usunięte";
+      panelText.textContent="Pipeline został uproszczony. Zobacz, jak zmieniła się sieć.";
+    }else{
+      links.push([source,id]);
+      panelTitle.textContent="Połączenie dodane";
+      panelText.textContent="Nowa ścieżka została dodana do pipeline'u.";
+    }
+    clearSelection();
+    render();
+  }
+}
+
+nodes.forEach(n=>{
+  n.addEventListener("click",e=>{
+    if(drag && drag.moved)return;
+    selectNode(n.dataset.id);
+  });
+  n.addEventListener("pointerdown",e=>{
+    const r=n.getBoundingClientRect();
+    drag={node:n,moved:false,startX:e.clientX,startY:e.clientY};
+    // Offset must be measured inside the node itself.
+    // Using viewer-relative coordinates here caused the node to jump
+    // toward the top-left as soon as dragging started.
+    offset.x=e.clientX-r.left;
+    offset.y=e.clientY-r.top;
+    n.setPointerCapture(e.pointerId);
+  });
+  n.addEventListener("pointermove",e=>{
+    if(!drag||drag.node!==n)return;
+    if(Math.hypot(e.clientX-drag.startX,e.clientY-drag.startY)>4)drag.moved=true;
+    if(!drag.moved)return;
+    const v=viewer.getBoundingClientRect();
+    let x=e.clientX-v.left-offset.x;
+    let y=e.clientY-v.top-offset.y;
+    x=Math.max(8,Math.min(v.width-n.offsetWidth-8,x));
+    y=Math.max(8,Math.min(v.height-n.offsetHeight-140,y));
+    n.style.left=x+"px";
+    n.style.top=y+"px";
+    render();
+  });
+  n.addEventListener("pointerup",e=>{
+    if(drag&&drag.node===n){
+      const wasMoved=drag.moved;
+      setTimeout(()=>drag=null,0);
+      if(wasMoved){
+        panelTitle.textContent="Etap przesunięty";
+        panelText.textContent="Pozycja zmienia tylko czytelność widoku — logika pipeline'u pozostaje w połączeniach.";
+      }
+    }
+  });
+});
+
+document.getElementById("editBtn").addEventListener("click",e=>{
+  editMode=!editMode;
+  e.currentTarget.classList.toggle("active",editMode);
+  modeBadge.textContent=editMode?"EDIT MODE":"VIEW MODE";
+  clearSelection();
+  panelTitle.textContent=editMode?"Zmień pipeline":"Podgląd pipeline'u";
+  panelText.textContent=editMode
+    ?"Kliknij jeden etap, potem drugi, aby dodać lub usunąć połączenie. Etapy możesz też przeciągać."
+    :"W trybie podglądu możesz swobodnie przesuwać elementy bez zmieniania połączeń.";
+});
+
+document.getElementById("resetBtn").addEventListener("click",()=>{
+  links=[
+    ["intake","validate"],
+    ["validate","process"],
+    ["validate","prep"],
+    ["prep","process"],
+    ["process","review"],
+    ["review","publish"],
+    ["review","archive"]
+  ];
+  const pos={
+    intake:["6%","16%"],validate:["27%","10%"],prep:["27%","35%"],process:["50%","22%"],
+    review:["50%","48%"],publish:["73%","20%"],archive:["73%","48%"]
+  };
+  Object.entries(pos).forEach(([id,p])=>{
+    nodeMap[id].style.left=p[0];
+    nodeMap[id].style.top=p[1];
+  });
+  clearSelection();
+  render();
+  panelTitle.textContent="Zmień pipeline";
+  panelText.textContent="Kliknij jeden etap, potem drugi, aby dodać lub usunąć połączenie. Etapy możesz też przeciągać.";
+});
+
+window.addEventListener("resize",render);
+render();
+</script>
+</body>
+</html>

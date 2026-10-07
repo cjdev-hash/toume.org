@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Toumé — Technology Consulting Conversation Viewer</title>
+<style>
+:root{
+  --bg:rgb(32,30,27);
+  --ink:rgb(221,215,204);
+  --accent:rgb(184,134,108);
+  --muted:rgba(221,215,204,.56);
+  --line:rgba(221,215,204,.14);
+  --surface:rgba(255,255,255,.035);
+  --surface2:rgba(184,134,108,.10);
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{padding:28px;min-height:100vh}
+.page{max-width:1320px;margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:44px}
+.brand{font-size:28px;font-weight:800;letter-spacing:-.04em}
+.brand .e{color:var(--accent)}
+.reset{
+  appearance:none;border:1px solid var(--line);background:transparent;color:var(--ink);
+  padding:9px 14px;border-radius:999px;font-size:12px;cursor:pointer
+}
+.hero{display:grid;grid-template-columns:minmax(0,.9fr) minmax(600px,1.2fr);gap:58px;align-items:center}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:24px}
+h1{font-size:clamp(48px,6vw,86px);line-height:.98;letter-spacing:-.055em;font-weight:500;margin:0 0 24px}
+.copy p{font-size:19px;line-height:1.6;color:rgba(221,215,204,.72);max-width:610px}
+.viewer{
+  position:relative;min-height:680px;border:1px solid var(--line);border-radius:28px;
+  padding:24px;background:
+    radial-gradient(circle at 75% 18%,rgba(184,134,108,.08),transparent 30%),
+    linear-gradient(rgba(221,215,204,.025) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(221,215,204,.025) 1px,transparent 1px);
+  background-size:auto,56px 56px,56px 56px;overflow:hidden
+}
+.thread{display:flex;flex-direction:column;gap:14px;padding-bottom:190px}
+.msg{display:flex;gap:10px;align-items:flex-end;animation:in .28s ease both}
+.msg.client{justify-content:flex-end}
+.avatar{
+  width:30px;height:30px;border-radius:50%;border:1px solid var(--line);
+  display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--muted);flex:0 0 auto
+}
+.msg.client .avatar{order:2}
+.bubble{
+  max-width:78%;padding:14px 16px;border-radius:18px;border:1px solid var(--line);
+  background:rgba(255,255,255,.03);font-size:13px;line-height:1.55
+}
+.msg.client .bubble{background:rgba(184,134,108,.10);border-color:rgba(184,134,108,.28)}
+.msg.toume .bubble{border-bottom-left-radius:6px}
+.msg.client .bubble{border-bottom-right-radius:6px}
+@keyframes in{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+.choices{
+  position:absolute;left:24px;right:24px;bottom:24px;border-top:1px solid var(--line);
+  padding-top:18px;background:linear-gradient(180deg,transparent,rgba(32,30,27,.94) 24%,rgba(32,30,27,1) 48%)
+}
+.prompt{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
+.choiceRow{display:flex;flex-wrap:wrap;gap:9px}
+.choice{
+  border:1px solid var(--line);background:rgba(255,255,255,.025);color:var(--ink);
+  border-radius:999px;padding:10px 13px;font-size:12px;cursor:pointer;transition:.18s ease
+}
+.choice:hover{border-color:var(--accent);background:rgba(184,134,108,.09)}
+.diagnostic{
+  margin-top:34px;border-top:1px solid var(--line);padding-top:22px
+}
+.diagnosticHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.diagnosticHead span{font-size:11px;color:var(--muted)}
+.signal{display:grid;grid-template-columns:130px 1fr;gap:10px;align-items:center;margin:10px 0}
+.signal label{font-size:11px;color:var(--muted)}
+.track{height:7px;border-radius:99px;background:rgba(221,215,204,.07);overflow:hidden}
+.fill{height:100%;width:var(--v);background:var(--accent);transition:width .45s ease;border-radius:99px}
+.insight{
+  margin-top:18px;padding:15px;border-left:2px solid var(--accent);background:rgba(184,134,108,.055);
+  font-size:13px;line-height:1.55;color:rgba(221,215,204,.78)
+}
+@media(max-width:980px){.hero{grid-template-columns:1fr}.viewer{min-height:650px}}
+@media(max-width:640px){
+  body{padding:14px}.viewer{padding:16px;border-radius:20px}.choices{left:16px;right:16px;bottom:16px}
+  .bubble{max-width:88%}.signal{grid-template-columns:105px 1fr}
+}
+@media(prefers-reduced-motion:reduce){.msg{animation:none}.fill{transition:none}}
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="top">
+    <div class="brand">toum<span class="e">é</span></div>
+    <button class="reset" id="reset">Zacznij od nowa</button>
+  </div>
+
+  <section class="hero">
+    <div class="copy">
+      <div class="eyebrow">Technology Consulting</div>
+      <h1>Zaczynamy<br>od rozmowy.</h1>
+      <p>
+        Nie od narzędzia, platformy ani AI. Najpierw trzeba zrozumieć,
+        co naprawdę dzieje się w firmie — i dopiero wtedy zdecydować,
+        co warto zmienić.
+      </p>
+
+      <div class="diagnostic">
+        <div class="diagnosticHead">
+          <strong>Live diagnostic</strong>
+          <span>zmienia się wraz z rozmową</span>
+        </div>
+        <div class="signal"><label>Proces</label><div class="track"><div class="fill" id="proc" style="--v:24%"></div></div></div>
+        <div class="signal"><label>Systemy</label><div class="track"><div class="fill" id="sys" style="--v:18%"></div></div></div>
+        <div class="signal"><label>Dane</label><div class="track"><div class="fill" id="data" style="--v:12%"></div></div></div>
+        <div class="signal"><label>Ryzyko</label><div class="track"><div class="fill" id="risk" style="--v:8%"></div></div></div>
+        <div class="insight" id="insight">Na początku nie zakładamy, gdzie leży problem.</div>
+      </div>
+    </div>
+
+    <div class="viewer">
+      <div class="thread" id="thread"></div>
+
+      <div class="choices">
+        <div class="prompt" id="prompt">Co najbardziej przypomina Twój problem?</div>
+        <div class="choiceRow" id="choices"></div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+const thread=document.getElementById("thread");
+const choices=document.getElementById("choices");
+const prompt=document.getElementById("prompt");
+const insight=document.getElementById("insight");
+const bars={
+  proc:document.getElementById("proc"),
+  sys:document.getElementById("sys"),
+  data:document.getElementById("data"),
+  risk:document.getElementById("risk")
+};
+
+const flow={
+  start:{
+    reply:"Cześć. Z czym dziś przychodzisz?",
+    options:[
+      {label:"Praca jest za wolna",next:"slow"},
+      {label:"Mamy za dużo ręcznej pracy",next:"manual"},
+      {label:"Systemy nie współpracują",next:"systems"},
+      {label:"Myślimy o AI",next:"ai"}
+    ]
+  },
+  slow:{
+    client:"Praca jest za wolna.",
+    reply:"Rozumiem. Czy wiesz już, gdzie dokładnie pojawia się opóźnienie — czy raczej widać tylko efekt końcowy?",
+    options:[
+      {label:"Nie wiemy gdzie",next:"unknown"},
+      {label:"Podejrzewamy system",next:"systemsuspect"},
+      {label:"To raczej proces",next:"processsuspect"}
+    ]
+  },
+  manual:{
+    client:"Mamy za dużo ręcznej pracy.",
+    reply:"To może być kandydat do automatyzacji — ale najpierw sprawdziłbym, czy ręczne kroki nie kompensują braków w procesie albo danych.",
+    options:[
+      {label:"Dużo kopiowania danych",next:"data"},
+      {label:"Dużo akceptacji i handoffów",next:"processsuspect"},
+      {label:"Każdy robi to trochę inaczej",next:"unknown"}
+    ]
+  },
+  systems:{
+    client:"Systemy nie współpracują.",
+    reply:"Sprawdźmy, czy problemem jest integracja, przepływ danych czy sam sposób pracy pomiędzy systemami.",
+    options:[
+      {label:"Duplikujemy dane",next:"data"},
+      {label:"Ręcznie przenosimy informacje",next:"manualbridge"},
+      {label:"Nie wiemy, co jest źródłem prawdy",next:"sourceoftruth"}
+    ]
+  },
+  ai:{
+    client:"Myślimy o AI.",
+    reply:"Dobrze. Najpierw chciałbym wiedzieć, jaki problem AI ma rozwiązać. Czasem najlepszym rozwiązaniem okazuje się prostsza automatyzacja albo zmiana procesu.",
+    options:[
+      {label:"Analiza dużej ilości informacji",next:"aiinfo"},
+      {label:"Automatyzacja decyzji",next:"aidecision"},
+      {label:"Nie jesteśmy jeszcze pewni",next:"unknown"}
+    ]
+  },
+  unknown:{
+    client:"Nie wiemy dokładnie, gdzie leży problem.",
+    reply:"To dobry moment na current-state audit. Najpierw mapujemy ludzi, procesy, systemy i dane, żeby znaleźć zależności zamiast zgadywać.",
+    end:true,metric:{proc:72,sys:64,data:58,risk:46},
+    insight:"Najbardziej prawdopodobny następny krok: current-state audit i system mapping."
+  },
+  systemsuspect:{
+    client:"Podejrzewamy system.",
+    reply:"Sprawdziłbym jeszcze, czy system faktycznie jest przyczyną, czy tylko ujawnia problem w procesie, danych albo handoffie.",
+    end:true,metric:{proc:62,sys:78,data:48,risk:35},
+    insight:"Hipoteza technologiczna wymaga potwierdzenia przez zależności procesu i danych."
+  },
+  processsuspect:{
+    client:"To raczej proces.",
+    reply:"Wtedy zacząłbym od rozpisania kroków, odpowiedzialności i wyjątków. Dopiero później warto decydować, co automatyzować.",
+    end:true,metric:{proc:84,sys:42,data:40,risk:28},
+    insight:"Najbardziej prawdopodobny kierunek: process mapping, uproszczenie workflow, dopiero potem technologia."
+  },
+  data:{
+    client:"Problem dotyczy przepływu albo kopiowania danych.",
+    reply:"To często wygląda jak problem systemowy, ale zaczyna się od źródeł danych, ownership i zasad synchronizacji.",
+    end:true,metric:{proc:52,sys:61,data:88,risk:42},
+    insight:"Najważniejsze do sprawdzenia: source of truth, przepływ danych, duplikacja i odpowiedzialność."
+  },
+  manualbridge:{
+    client:"Ludzie ręcznie przenoszą informacje między systemami.",
+    reply:"To może być brak integracji — albo ręczny bezpiecznik procesu. Trzeba ustalić, zanim go usuniemy.",
+    end:true,metric:{proc:70,sys:82,data:68,risk:52},
+    insight:"Potencjalny kandydat do integracji, ale dopiero po zrozumieniu wyjątków i failure handling."
+  },
+  sourceoftruth:{
+    client:"Nie wiemy, który system jest źródłem prawdy.",
+    reply:"To jest przede wszystkim problem architektury informacji i ownership. Integracja bez rozwiązania tego problemu może tylko szybciej rozsyłać niespójne dane.",
+    end:true,metric:{proc:48,sys:72,data:95,risk:64},
+    insight:"Priorytet: model danych, ownership i jednoznaczne źródła prawdy."
+  },
+  aiinfo:{
+    client:"Chcemy analizować dużą ilość informacji.",
+    reply:"To jest sensowny obszar dla AI-assisted analysis, jeśli dobrze kontrolujemy źródła, jakość danych i sposób weryfikacji wyniku.",
+    end:true,metric:{proc:54,sys:50,data:86,risk:58},
+    insight:"AI może mieć przewagę, ale rozwiązanie powinno być oparte na źródłach, traceability i human review."
+  },
+  aidecision:{
+    client:"Chcemy automatyzować decyzje.",
+    reply:"Tu najważniejsza jest granica odpowiedzialności. Najpierw ustalamy, które decyzje mogą być deterministyczne, które wspierane przez AI, a które powinny zostać po stronie człowieka.",
+    end:true,metric:{proc:76,sys:58,data:68,risk:90},
+    insight:"Najważniejszy temat: decision boundaries, confidence, exceptions i human accountability."
+  }
+};
+
+function msg(text,who){
+  const row=document.createElement("div");
+  row.className="msg "+who;
+  const av=document.createElement("div");
+  av.className="avatar";
+  av.textContent=who==="toume"?"t":"you";
+  const bubble=document.createElement("div");
+  bubble.className="bubble";
+  bubble.textContent=text;
+  row.append(av,bubble);
+  thread.appendChild(row);
+  thread.scrollTop=thread.scrollHeight;
+}
+
+function render(key,initial=false){
+  const step=flow[key];
+  if(step.client) msg(step.client,"client");
+  setTimeout(()=>{
+    msg(step.reply,"toume");
+    choices.innerHTML="";
+    if(step.metric){
+      Object.entries(step.metric).forEach(([k,v])=>bars[k].style.setProperty("--v",v+"%"));
+    }
+    if(step.insight) insight.textContent=step.insight;
+
+    if(step.end){
+      prompt.textContent="Możliwy następny krok";
+      const b=document.createElement("button");
+      b.type="button";
+      b.className="choice";
+      b.textContent="Zacznij od nowa";
+      b.addEventListener("click",reset);
+      choices.appendChild(b);
+      return;
+    }
+
+    prompt.textContent=initial?"Co najbardziej przypomina Twój problem?":"Co najlepiej pasuje?";
+    step.options.forEach(o=>{
+      const b=document.createElement("button");
+      b.type="button";
+      b.className="choice";
+      b.textContent=o.label;
+      b.addEventListener("click",()=>render(o.next));
+      choices.appendChild(b);
+    });
+  }, initial?0:220);
+}
+
+function reset(){
+  thread.innerHTML="";
+  bars.proc.style.setProperty("--v","24%");
+  bars.sys.style.setProperty("--v","18%");
+  bars.data.style.setProperty("--v","12%");
+  bars.risk.style.setProperty("--v","8%");
+  insight.textContent="Na początku nie zakładamy, gdzie leży problem.";
+  render("start",true);
+}
+document.getElementById("reset").addEventListener("click",reset);
+reset();
+</script>
+</body>
+</html>
